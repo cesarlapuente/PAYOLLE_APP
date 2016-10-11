@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    tools:context="FeedRouteDetails"
+    android:background="#000000">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/header"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:layout_gravity="top"
+        android:id="@+id/layout_header">
+
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:id="@+id/btn_return"
+            android:background="@drawable/btn_return"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitCenter"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:id="@+id/route_title"
+            android:text="Nom du parcours"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="true">
+        </TextView>
+
+        <ImageButton
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/boton_accueil"
+            android:id="@+id/btn_home"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <com.mapbox.mapboxsdk.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mapviewdetail"
+            mapbox:center_latitude="0.0"
+            mapbox:center_longitude="0.0"
+            mapbox:style_url="@string/style_mapbox_streets"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/toggle_download"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="left|bottom"
+            android:layout_margin="5dp"
+            android:src="@drawable/down"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/toggle_display_map"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="5dp"
+            android:src="@drawable/icono_plus"
+            />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Material.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:visibility="gone" />
+
+
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/scrollView_depart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="3"
+        android:padding="5dp"
+        android:background="@drawable/fondo_ficha">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:background="@drawable/fondo_lista_ruta"
+            android:layout_marginBottom="3dp"
+            android:padding="3dp">
+
+            <ImageView
+                android:id="@+id/main_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:layout_margin="5dp"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/icono_orientation"
+                android:layout_gravity="start"
+                android:adjustViewBounds="true"/>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:text="@string/mod_discover__duration"
+                    android:textAllCaps="true"
+                    android:singleLine="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:text="2H30"
+                    android:textAllCaps="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:text="@string/mod_discover__distance"
+                    android:textAllCaps="true"
+                    android:singleLine="true" />
+                <TextView
+                    android:id="@+id/route_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:text="387 km"
+                    android:textAllCaps="true"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:text="@string/mod_discover__reviews"
+                    android:textAllCaps="true"
+                    android:singleLine="true" />
+                <ImageView
+                    android:id="@+id/stars_vote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:layout_gravity="start"
+                    android:src="@drawable/estrella_icono_5"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/route_difficulty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/dificultad_3"
+                android:layout_marginLeft="3dp"
+                android:layout_marginStart="3dp"
+                android:layout_gravity="end"/>
+
+
+
+        </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:id="@+id/btn_start">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/boton_depart"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/mod_discover__start"
+                android:gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:paddingStart="10dp"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                />
+
+
+        </FrameLayout>
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="7"
+            android:padding="3dp">
+            <TextView
+                android:id="@+id/route_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/mod_discover__txt_info"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"/>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

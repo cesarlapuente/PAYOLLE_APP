@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/item_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+        <FrameLayout
+            android:id="@+id/legende_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/info_open_b"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#595748"
+                android:id="@+id/legende_description"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
+                />
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/open_info_legende"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/info_closed"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                android:background="@color/transparent"/>
+
+            <TextView
+                android:id="@+id/legende_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="La légende"
+                android:gravity="center_vertical"
+                android:textColor="#595748"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:paddingLeft="30dp"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+</LinearLayout>

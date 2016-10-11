@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_routes_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/header"
+            android:orientation="horizontal"
+            android:layout_gravity="top"
+            android:padding="5dp">
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/btn_return"
+                android:background="@drawable/btn_return"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginEnd="50dp"
+                android:adjustViewBounds="true"
+                />
+            <android.support.v7.widget.SearchView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="5"
+                android:background="@drawable/barra_busqueda"
+                android:id="@+id/feed_search_bar"
+                android:layout_gravity="center_vertical"
+                >
+            </android.support.v7.widget.SearchView>
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:background="@drawable/boton_accueil"
+                android:id="@+id/btn_home"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/routes_list_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:gravity="bottom"
+            android:weightSum="1">
+
+            <com.mapbox.mapboxsdk.maps.MapView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:id="@+id/mapview"
+                mapbox:center_latitude="0.0"
+                mapbox:center_longitude="0.0"
+                mapbox:style_url="@string/style_mapbox_streets"
+                android:layout_weight="1.00" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="@string/mod_discover__title_discover"
+        android:textAllCaps="true"
+        android:textColor="#668811"
+        android:background="@drawable/barra_titulo"
+        android:layout_marginTop="69dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp"
+        android:paddingLeft="55dp"
+        android:paddingStart="55dp"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center_vertical|end"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
+        android:shadowColor="#657072"
+        android:shadowDx="1"
+        android:shadowDy="-1"
+        android:shadowRadius="2"/>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/icono_decouverte"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="30dp"
+
+        />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="110dp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom|center"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        android:background="@drawable/fondo_menu_footer">
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:paddingTop="20dp">
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:src="@drawable/icono_lista_deactif"
+                android:id="@+id/btn_footer_list"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/separacion_menu"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:src="@drawable/icono_mapa_actif"
+                android:id="@+id/btn_footer_map"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/separacion_menu"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:src="@drawable/icono_info_deactif"
+                android:id="@+id/btn_footer_info"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/separacion_menu"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:src="@drawable/icono_badges_deactif"
+                android:id="@+id/btn_footer_passport"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+</FrameLayout>
