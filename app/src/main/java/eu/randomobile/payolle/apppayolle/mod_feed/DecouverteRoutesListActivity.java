@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
@@ -270,10 +271,10 @@ public class DecouverteRoutesListActivity extends Activity {
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_4);
 
             // Duration
-            holder.routeItemDuration.setText(String.valueOf(item.getEstimatedTime()));
+            holder.routeItemDuration.setText(item.timeToHoursMinutes(item.getEstimatedTime()));
 
             // Distance
-            holder.routeItemDistance.setText(item.getDistanceMeters() + " Km");
+            holder.routeItemDistance.setText(item.getRouteLengthMeters()/1000 + " Km");
 
             // Rating
             try {

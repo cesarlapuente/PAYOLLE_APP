@@ -133,7 +133,8 @@
                     android:textSize="13sp"
                     android:textStyle="bold"
                     android:text="2H30"
-                    android:textAllCaps="true"/>
+                    android:textAllCaps="true"
+                    android:id="@+id/route_duration"/>
             </LinearLayout>
 
             <LinearLayout

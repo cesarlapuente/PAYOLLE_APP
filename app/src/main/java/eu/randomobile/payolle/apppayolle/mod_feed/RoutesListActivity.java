@@ -258,10 +258,10 @@ public class RoutesListActivity extends Activity {
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_4);
 
             // Duration
-            holder.routeItemDuration.setText(String.valueOf(item.getEstimatedTime()));
+            holder.routeItemDuration.setText(item.timeToHoursMinutes(item.getEstimatedTime()));
 
             // Distance
-            holder.routeItemDistance.setText(item.getDistanceMeters() + " Km");
+            holder.routeItemDistance.setText(item.getRouteLengthMeters()/1000 + " Km");
 
             // Rating
             try {

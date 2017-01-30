@@ -716,4 +716,10 @@ public class Route {
     public void setMapsLocalDirectory(String local_directory_map) {
         this.local_directory_map = local_directory_map;
     }
+
+    public String timeToHoursMinutes(Double estimatedTime) {
+        int hours = (int) (estimatedTime / 60); //since both are ints, you get an int
+        int minutes = (int) (estimatedTime % 60);
+        return hours + "h" + String.format("%02d", minutes);
+    }
 }

@@ -60,6 +60,7 @@ public class FeedRouteDetails extends Activity {
 
     private TextView txt_route_title;
     private TextView txt_distance;
+    private TextView txt_duration;
     private TextView txt_description_body;
     FrameLayout txt_depart;
     ImageView main_image;
@@ -104,7 +105,7 @@ public class FeedRouteDetails extends Activity {
 
         txt_route_title = (TextView) findViewById(R.id.route_title);
 //        txt_ramp = (TextView) findViewById(R.id.txt_ramp);
-//        txt_duration = (TextView) findViewById(R.id.txt_duration);
+        txt_duration = (TextView) findViewById(R.id.route_duration);
         txt_distance = (TextView) findViewById(R.id.route_distance);
         txt_description_body = (TextView) findViewById(R.id.route_description);
         txt_depart = (FrameLayout) findViewById(R.id.btn_start);
@@ -179,6 +180,7 @@ public class FeedRouteDetails extends Activity {
         // Log.d("Desnivel:", String.valueOf(route.getSlope()));
         // txt_duration.setText(Util.formatDuracion(route.getEstimatedTime()));
         txt_distance.setText(Util.formatDistanciaRoute(route.getRouteLengthMeters()));
+        txt_duration.setText(route.timeToHoursMinutes(route.getEstimatedTime()));
         txt_description_body.setText(Html.fromHtml(route.getBody()).toString().trim(), TextView.BufferType.SPANNABLE);
 
         // Image

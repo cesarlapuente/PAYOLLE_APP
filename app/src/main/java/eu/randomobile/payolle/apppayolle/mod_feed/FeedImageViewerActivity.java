@@ -78,11 +78,10 @@ public class FeedImageViewerActivity extends Activity {
                     imageView, 1000, 700);
             if (paramRecurso.getFileBody() != null
                     && !paramRecurso.getFileBody().equals("")) {
-                final Typeface font = Typeface.createFromAsset(
-                        this.getAssets(), "fonts/Roboto-Light.ttf");
+                //final Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/Roboto-Light.ttf");
                 final TextView txt = (TextView) this
                         .findViewById(R.id.txt_descripcion);
-                txt.setTypeface(font);
+                //txt.setTypeface(font);
                 //txt.setText(paramRecurso.getFileBody());
                 txt.setText(
                         Html.fromHtml(paramRecurso.getFileBody() + "<br>"),
@@ -91,11 +90,10 @@ public class FeedImageViewerActivity extends Activity {
             }
             if (paramRecurso.getFileTitle() != null
                     && !paramRecurso.getFileTitle().equals("")) {
-                final Typeface font = Typeface.createFromAsset(
-                        this.getAssets(), "fonts/scala-sans-bold.ttf");
+                //final Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/scala-sans-bold.ttf");
                 final TextView txt = (TextView) this
                         .findViewById(R.id.txt_titulo);
-                txt.setTypeface(font);
+                //txt.setTypeface(font);
                 txt.setText(paramRecurso.getFileTitle());
                 txt.setVisibility(LinearLayout.VISIBLE);
             }
@@ -104,17 +102,24 @@ public class FeedImageViewerActivity extends Activity {
                 if (!copyright.contains("\u00a9")) {
                     copyright = "\u00a9 " + copyright;
                 }
-                final Typeface font = Typeface.createFromAsset(
-                        this.getAssets(), "fonts/scala-sans-bold.ttf");
+                //final Typeface font = Typeface.createFromAsset(this.getAssets(), "fonts/scala-sans-bold.ttf");
                 final TextView txt = (TextView) this
                         .findViewById(R.id.txt_copyright);
-                txt.setTypeface(font);
+                //txt.setTypeface(font);
                 txt.setText(copyright);
                 txt.setVisibility(LinearLayout.VISIBLE);
             }
         } else {
             //Util.mostrarMensaje(ImageViewerActivity.this, "Sin imagen",
              //       "No hay imagen que mostrar");
+            final TextView txt = (TextView) this
+                    .findViewById(R.id.txt_descripcion);
+            //txt.setTypeface(font);
+            //txt.setText(paramRecurso.getFileBody());
+            txt.setText(
+                    Html.fromHtml(paramRecurso.getFileBody() + "<br>"),
+                    TextView.BufferType.SPANNABLE);
+            txt.setVisibility(LinearLayout.VISIBLE);
         }
 
     }
