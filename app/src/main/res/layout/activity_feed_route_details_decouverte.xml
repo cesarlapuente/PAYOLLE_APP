@@ -163,7 +163,7 @@
                     android:textAllCaps="true"/>
             </LinearLayout>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
@@ -185,7 +185,7 @@
                     android:adjustViewBounds="true"
                     android:layout_gravity="start"
                     android:src="@drawable/estrella_icono_5"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
             <ImageView
                 android:id="@+id/route_difficulty"

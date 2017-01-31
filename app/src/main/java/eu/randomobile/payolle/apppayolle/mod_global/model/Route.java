@@ -103,7 +103,7 @@ public class Route {
                     public void onSuccess(String response) {
 
                         ArrayList<Route> listaRutas = null;
-                        Log.d("Milog", "Respuesta de cargar rutas distance: " + response);
+                        //Log.d("Milog", "Respuesta de cargar rutas distance: " + response);
 
                         if (response != null && !response.equals("")) {
 

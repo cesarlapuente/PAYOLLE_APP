@@ -35,7 +35,7 @@ public class OfflineRoute {
         app.clienteDrupal.customMethodCallPost("route/get_list_distance", new AsyncHttpResponseHandler() {
                     public void onSuccess(String response) {
 
-                        Log.d("Milog", "Respuesta de cargar rutas distance: " + response);
+                        //Log.d("Milog", "Respuesta de cargar rutas distance: " + response);
 
                         if (response != null && !response.equals("")) {
                             Offline.insertJsonList(app, app.DRUPAL_TYPE_ROUTE, response);

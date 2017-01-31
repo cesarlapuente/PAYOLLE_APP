@@ -68,7 +68,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
     ImageButton btn_home;
     ImageButton btn_return;
     private ImageView img_difficulty ;
-    private ImageView img_stars;
+    //private ImageView img_stars;
     FloatingActionButton toggle_display_map_decouverte;
 
     Polyline route_polyline;
@@ -115,7 +115,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
         main_image = (ImageView) findViewById(R.id.main_image);
         img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
-        img_stars = (ImageView) findViewById(R.id.stars_vote);
+        //img_stars = (ImageView) findViewById(R.id.stars_vote);
 
         toggle_display_map_decouverte = (FloatingActionButton)findViewById(R.id.toggle_display_map_decouverte);
     }
@@ -181,7 +181,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
             BitmapManager.INSTANCE.loadBitmap(route.getMainImage(),
                     main_image, 90, 90);
         } else {
-            main_image.setImageResource(R.drawable.ic_launcher);
+            main_image.setImageResource(R.mipmap.ic_launcher);
         }
 
         // DIFFICULT PICTURE
@@ -190,15 +190,15 @@ public class FeedRouteDetailsDecouverte extends Activity {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
 
         } else if (route.getDifficulty_tid().equals("16")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
 
         } else if (route.getDifficulty_tid().equals("17")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_3));
 
         } else if (route.getDifficulty_tid().equals("22")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
         }
-
+/*
         // STARS ICONS
 
         //img_stars.setVisibility(View.GONE);
@@ -220,7 +220,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
             }
         } catch (Exception e) {
 
-        }
+        }*/
     }
 
     private void initMapView (Bundle savedInstanceState) {

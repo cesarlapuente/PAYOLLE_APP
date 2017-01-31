@@ -82,7 +82,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
     HashMap<Long,String> hsvalidate = new HashMap<>();
 
-    FloatingActionButton btn_pause;
+    ImageView btn_pause;
     Route route;
     String paramNid;
     public static final String PARAM_KEY_NID = "nid";
@@ -140,7 +140,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_info = (ImageView) findViewById(R.id.btn_info_route);
-        btn_pause = (FloatingActionButton) findViewById(R.id.btn_pause);
+        btn_pause = (ImageView) findViewById(R.id.btn_pause);
 
         txt_distance = (TextView) findViewById(R.id.txt_distanceb);
         txt_nb_balise = (TextView) findViewById(R.id.txt_nb_balise);

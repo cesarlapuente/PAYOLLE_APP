@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="FeedRouteActivity"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     android:background="#000000">
 
@@ -73,13 +72,19 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_marginBottom="63dp">
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/btn_pause"
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/boton_stop"
+                android:adjustViewBounds="true"
+                android:clickable="true"
+                android:id="@+id/btn_pause"/>
+            <!--<android.support.design.widget.FloatingActionButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_margin="5dp"
-                />
+                />-->
         </LinearLayout>
 
         <LinearLayout

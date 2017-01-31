@@ -970,9 +970,9 @@ public String determinateCat(String cat){
                            // app.setPoisList(listaPois);
 
                             for (Poi poi : listaPois) {
-                                Log.d("ForEach poi sais:", " POI ID: " + poi.getNid());
-                                Log.d("ForEach poi sais:", " POI Name: " + poi.getTitle());
-                                Log.d("ForEach poi sais:", " POI Body: " + poi.getBody());
+                                //Log.d("ForEach poi sais:", " POI ID: " + poi.getNid());
+                                //Log.d("ForEach poi sais:", " POI Name: " + poi.getTitle());
+                                //Log.d("ForEach poi sais:", " POI Body: " + poi.getBody());
 
                                 app.getDBHandler().addOrReplacePoi(poi);
                             }

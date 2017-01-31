@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="FeedRouteActivity"
     >
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="218dp"
+        android:layout_height="217dp"
         android:layout_gravity="center"
         android:id="@+id/globalView">
         <ImageView
             android:layout_width="280dp"
             android:layout_height="210dp"
+            android:adjustViewBounds="true"
             android:scaleType="fitXY"
             android:src="@drawable/fondo_popup_validation_new"
             android:layout_gravity="top"/>
@@ -146,14 +146,14 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/boton_wrong"
                     android:adjustViewBounds="true"
-                    android:padding="10dp"
+                    android:layout_margin="15dp"
                     android:layout_gravity="start"
                     android:clickable="true"
                     android:id="@+id/validation_skip"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:padding="10dp"
+                    android:layout_margin="15dp"
                     android:src="@drawable/boton_ok"
                     android:adjustViewBounds="true"
                     android:layout_gravity="end"
