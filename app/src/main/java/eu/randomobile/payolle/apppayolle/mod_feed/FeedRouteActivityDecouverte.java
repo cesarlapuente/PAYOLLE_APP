@@ -147,12 +147,9 @@ public class FeedRouteActivityDecouverte extends Activity  {
         Log.d("JmLog", "MAPVIEW  ? =>" + mapView.isEnabled());
         // <-- Declarations -->
         final ArrayList<Poi> alPoi =  app.getPoisList();
-        final ArrayList<Route> alRoute = app.getRoutesList();
+        final ArrayList<Route> alRoute = app.getDBHandler().getRouteListByCateg("Decouverte");
         final ArrayList<LatLng> alLatLng = new ArrayList<LatLng>();
 
-        if(alPoi != null){
-            Log.d("JmLog","ICI non NULL");
-        }
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {

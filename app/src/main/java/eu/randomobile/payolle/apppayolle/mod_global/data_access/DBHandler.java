@@ -7,12 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.esri.core.geodatabase.Geopackage;
+
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Especie;
+import eu.randomobile.payolle.apppayolle.mod_global.model.GeoPoint;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Page;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.RouteCategoryTerm;
@@ -61,6 +65,13 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String TABLE_MAPS = "maps";
     public static final String COLUMN_ROUTE_ID = "id";
     public static final String COLUMN_MAP_LOCAL_DIRECTORY = "directory";
+    // <---------->__TABLE_POI____________<---------->
+    private static final String TABLE_POI = "poi";
+    public static final String COLUMN_POI_ID = "id";
+    public static final String COLUMN_POI_BODY = "body";
+    public static final String COLUMN_POI_TITLE = "title";
+    public static final String COLUMN_POI_LAT = "lat";
+    public static final String COLUMN_POI_LON = "lon";
     // <---------->__CONFIGURATION_END____________<---------->
 
     public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, MainApp app) {
@@ -119,6 +130,17 @@ public class DBHandler extends SQLiteOpenHelper {
                 COLUMN_MAP_LOCAL_DIRECTORY + " TEXT " +
                 ");";
         db.execSQL(query_maps);
+
+        String query_poi = "CREATE TABLE " + TABLE_POI +
+                "(" +
+                COLUMN_POI_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_POI_BODY + " TEXT ," +
+                COLUMN_POI_TITLE + " TEXT, " +
+                COLUMN_POI_LAT + " INTEGER," +
+                COLUMN_POI_LON + " INTEGER" +
+                ");";
+        db.execSQL(query_poi);
+
     }
 
     @Override
@@ -126,6 +148,7 @@ public class DBHandler extends SQLiteOpenHelper {
         if (app.getNetStatus() != 0) {
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_ROUTES);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_ESPECIES);
+            db.execSQL("DROP_TABLE IF EXIST " + TABLE_POI);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_PAGES);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_MAPS);
 
@@ -150,7 +173,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_ROUTE_NID, route.getNid());
         values.put(COLUMN_ROUTE_TITLE, route.getTitle());
         values.put(COLUMN_ROUTE_CATEGORY_TID, route.getCategory().getTid());
-        values.put(COLUMN_ROUTE_CATEGORY_NAME, route.getCategory().getTid());
+        values.put(COLUMN_ROUTE_CATEGORY_NAME, route.getCategory().getName());
         values.put(COLUMN_ROUTE_BODY, route.getBody());
 
         // values.put(COLUMN_ROUTE_DIFFICULTY, route.getDifficulty().getTid());
@@ -184,6 +207,56 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insertWithOnConflict(TABLE_ROUTES, null, values, SQLiteDatabase.CONFLICT_REPLACE);
 
         db.close();
+    }
+    public void addOrReplacePoi(Poi poi) {
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_POI_ID, poi.getNid());
+        values.put(COLUMN_POI_TITLE, poi.getTitle());
+        values.put(COLUMN_POI_BODY, poi.getBody());
+        values.put(COLUMN_POI_LAT, poi.getCoordinates().getLatitude());
+        values.put(COLUMN_POI_LON,  poi.getCoordinates().getLongitude());
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        db.insertWithOnConflict(TABLE_POI, null, values, SQLiteDatabase.CONFLICT_REPLACE);
+
+        db.close();
+    }
+    public ArrayList<Poi> getPoiList(){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String[] columns = new String[]{COLUMN_POI_ID, COLUMN_POI_TITLE, COLUMN_POI_BODY,COLUMN_POI_LAT,COLUMN_POI_LON};
+
+        Cursor c = db.query(TABLE_POI, columns, null, null, null, null, COLUMN_POI_ID);
+
+        int iNid = c.getColumnIndex(COLUMN_POI_ID);
+        int iTitle = c.getColumnIndex(COLUMN_POI_TITLE);
+        int iBody = c.getColumnIndex(COLUMN_POI_BODY);
+        int iLat = c.getColumnIndex(COLUMN_POI_LAT);
+        int iLon = c.getColumnIndex(COLUMN_POI_LON);
+
+
+        ArrayList<Poi> result = new ArrayList<>();
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            Poi item = new Poi();
+            item.setNid(c.getString(iNid));
+            item.setTitle(c.getString(iTitle));
+            item.setBody(c.getString(iBody));
+            GeoPoint gp = new GeoPoint();
+            gp.setLatitude(c.getInt(iLat));
+            gp.setLongitude(c.getInt(iLon));
+            item.setCoordinates(gp);
+            item.setBody(c.getString(iBody));
+            result.add(item);
+        }
+
+
+
+        db.close();
+
+        return result;
     }
 
     /**
@@ -336,6 +409,136 @@ public class DBHandler extends SQLiteOpenHelper {
         return result;
     }
 
+    public ArrayList<Route> getRouteListByCateg(String name){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String[] columns = new String[]{COLUMN_ROUTE_NID, COLUMN_ROUTE_TITLE, COLUMN_ROUTE_CATEGORY_TID, COLUMN_ROUTE_CATEGORY_NAME, COLUMN_ROUTE_BODY,
+                COLUMN_ROUTE_DIFFICULTY_TID, COLUMN_ROUTE_DISTANCE, COLUMN_ROUTE_LENGTH, COLUMN_ROUTE_TIME, COLUMN_ROUTE_SLOPE, COLUMN_ROUTE_MAIN_PICTURE,
+                COLUMN_ROUTE_TRACK, COLUMN_ROUTE_MAP_URL, COLUMN_ROUTE_MAP_DIRECTORY, COLUMN_ROUTE_POIS_LIST};
+
+        Cursor c = db.query(TABLE_ROUTES, columns, null, null, null, null, COLUMN_ROUTE_ID);
+
+        int iNid = c.getColumnIndex(COLUMN_ROUTE_NID);
+        int iTitle = c.getColumnIndex(COLUMN_ROUTE_TITLE);
+        int iCategory_Tid = c.getColumnIndex(COLUMN_ROUTE_CATEGORY_TID);
+        int iCategory_Name = c.getColumnIndex(COLUMN_ROUTE_CATEGORY_NAME);
+        int iBody = c.getColumnIndex(COLUMN_ROUTE_BODY);
+        //
+        int iDifficulty_Tid = c.getColumnIndex(COLUMN_ROUTE_DIFFICULTY_TID);
+        int iDistance = c.getColumnIndex(COLUMN_ROUTE_DISTANCE);
+        int iLenght = c.getColumnIndex(COLUMN_ROUTE_LENGTH);
+        int iTime = c.getColumnIndex(COLUMN_ROUTE_TIME);
+        int iSlope = c.getColumnIndex(COLUMN_ROUTE_SLOPE);
+        int iMain_Picture = c.getColumnIndex(COLUMN_ROUTE_MAIN_PICTURE);
+        int iTrack = c.getColumnIndex(COLUMN_ROUTE_TRACK);
+        int iMap_URL = c.getColumnIndex(COLUMN_ROUTE_MAP_URL);
+        int iMap_Directory = c.getColumnIndex(COLUMN_ROUTE_MAP_DIRECTORY);
+        int iPoi_List = c.getColumnIndex(COLUMN_ROUTE_POIS_LIST);
+
+        Context ctx = app.getApplicationContext();
+
+        ArrayList<Route> result = new ArrayList<Route>();
+
+        int count_GR = 0;
+        int count_PR = 0;
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            Route item = new Route();
+
+            item.setNid(c.getString(iNid));
+            item.setTitle(c.getString(iTitle));
+
+            RouteCategoryTerm routeCatTerm = new RouteCategoryTerm();
+            routeCatTerm.setTid(c.getString(iCategory_Tid));
+            routeCatTerm.setName(c.getString(iCategory_Name));
+            item.setCategory(routeCatTerm);
+
+            if (item.getCategory().getName().equals("PR")) {
+                int n = count_PR % 3;
+
+                switch (n) {
+                    case 0:
+                        item.setColor(ctx.getResources().getColor(R.color.pr1_route));
+                        break;
+                    case 1:
+                        item.setColor(ctx.getResources().getColor(R.color.pr2_route));
+                        break;
+                    case 2:
+                        item.setColor(ctx.getResources().getColor(R.color.pr3_route));
+                        break;
+                    default:
+                        break;
+                }
+
+                count_PR++;
+
+            } else if (item.getCategory().getName().equals("GR")) {
+                int n = count_GR % 2;
+
+                switch (n) {
+                    case 0:
+                        item.setColor(ctx.getResources().getColor(R.color.gr1_route));
+                        break;
+                    case 1:
+                        item.setColor(ctx.getResources().getColor(R.color.gr2_route));
+                        break;
+                    default:
+                        break;
+                }
+
+                count_GR++;
+
+            } else if (item.getCategory().getName().equals("CR")) {
+                item.setColor(ctx.getResources().getColor(R.color.cr1_route));
+            }
+
+            item.setBody(c.getString(iBody));
+            item.setDifficulty_tid(c.getString(iDifficulty_Tid));
+
+            double distanceKMDouble = Double.valueOf(c.getString(iDistance));
+            double distanceMDouble = distanceKMDouble * 1000;
+            item.setDistanceMeters(distanceMDouble);
+
+            item.setRouteLengthMeters(Double.valueOf(c.getString(iLenght)));
+            item.setEstimatedTime(Double.valueOf(c.getString(iTime)));
+            item.setSlope(Double.valueOf(c.getString(iSlope)));
+            item.setMainImage(c.getString(iMain_Picture));
+            item.setTrack(c.getString(iTrack));
+
+            item.setUrlMap(c.getString(iMap_URL));
+            item.setMapsLocalDirectory(c.getString(iMap_Directory));
+
+            String routeListTemp = c.getString(iPoi_List);
+            String routeList[] = routeListTemp.split(",");
+
+            ArrayList<ResourcePoi> listaPois = new ArrayList<>();
+
+            for (int i = 0; i < routeList.length; i++) {
+                ResourcePoi poi = new ResourcePoi();
+
+                String temp = routeList[i];
+                Log.d("****_****", temp);
+
+                if (!(temp.equals(""))) {
+                    if (!(temp.equals(","))) {
+                        Log.d("********************", temp);
+                        poi.setNid(Integer.parseInt(temp));
+                    }
+                }
+
+                listaPois.add(poi);
+            }
+
+            item.setPois(listaPois);
+            if(item.getCategory().getName().equals(name)){
+                result.add(item);
+            }
+        }
+
+        db.close();
+
+        return result;
+    }
     /*
 
     /**

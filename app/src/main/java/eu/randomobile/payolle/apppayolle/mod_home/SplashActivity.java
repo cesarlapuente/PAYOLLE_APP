@@ -97,6 +97,8 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mod_home__activity_splash);
 
+        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         PermissionsRequest.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         while (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 //
@@ -118,7 +120,8 @@ public class SplashActivity extends Activity {
 
         } else {
             try {
-                app.setRoutesList(app.getDBHandler().getRouteList());
+                app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
+                //app.setRoutesList(app.getDBHandler().getRouteList());
 
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas", Toast.LENGTH_LONG).show();
@@ -126,8 +129,8 @@ public class SplashActivity extends Activity {
 
             // app.setPOIsList(app.getDBHandler().getPOIsList());
             try {
-                app.setEspecies(app.getDBHandler().getEspeciesList());
-
+                app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));
+                app.setPoisList(app.getDBHandler().getPoiList());
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las especies", Toast.LENGTH_LONG).show();
             }
@@ -327,10 +330,10 @@ public String determinateCat(String cat){
                         }
 
                         if (listaRutas != null) {
-                            app.setRoutesList(listaRutas);
+                            //app.setRoutesList(listaRutas);
 
 
-                            for (Route route : app.getRoutesList()) {
+                            for (Route route :listaRutas) {
                                 Log.d("ForEach route sais:", " Route ID: " + route.getNid());
                                 Log.d("ForEach route sais:", " Route Name: " + route.getTitle());
                                 if(route.getCategory().getName().equals("CO")){
@@ -964,20 +967,18 @@ public String determinateCat(String cat){
                         }
 
                         if (listaPois != null) {
-                            app.setPoisList(listaPois);
+                           // app.setPoisList(listaPois);
 
                             for (Poi poi : listaPois) {
                                 Log.d("ForEach poi sais:", " POI ID: " + poi.getNid());
                                 Log.d("ForEach poi sais:", " POI Name: " + poi.getTitle());
                                 Log.d("ForEach poi sais:", " POI Body: " + poi.getBody());
 
-                                Poi poiDetail = poi;
-
-                                // app.getDBHandler().addOrReplacePoi(poiDetail);
+                                app.getDBHandler().addOrReplacePoi(poi);
                             }
 
                             progressBar.incrementProgressBy(25);
-                            // app.setPoisList(app.getDBHandler().getPoiList());
+                            app.setPoisList(app.getDBHandler().getPoiList());
                             loadedComponents++;
 
                         } else {

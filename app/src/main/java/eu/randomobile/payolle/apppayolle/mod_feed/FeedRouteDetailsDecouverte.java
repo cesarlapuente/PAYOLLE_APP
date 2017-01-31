@@ -235,7 +235,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
         final ArrayList<ResourcePoi> alPoi = route.getPois();
         final ArrayList<Route> alRoute = app.getRoutesList();
         final ArrayList<LatLng> alLatLng = new ArrayList<LatLng>();
-        Log.d("JmLog","Mapvi ? "+ mapView.isEnabled()+" "+mapView.getId());
+        Log.d("Debug","route size poi = "+ route.getPois().size());
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
