@@ -151,7 +151,7 @@ public class RoutesListActivity extends Activity {
             ImageView routeItemDifficulty;
             TextView routeItemDuration;
             TextView routeItemDistance;
-            ImageView routeItemRating;
+            //ImageView routeItemRating;
 
             int index;
         }
@@ -222,7 +222,7 @@ public class RoutesListActivity extends Activity {
                 holder.routeItemDifficulty = (ImageView) convertView.findViewById(R.id.item_difficulty);
                 holder.routeItemDuration = (TextView) convertView.findViewById(R.id.item_duration);
                 holder.routeItemDistance = (TextView) convertView.findViewById(R.id.item_distance);
-                holder.routeItemRating = (ImageView) convertView.findViewById(R.id.item_rating);
+                //holder.routeItemRating = (ImageView) convertView.findViewById(R.id.item_rating);
 
                 convertView.setTag(holder);
             }
@@ -239,7 +239,7 @@ public class RoutesListActivity extends Activity {
                 BitmapManager.INSTANCE.loadBitmap(item.getMainImage(),
                         holder.routeItemImage, 90, 90);
             } else {
-                holder.routeItemImage.setImageResource(R.drawable.ic_launcher);
+                holder.routeItemImage.setImageResource(R.mipmap.ic_launcher);
             }
 
             // Difficulty
@@ -263,6 +263,7 @@ public class RoutesListActivity extends Activity {
             // Distance
             holder.routeItemDistance.setText(item.getRouteLengthMeters()/1000 + " Km");
 
+            /*
             // Rating
             try {
                 String valString = ctx.getResources().getString(R.string.mod_discover__nota);
@@ -292,6 +293,7 @@ public class RoutesListActivity extends Activity {
             } catch (Exception e) {
                 holder.routeItemRating.setImageResource(R.drawable.estrella_icono_0);
             }
+            */
 
             return convertView;
         }

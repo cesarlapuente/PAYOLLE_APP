@@ -160,7 +160,7 @@ public class POIDetailsActivity extends Activity {
             BitmapManager.INSTANCE.loadBitmap(poi.getMainImage(),
                     main_image, 90, 90);
         } else {
-            main_image.setImageResource(R.drawable.ic_launcher);
+            main_image.setImageResource(R.mipmap.ic_launcher);
         }
     }
 

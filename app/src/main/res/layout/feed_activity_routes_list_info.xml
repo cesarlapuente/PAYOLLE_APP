@@ -5,7 +5,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:weightSum="2">
 
         <LinearLayout
             android:id="@+id/firstColumn"
@@ -75,10 +76,10 @@
                 android:textColor="#DFFF"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                android:singleLine="true"/>
+                android:maxLines="1"/>
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/thirdRow"
             android:orientation="vertical"
             android:layout_height="wrap_content"
@@ -103,7 +104,7 @@
                 android:src="@drawable/estrella_icono_3"/>
 
 
-        </LinearLayout>
+        </LinearLayout>-->
 
     </LinearLayout>
 

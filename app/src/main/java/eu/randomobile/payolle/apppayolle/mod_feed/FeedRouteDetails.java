@@ -68,7 +68,7 @@ public class FeedRouteDetails extends Activity {
     ImageButton btn_home;
     ImageButton btn_return;
     private ImageView img_difficulty ;
-    private ImageView img_stars;
+    //private ImageView img_stars;
 
     boolean isEndNotified;
     ProgressBar progressBar;
@@ -115,7 +115,7 @@ public class FeedRouteDetails extends Activity {
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         main_image = (ImageView) findViewById(R.id.main_image);
         img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
-        img_stars = (ImageView) findViewById(R.id.stars_vote);
+        //img_stars = (ImageView) findViewById(R.id.stars_vote);
 
 
         toggle_download = (FloatingActionButton) findViewById(R.id.toggle_download);
@@ -189,7 +189,7 @@ public class FeedRouteDetails extends Activity {
             BitmapManager.INSTANCE.loadBitmap(route.getMainImage(),
                     main_image, 90, 90);
         } else {
-            main_image.setImageResource(R.drawable.ic_launcher);
+            main_image.setImageResource(R.mipmap.ic_launcher);
         }
 
         // DIFFICULT PICTURE
@@ -206,7 +206,7 @@ public class FeedRouteDetails extends Activity {
         } else if (route.getDifficulty_tid().equals("22")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_4));
         }
-
+/*
         // STARS ICONS
 
         //img_stars.setVisibility(View.GONE);
@@ -228,7 +228,7 @@ public class FeedRouteDetails extends Activity {
             }
         } catch (Exception e) {
 
-        }
+        }*/
     }
 
     private void initMapView (Bundle savedInstanceState) {

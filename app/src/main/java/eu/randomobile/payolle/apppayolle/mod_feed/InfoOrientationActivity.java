@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -209,7 +210,7 @@ public class InfoOrientationActivity extends Activity {
             }
 
             holder.legende_title.setText(item.getTitle());
-            holder.legende_description.setText(item.getBody());
+            holder.legende_description.setText(Html.fromHtml(item.getBody()));
             return convertView;
         }
     }
