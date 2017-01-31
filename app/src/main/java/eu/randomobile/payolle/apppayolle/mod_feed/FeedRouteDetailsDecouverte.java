@@ -190,13 +190,13 @@ public class FeedRouteDetailsDecouverte extends Activity {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
 
         } else if (route.getDifficulty_tid().equals("16")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
 
         } else if (route.getDifficulty_tid().equals("17")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_3));
 
         } else if (route.getDifficulty_tid().equals("22")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
         }
 /*
         // STARS ICONS

@@ -257,18 +257,19 @@ public class DecouverteRoutesListActivity extends Activity {
 
             // Difficulty
             String dificultad = item.getDifficulty_tid();
+            Log.d("Debug", "difficult? :" + item.getDifficulty_tid());
             //Tr?s Facile
             if (dificultad.equals("18"))
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_1);
                 //Facile
             else if (dificultad.equals("16"))
-                holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_2);
+                holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_4);
                 //Moyen
             else if (dificultad.equals("17"))
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_3);
                 //Difficile
             else if (dificultad.equals("22"))
-                holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_4);
+                holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_2);
 
             // Duration
             holder.routeItemDuration.setText(item.timeToHoursMinutes(item.getEstimatedTime()));

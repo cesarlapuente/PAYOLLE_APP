@@ -88,7 +88,7 @@ public class FeedRouteDetails extends Activity {
             for (Route route : app.getRoutesListCO()) {
                 if (route.getNid().equals(paramNid)) {
                     this.route = route;
-                    Log.d("JmLog", "Objet route : " + route.getTitle() + " " + route.getUrlMap() + " " + route.getImages());
+                    Log.d("JmLog", "Objet route : " + route.getTitle() + " " + route.getUrlMap() + " " + route.getImages() + " difficult? " + route.getDifficulty_tid());
                 }
             }
         }
@@ -198,13 +198,13 @@ public class FeedRouteDetails extends Activity {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_1));
 
         } else if (route.getDifficulty_tid().equals("16")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_2));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_4));
 
         } else if (route.getDifficulty_tid().equals("17")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_3));
 
         } else if (route.getDifficulty_tid().equals("22")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_4));
+            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_2));
         }
 /*
         // STARS ICONS
