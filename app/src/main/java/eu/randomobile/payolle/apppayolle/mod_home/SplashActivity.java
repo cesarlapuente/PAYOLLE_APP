@@ -97,8 +97,6 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mod_home__activity_splash);
 
-        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
-        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         PermissionsRequest.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         while (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 //
@@ -114,7 +112,11 @@ public class SplashActivity extends Activity {
         progressBar = (ProgressBar) findViewById(R.id.splash_prograssBar);
         progressBar.setMax(100);
 
+        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
+        PermissionsRequest.askForPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+
         if (app.getNetStatus() != 0) {
+
             feedInfo();
             updateLocalDatabase_Routes();
 
@@ -223,20 +225,20 @@ public class SplashActivity extends Activity {
 
 
     }
-public String determinateCat(String cat){
-    // several categ : Decouverte or CO or Lire
-    switch (cat) {
-        case "51":
-            return "CO";
-        case "52":
-            return "Decouverte";
-        case "53":
-            return "Lire";
-        case "default":
-            return "INDETERMINATED";
+    public String determinateCat(String cat){
+        // several categ : Decouverte or CO or Lire
+        switch (cat) {
+            case "51":
+                return "CO";
+            case "52":
+                return "Decouverte";
+            case "53":
+                return "Lire";
+            case "default":
+                return "INDETERMINATED";
+        }
+        return "";
     }
-    return "";
-}
     protected void onResume() {
         super.onResume();
 
@@ -539,17 +541,20 @@ public String determinateCat(String cat){
                                         String poi_title = objPOI.getString("title");
                                         double longitudePoi = objPOI.getDouble("lon");
                                         double latitudePoi = objPOI.getDouble("lat");
+                                        String poi_code1 = objPOI.getString("code1");
 
                                         Log.d("--------------------", " ------------------------------------------------------------ ");
 
                                         Log.d("Obj poi:", " Nid " + poi_nid);
                                         Log.d("Obj poi:", " Title " + poi_title);
+                                        Log.d("Obj poi:", " Code 1 " + poi_code1);
 
                                         ResourcePoi poi = new ResourcePoi();
                                         poi.setNid(Integer.parseInt(poi_nid));
                                         poi.setTitle(poi_title);
                                         poi.setLatitude(latitudePoi);
                                         poi.setLongitude(longitudePoi);
+                                        poi.setCode1(poi_code1);
 
                                         arrayTemp.add(poi);
 
@@ -868,6 +873,7 @@ public String determinateCat(String cat){
                             double latitudePoi = dic.getDouble("lat");
                             int typePoi = dic.getInt("type");
                             int nidPoi = dic.getInt("nid");
+                            String code1Poi = dic.getString("code1");
                             ResourcePoi rl = new ResourcePoi();
                             rl.setBody(bodyPoi);
                             rl.setTitle(titlePoi);
@@ -876,6 +882,8 @@ public String determinateCat(String cat){
                             rl.setLongitude(longitudePoi);
                             rl.setType(typePoi);
                             rl.setNid(nidPoi);
+                            rl.setCode1(code1Poi);
+                            Log.d("Debug","RESOURCE POI GET CODE 1 : " + rl.getCode1());
                             arrayResourcePois.add(rl);
                         }
                     }
@@ -967,7 +975,7 @@ public String determinateCat(String cat){
                         }
 
                         if (listaPois != null) {
-                           // app.setPoisList(listaPois);
+                            // app.setPoisList(listaPois);
 
                             for (Poi poi : listaPois) {
                                 //Log.d("ForEach poi sais:", " POI ID: " + poi.getNid());
@@ -1019,12 +1027,16 @@ public String determinateCat(String cat){
                             String alt = recDic.getString("altitude");
                             String distance = recDic.getString("distance");
                             String image = recDic.getString("image");
+                            String game = recDic.getString("game");
+                            String code1 = recDic.getString("code1");
 
                             Poi item = new Poi();
 
                             item.setNid(nid);
                             item.setTitle(title);
                             item.setBody(body);
+                            item.setGame(game);
+                            item.setCode1(code1);
 
 
                             handleImages(null,item);

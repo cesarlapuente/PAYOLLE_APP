@@ -17,7 +17,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,6 +43,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -61,6 +61,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     ImageButton btn_return;
     ImageView btn_info;
     Timer TChrono;
+    FrameLayout check1, check2, check3;
 
     LocationManager locationManager;
     boolean isPlaying;
@@ -149,6 +150,8 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         txt_chrono_hours = (TextView) findViewById(R.id.chrono_hours);
         txt_chrono_minutes = (TextView) findViewById(R.id.chrono_minutes);
         txt_chrono_secondes = (TextView) findViewById(R.id.chrono_seconds);
+
+
 
     }
 
@@ -258,67 +261,99 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
 
 
-                for (ResourcePoi poi : alPoi) {
+                for (final ResourcePoi poi : alPoi) {
                     LatLng poiPosition = new LatLng(poi.getLatitude(), poi.getLongitude());
+
                     MarkerViewOptions mk = new MarkerViewOptions()
                             .position(poiPosition)
                             .title(poi.getTitle())
-                            .icon(icon_balise);
+                            .icon(icon_balise)
+                            .snippet(poi.getCode1());
 
+                    //alLatLng.add(poiPosition);
+                    //mapboxMap.addMarker(mk);
+
+                    mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
+                        @Nullable
+                        private LayoutInflater mInflater = (LayoutInflater) FeedRouteBalise.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                        @Override
+                        public View getInfoWindow(@NonNull final Marker marker) {
+                            View convertView = mInflater.inflate(R.layout.activity_feed_route_balise_pop_up, null);
+                            TextView code1, code2, code3;
+                            check1 = (FrameLayout) convertView.findViewById(R.id.check1);
+                            check2 = (FrameLayout) convertView.findViewById(R.id.check2);
+                            check3 = (FrameLayout) convertView.findViewById(R.id.check3);
+
+                            code1 = (TextView) convertView.findViewById(R.id.code1);
+                            code2 = (TextView) convertView.findViewById(R.id.code2);
+                            code3 = (TextView) convertView.findViewById(R.id.code3);
+
+                            Random random = new Random();
+                            String false1 = marker.getSnippet();
+                            String false2 = marker.getSnippet();
+                            while (false1.equals(marker.getSnippet())){
+                                false1 = "" + (random.nextInt(100000 - 1) + 1);
+                            }
+                            while (false2.equals(marker.getSnippet()) | false2.equals(false1)){
+                                false2 = "" + (random.nextInt(100000 - 1) + 1);
+                            }
+
+/*
+                            Random r = new Random();
+                            int i = r.nextInt(4 - 1) + 1;
+                            int j = i + 1;
+                            if (j > 3)
+                                j = 1;
+                            int k = j + 1;
+                            if (k > 3)
+                                k = 1;
+                            //Log.d("Debug","i= " + i + " / j=" + j + " / k=" + k);*/
+
+                            code1.setText(marker.getSnippet());
+                            code2.setText(false1);
+                            code3.setText(false2);
+                            //views.setTextViewText(getResources().getIdentifier("code" + i, "id", getPackageName()), "" + realtimeData.get(i).id);
+
+
+                            check1.setOnClickListener(
+                                    new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            gestionBalise(marker);
+                                            // gestionBalise(balise,code1)
+                                        }
+                                    });
+                            return convertView;
+                        }
+                    });
+
+                    mapboxMap.setOnInfoWindowClickListener(
+                            new MapboxMap.OnInfoWindowClickListener() {
+                                @Override
+                                public boolean onInfoWindowClick(@NonNull Marker marker) {
+                                    checkBaliseToActivate(mapboxMap.getMyLocation(), marker);
+                                    return false;
+                                }
+                            }
+                    );
                     alLatLng.add(poiPosition);
                     mapboxMap.addMarker(mk);
-                }
-                mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
-                    @Nullable
-                    private LayoutInflater mInflater = (LayoutInflater) FeedRouteBalise.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-                    @Override
-                    public View getInfoWindow(@NonNull final Marker marker) {
-                        View convertView = mInflater.inflate(R.layout.activity_feed_route_balise_pop_up, null);
-                        FrameLayout check1, check2, check3;
-                        TextView code1, code2, code3;
-                        check1 = (FrameLayout) convertView.findViewById(R.id.check1);
-                        check2 = (FrameLayout) convertView.findViewById(R.id.check2);
-                        check3 = (FrameLayout) convertView.findViewById(R.id.check3);
 
-                        code1 = (TextView) convertView.findViewById(R.id.code1);
-                        code2 = (TextView) convertView.findViewById(R.id.code2);
-                        code3 = (TextView) convertView.findViewById(R.id.code3);
-                        check1.setOnClickListener(
-                                new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        gestionBalise(marker);
-                                        // gestionBalise(balise,code1)
-                                    }
-                                });
-                        return convertView;
-                    }
-                });
-
-                mapboxMap.setOnInfoWindowClickListener(
-                        new MapboxMap.OnInfoWindowClickListener() {
-                            @Override
-                            public boolean onInfoWindowClick(@NonNull Marker marker) {
-                                checkBaliseToActivate(mapboxMap.getMyLocation(), marker);
+                    mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                        @Override
+                        public boolean onMarkerClick(@NonNull Marker marker) {
+                            if (hsvalidate.containsKey(marker.getId())) {
+                                marker.hideInfoWindow();
+                                return true;
+                            } else {
                                 return false;
                             }
+
                         }
-                );
-
-
-                mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
-                    @Override
-                    public boolean onMarkerClick(@NonNull Marker marker) {
-                        if (hsvalidate.containsKey(marker.getId())) {
-                            marker.hideInfoWindow();
-                            return true;
-                        } else {
-                            return false;
-                        }
-
-                    }
-                });
+                    });
+                }
                 LatLngBounds latLngBounds = new LatLngBounds.Builder()
                         .includes(alLatLng)
                         .include(new LatLng(mapboxMap.getMyLocation()))

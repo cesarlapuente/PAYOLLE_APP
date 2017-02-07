@@ -67,7 +67,7 @@
                 android:id="@+id/game_image"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icono_juego"
+                android:src="@drawable/icono_juer_inactif"
                 android:visibility="gone"/>
 
             <ImageView

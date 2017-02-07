@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-    tools:context="FeedRouteDetails"
+    tools:context=".mod_feed.FeedRouteDetails"
     android:background="#000000">
 
 

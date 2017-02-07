@@ -41,7 +41,7 @@ public class POIDetailsActivity extends Activity {
         //Get Parameters from ROutesListActivity
         Bundle b = getIntent().getExtras();
         if (b != null) {
-           // paramTitle = b.getString(PARAM_KEY_NID);
+            // paramTitle = b.getString(PARAM_KEY_NID);
             paramTitle = b.getString(PARAM_KEY_TITLE_POI);
 
             final ArrayList<Poi> alPoi =  app.getPoisList();
@@ -49,7 +49,8 @@ public class POIDetailsActivity extends Activity {
             for (Poi poi : alPoi) {
                 if (poi.getTitle().equals(paramTitle)) {
                     this.poi = poi;
-                    Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages());
+                    //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages());
+                    //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
 
                 }
             }
@@ -120,14 +121,16 @@ public class POIDetailsActivity extends Activity {
                 startActivity(intent);
             }
         });
-        btn_game.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(POIDetailsActivity.this, GameActivity.class);
-                        startActivity(intent);
-                    }
-                });
+        if (poi.getGame().equals("1")) {
+            btn_game.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(POIDetailsActivity.this, GameActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+        }
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +165,12 @@ public class POIDetailsActivity extends Activity {
         } else {
             main_image.setImageResource(R.mipmap.ic_launcher);
         }
+        if (poi.getGame().equals("1")) {
+            btn_game.setImageResource(R.drawable.icono_juer_deactif);
+        } else {
+            btn_game.setImageResource(R.drawable.icono_juer_inactif);
+        }
+
     }
 
     // Add the mapView lifecycle to the activity's lifecycle methods

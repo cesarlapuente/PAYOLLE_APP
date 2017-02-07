@@ -72,6 +72,8 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_POI_TITLE = "title";
     public static final String COLUMN_POI_LAT = "lat";
     public static final String COLUMN_POI_LON = "lon";
+    public static final String COLUMN_POI_GAME = "game";
+    public static final String COLUMN_POI_CODE1 = "code1";
     // <---------->__CONFIGURATION_END____________<---------->
 
     public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, MainApp app) {
@@ -137,7 +139,9 @@ public class DBHandler extends SQLiteOpenHelper {
                 COLUMN_POI_BODY + " TEXT ," +
                 COLUMN_POI_TITLE + " TEXT, " +
                 COLUMN_POI_LAT + " INTEGER," +
-                COLUMN_POI_LON + " INTEGER" +
+                COLUMN_POI_LON + " INTEGER, " +
+                COLUMN_POI_GAME + " TEXT, " +
+                COLUMN_POI_CODE1 + " TEXT " +
                 ");";
         db.execSQL(query_poi);
 
@@ -216,6 +220,8 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_POI_BODY, poi.getBody());
         values.put(COLUMN_POI_LAT, poi.getCoordinates().getLatitude());
         values.put(COLUMN_POI_LON,  poi.getCoordinates().getLongitude());
+        values.put(COLUMN_POI_GAME, poi.getGame());
+        values.put(COLUMN_POI_CODE1, poi.getCode1());
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -226,7 +232,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public ArrayList<Poi> getPoiList(){
         SQLiteDatabase db = getWritableDatabase();
 
-        String[] columns = new String[]{COLUMN_POI_ID, COLUMN_POI_TITLE, COLUMN_POI_BODY,COLUMN_POI_LAT,COLUMN_POI_LON};
+        String[] columns = new String[]{COLUMN_POI_ID, COLUMN_POI_TITLE, COLUMN_POI_BODY,COLUMN_POI_LAT,COLUMN_POI_LON,COLUMN_POI_GAME,COLUMN_POI_CODE1};
 
         Cursor c = db.query(TABLE_POI, columns, null, null, null, null, COLUMN_POI_ID);
 
@@ -235,6 +241,8 @@ public class DBHandler extends SQLiteOpenHelper {
         int iBody = c.getColumnIndex(COLUMN_POI_BODY);
         int iLat = c.getColumnIndex(COLUMN_POI_LAT);
         int iLon = c.getColumnIndex(COLUMN_POI_LON);
+        int iGame = c.getColumnIndex(COLUMN_POI_GAME);
+        int iCode1 = c.getColumnIndex(COLUMN_POI_CODE1);
 
 
         ArrayList<Poi> result = new ArrayList<>();
@@ -248,7 +256,8 @@ public class DBHandler extends SQLiteOpenHelper {
             gp.setLatitude(c.getInt(iLat));
             gp.setLongitude(c.getInt(iLon));
             item.setCoordinates(gp);
-            item.setBody(c.getString(iBody));
+            item.setGame(c.getString(iGame));
+            item.setCode1(c.getString(iCode1));
             result.add(item);
         }
 

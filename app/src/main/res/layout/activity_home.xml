@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="eu.randomobile.pnrlorraine.mod_feed.HomeActivity"
+    tools:context=".mod_feed.HomeActivity"
     android:background="@drawable/fondo_accueil">
 
     <FrameLayout

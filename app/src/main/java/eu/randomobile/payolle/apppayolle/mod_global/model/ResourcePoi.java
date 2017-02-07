@@ -11,11 +11,12 @@ public class ResourcePoi extends Resource implements Parcelable {
 	private double latitude;
 	private int type;
 	private int nid;
+	private String code1;
+
 
 	public int getNid() {
 		return nid;
 	}
-
 	public void setNid(int nid) {
 		this.nid = nid;
 	}
@@ -23,7 +24,6 @@ public class ResourcePoi extends Resource implements Parcelable {
 	public int getType() {
 		return type;
 	}
-
 	public void setType(int type) {
 		this.type = type;
 	}
@@ -34,6 +34,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 	public void setBody(String body) {
 		this.body = body;
 	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -62,6 +63,13 @@ public class ResourcePoi extends Resource implements Parcelable {
 		this.latitude = latitude;
 	}
 
+	public String getCode1() {
+		return code1;
+	}
+	public void setCode1(String code1) {
+		this.code1 = code1;
+	}
+
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -78,6 +86,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 		dest.writeDouble(latitude);
 		dest.writeInt(type);
 		dest.writeInt(nid);
+		dest.writeString(code1);
 	}
 
 	public static final Parcelable.Creator<ResourcePoi> CREATOR = new Parcelable.Creator<ResourcePoi>() {
@@ -91,6 +100,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 			complaint.setLatitude(in.readDouble());
 			complaint.setType(in.readInt());
 			complaint.setNid(in.readInt());
+			complaint.setCode1(in.readString());
 			return complaint;
 		}
 
@@ -99,6 +109,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 			return new ResourcePoi[size];
 		}
 	};
-	
-	
+
+
+
 }
