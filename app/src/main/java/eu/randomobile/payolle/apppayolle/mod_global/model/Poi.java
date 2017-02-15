@@ -321,6 +321,7 @@ public class Poi {
 						}
 					}
 				}
+				Log.d("VaninaLog","Taille de tab l'image : "+arrayResourceImages.size());
 				poi.setImages(arrayResourceImages);
 
 				ArrayList<ResourceFile> arrayResourceAudios = new ArrayList<ResourceFile>();

@@ -49,7 +49,7 @@ public class POIDetailsActivity extends Activity {
             for (Poi poi : alPoi) {
                 if (poi.getTitle().equals(paramTitle)) {
                     this.poi = poi;
-                    Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages());
+                    Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
 
                 }
@@ -58,8 +58,8 @@ public class POIDetailsActivity extends Activity {
         setContentView(R.layout.feed_activity_poi_details);
 
         initComponents();
-        escucharEventos();
         setData();
+        escucharEventos();
     }
 
 
