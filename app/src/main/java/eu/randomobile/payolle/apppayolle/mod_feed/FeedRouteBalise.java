@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,16 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     ImageButton btn_return;
     ImageView btn_info;
     Timer TChrono;
+    LinearLayout balise_distance_ok;
+    LinearLayout balise_distance_nok;
     FrameLayout check1, check2, check3;
+    ImageView validation_ok;
+    ImageView validation_skip;
+    ImageView validation_code1;
+    ImageView validation_code2;
+    ImageView validation_code3;
+    ImageView validation_close;
+    boolean codeOK;
 
     LocationManager locationManager;
     boolean isPlaying;
@@ -80,6 +90,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     boolean chronosStatus = false;
     static final int KEY_ROUTE = 0;
     public static int NB_POIS_VALIDATE = 0;
+    public static int NB_POIS_INVALIDATE = 0;
 
     HashMap<Long,String> hsvalidate = new HashMap<>();
 
@@ -151,7 +162,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         txt_chrono_minutes = (TextView) findViewById(R.id.chrono_minutes);
         txt_chrono_secondes = (TextView) findViewById(R.id.chrono_seconds);
 
-
+        codeOK = false;
 
     }
 
@@ -277,58 +288,148 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                         @Nullable
                         private LayoutInflater mInflater = (LayoutInflater) FeedRouteBalise.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+
+
                         @Override
                         public View getInfoWindow(@NonNull final Marker marker) {
+
+                            Location temp = new Location(LocationManager.GPS_PROVIDER);
+
                             View convertView = mInflater.inflate(R.layout.activity_feed_route_balise_pop_up, null);
-                            TextView code1, code2, code3;
-                            check1 = (FrameLayout) convertView.findViewById(R.id.check1);
-                            check2 = (FrameLayout) convertView.findViewById(R.id.check2);
-                            check3 = (FrameLayout) convertView.findViewById(R.id.check3);
 
-                            code1 = (TextView) convertView.findViewById(R.id.code1);
-                            code2 = (TextView) convertView.findViewById(R.id.code2);
-                            code3 = (TextView) convertView.findViewById(R.id.code3);
+                            balise_distance_ok = (LinearLayout) convertView.findViewById(R.id.balise_distance_ok);
+                            balise_distance_nok = (LinearLayout) convertView.findViewById(R.id.balise_distance_nok);
 
-                            Random random = new Random();
-                            String false1 = marker.getSnippet();
-                            String false2 = marker.getSnippet();
-                            while (false1.equals(marker.getSnippet())){
-                                false1 = "" + (random.nextInt(100000 - 1) + 1);
-                            }
-                            while (false2.equals(marker.getSnippet()) | false2.equals(false1)){
-                                false2 = "" + (random.nextInt(100000 - 1) + 1);
-                            }
+                            temp.setLatitude(marker.getPosition().getLatitude());
+                            temp.setLongitude(marker.getPosition().getLongitude());
+                            if (mapboxMap.getMyLocation().distanceTo(temp) <= 20.0) {
+                                //Log.d("Debug", "marker lat / lon : " + marker.getPosition().getLatitude() + " / " + marker.getPosition().getLongitude());
+                                //Log.d("Debug", "MyLocation lat / lon : " + mapboxMap.getMyLocation().getLatitude() + " / " + mapboxMap.getMyLocation().getLongitude());
+                                //Log.d("Debug", "Difference : " + mapboxMap.getMyLocation().distanceTo(temp) + " m");
+
+                                balise_distance_ok.setVisibility(View.VISIBLE);
+                                balise_distance_nok.setVisibility(View.INVISIBLE);
+
+                                TextView code1, code2, code3;
+                                check1 = (FrameLayout) convertView.findViewById(R.id.check1);
+                                check2 = (FrameLayout) convertView.findViewById(R.id.check2);
+                                check3 = (FrameLayout) convertView.findViewById(R.id.check3);
+
+                                code1 = (TextView) convertView.findViewById(R.id.code1);
+                                code2 = (TextView) convertView.findViewById(R.id.code2);
+                                code3 = (TextView) convertView.findViewById(R.id.code3);
+
+                                validation_ok = (ImageView) convertView.findViewById(R.id.validation_ok);
+                                validation_skip = (ImageView) convertView.findViewById(R.id.validation_skip);
+                                validation_ok.setVisibility(View.INVISIBLE);
+
+                                validation_code1 = (ImageView) convertView.findViewById(R.id.validation_code1);
+                                validation_code2 = (ImageView) convertView.findViewById(R.id.validation_code2);
+                                validation_code3 = (ImageView) convertView.findViewById(R.id.validation_code3);
+
+                                Random random = new Random();
+                                String false1 = marker.getSnippet();
+                                String false2 = marker.getSnippet();
+                                while (false1.equals(marker.getSnippet())){
+                                    false1 = "" + (random.nextInt(100000 - 1) + 1);
+                                }
+                                while (false2.equals(marker.getSnippet()) | false2.equals(false1)){
+                                    false2 = "" + (random.nextInt(100000 - 1) + 1);
+                                }
 
 /*
                             Random r = new Random();
-                            int i = r.nextInt(4 - 1) + 1;
+                            int i = r.nextInt(3 - 1) + 1;
                             int j = i + 1;
-                            if (j > 3)
+                            if (j > 2)
                                 j = 1;
                             int k = j + 1;
-                            if (k > 3)
+                            if (k > 2)
                                 k = 1;
                             //Log.d("Debug","i= " + i + " / j=" + j + " / k=" + k);*/
 
-                            code1.setText(marker.getSnippet());
-                            code2.setText(false1);
-                            code3.setText(false2);
-                            //views.setTextViewText(getResources().getIdentifier("code" + i, "id", getPackageName()), "" + realtimeData.get(i).id);
+                                code1.setText(marker.getSnippet());
+                                code2.setText(false1);
+                                code3.setText(false2);
 
 
-                            check1.setOnClickListener(
-                                    new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
+                                check1.setOnClickListener(
+                                        new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                codeOK = true;
+                                                //gestionBalise(marker);
+                                                validation_ok.setVisibility(View.VISIBLE);
+                                                validation_code1.setImageResource(R.drawable.fondo_generic_marron);
+                                                validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                            }
+                                        });
+                                check2.setOnClickListener(
+                                        new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //gestionBaliseError(marker);
+                                                // gestionBalise(balise,code1)
+                                                validation_ok.setVisibility(View.VISIBLE);
+                                                codeOK = false;
+                                                validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                validation_code2.setImageResource(R.drawable.fondo_generic_marron);
+                                                validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                            }
+                                        });
+                                check3.setOnClickListener(
+                                        new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                //gestionBaliseError(marker);
+                                                // gestionBalise(balise,code1)
+                                                validation_ok.setVisibility(View.VISIBLE);
+                                                codeOK = false;
+                                                validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                validation_code3.setImageResource(R.drawable.fondo_generic_marron);
+                                            }
+                                        });
+                                validation_skip.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        codeOK = false;
+                                        mapboxMap.deselectMarker(marker);
+                                    }
+                                });
+
+                                validation_ok.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        if(codeOK){
                                             gestionBalise(marker);
-                                            // gestionBalise(balise,code1)
+                                        } else {
+                                            gestionBaliseError(marker);
                                         }
-                                    });
+                                    }
+                                });
+                            } else {
+
+                                balise_distance_ok.setVisibility(View.INVISIBLE);
+                                balise_distance_nok.setVisibility(View.VISIBLE);
+                                validation_close = (ImageView) convertView.findViewById(R.id.validation_close);
+                                validation_close.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        mapboxMap.deselectMarker(marker);
+                                    }
+                                });
+
+
+                            }
+
+
                             return convertView;
                         }
                     });
 
-                    mapboxMap.setOnInfoWindowClickListener(
+                    /*mapboxMap.setOnInfoWindowClickListener(
                             new MapboxMap.OnInfoWindowClickListener() {
                                 @Override
                                 public boolean onInfoWindowClick(@NonNull Marker marker) {
@@ -336,7 +437,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                                     return false;
                                 }
                             }
-                    );
+                    );*/
                     alLatLng.add(poiPosition);
                     mapboxMap.addMarker(mk);
 
@@ -463,7 +564,22 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         NB_POIS_VALIDATE++;
         txt_nb_balise.setText(String.valueOf(NB_POIS_VALIDATE));
         marker.hideInfoWindow();
-        if(NB_POIS_VALIDATE == route.getPois().size()) {
+        if((NB_POIS_VALIDATE + NB_POIS_INVALIDATE) == route.getPois().size()) {
+            finishCourse();
+        }
+    }
+    public void gestionBaliseError(Marker marker){
+
+        IconFactory iconFactory = IconFactory.getInstance(FeedRouteBalise.this);
+        Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.parcours_validate);
+        iconDrawable = resize(iconDrawable);
+        Icon icon_validate = iconFactory.fromDrawable(iconDrawable);
+        marker.setIcon(icon_validate);
+        hsvalidate.put(marker.getId(),"no validate");
+        NB_POIS_INVALIDATE++;
+        txt_nb_balise.setText(String.valueOf(NB_POIS_VALIDATE));
+        marker.hideInfoWindow();
+        if((NB_POIS_VALIDATE + NB_POIS_INVALIDATE) == route.getPois().size()) {
             finishCourse();
         }
     }
