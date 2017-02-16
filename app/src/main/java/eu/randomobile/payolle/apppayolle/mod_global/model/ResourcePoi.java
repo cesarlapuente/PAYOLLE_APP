@@ -3,6 +3,8 @@ package eu.randomobile.payolle.apppayolle.mod_global.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class ResourcePoi extends Resource implements Parcelable {
 	private String body;
 	private String title;
@@ -12,6 +14,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 	private int type;
 	private int nid;
 	private String code1;
+	private ArrayList<ResourceFile> images;
 
 
 	public int getNid() {
@@ -70,6 +73,14 @@ public class ResourcePoi extends Resource implements Parcelable {
 		this.code1 = code1;
 	}
 
+
+	public ArrayList<ResourceFile> getImages() {
+		return images;
+	}
+	public void setImages(ArrayList<ResourceFile> images) {
+		this.images = images;
+	}
+
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -109,7 +120,6 @@ public class ResourcePoi extends Resource implements Parcelable {
 			return new ResourcePoi[size];
 		}
 	};
-
 
 
 }

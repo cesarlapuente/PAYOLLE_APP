@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/randomobilepayolle.iml" filepath="$PROJECT_DIR$/randomobilepayolle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RandoMobilePayolle.iml" filepath="$PROJECT_DIR$/RandoMobilePayolle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>

@@ -331,11 +331,13 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                                 String false1 = marker.getSnippet();
                                 String false2 = marker.getSnippet();
                                 while (false1.equals(marker.getSnippet())){
-                                    false1 = "" + (random.nextInt(100000 - 1) + 1);
+                                    false1 = "" + (random.nextInt(1000 - 1) + 1);
                                 }
                                 while (false2.equals(marker.getSnippet()) | false2.equals(false1)){
-                                    false2 = "" + (random.nextInt(100000 - 1) + 1);
+                                    false2 = "" + (random.nextInt(1000 - 1) + 1);
                                 }
+
+                                Log.d("Debug","false1= " + false1 + " / false2=" + false2);
 
 /*
                             Random r = new Random();
@@ -346,7 +348,8 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                             int k = j + 1;
                             if (k > 2)
                                 k = 1;
-                            //Log.d("Debug","i= " + i + " / j=" + j + " / k=" + k);*/
+                            //Log.d("Debug","i= " + i + " / j=" + j + " / k=" + k);
+                            */
 
                                 code1.setText(marker.getSnippet());
                                 code2.setText(false1);

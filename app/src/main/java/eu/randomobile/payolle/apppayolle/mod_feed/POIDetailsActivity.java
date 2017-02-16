@@ -165,6 +165,15 @@ public class POIDetailsActivity extends Activity {
         } else {
             main_image.setImageResource(R.mipmap.ic_launcher);
         }
+        /* if (poi.getImages().get(0).getFileUrl() != null) {
+            Log.d("First image", poi.getImages().get(0).getFileUrl());
+            BitmapManager.INSTANCE.loadBitmap(poi.getImages().get(0).getFileUrl(),
+                    main_image, 90, 90);
+        } else {
+            main_image.setImageResource(R.mipmap.ic_launcher);
+        } */
+
+        // GAME
         if (poi.getGame().equals("1")) {
             btn_game.setImageResource(R.drawable.icono_juer_deactif);
         } else {

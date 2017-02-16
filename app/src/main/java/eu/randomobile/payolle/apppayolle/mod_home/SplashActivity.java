@@ -556,6 +556,13 @@ public class SplashActivity extends Activity {
                                         poi.setLongitude(longitudePoi);
                                         poi.setCode1(poi_code1);
 
+                                        /*************
+
+
+
+
+                                        *********/
+
                                         arrayTemp.add(poi);
 
                                         Log.i("JmLog", "resourcePoi Route title =>" + poi.getTitle());
@@ -652,6 +659,7 @@ public class SplashActivity extends Activity {
 
                                     } else if (poiItem != null) {
                                         poiItem.setImages(arrayResourceImages);
+                                        Log.d("Images poi not null", "nb images : " + arrayResourceImages.size());
                                     }
 
 
@@ -883,7 +891,6 @@ public class SplashActivity extends Activity {
                             rl.setType(typePoi);
                             rl.setNid(nidPoi);
                             rl.setCode1(code1Poi);
-                            Log.d("Debug","RESOURCE POI GET CODE 1 : " + rl.getCode1());
                             arrayResourcePois.add(rl);
                         }
                     }

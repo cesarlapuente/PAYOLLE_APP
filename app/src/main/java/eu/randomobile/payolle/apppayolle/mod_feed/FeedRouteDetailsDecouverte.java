@@ -42,6 +42,7 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.WKTUtil;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
@@ -186,17 +187,22 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
         // DIFFICULT PICTURE
 
-        if (route.getDifficulty_tid().equals("18")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
+        switch (route.getDifficulty_tid()) {
+            case "18":
+                img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
 
-        } else if (route.getDifficulty_tid().equals("16")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
+                break;
+            case "16":
+                img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_4));
 
-        } else if (route.getDifficulty_tid().equals("17")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_3));
+                break;
+            case "17":
+                img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_3));
 
-        } else if (route.getDifficulty_tid().equals("22")) {
-            img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
+                break;
+            case "22":
+                img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
+                break;
         }
 /*
         // STARS ICONS
@@ -238,7 +244,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
         Log.d("Debug","route size poi = "+ route.getPois().size());
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(MapboxMap mapboxMap) {
+            public void onMapReady(final MapboxMap mapboxMap) {
                 FeedRouteDetailsDecouverte.this.prvMapBox = mapboxMap;
                 // style of the map
                 FeedRouteDetailsDecouverte.this.prvMapBox.setStyleUrl(Style.OUTDOORS);
@@ -293,6 +299,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                     public boolean onInfoWindowClick(@NonNull Marker marker) {
                                         Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
                                         intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, marker.getTitle());
+                                        mapboxMap.deselectMarker(marker);
                                         startActivity(intent);
                                         return false;
                                     }
