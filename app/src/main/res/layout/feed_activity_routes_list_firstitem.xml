@@ -49,10 +49,10 @@
 
             </TextView>
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/item_difficulty"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"/>-->
 
         </LinearLayout>
         <LinearLayout

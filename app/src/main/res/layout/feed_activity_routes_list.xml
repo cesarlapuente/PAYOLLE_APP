@@ -12,48 +12,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/header"
-            android:orientation="horizontal"
             android:layout_gravity="top"
-            android:padding="5dp">
+            android:background="@drawable/header"
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:id="@+id/btn_return"
-                android:background="@drawable/btn_return"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginEnd="50dp"
-                android:adjustViewBounds="true"
-            />
-            <android.support.v7.widget.SearchView
+            <!--<android.support.v7.widget.SearchView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="5"
                 android:background="@drawable/barra_busqueda"
                 android:id="@+id/feed_search_bar"
-                android:layout_gravity="center_vertical"
+                android:layout_marginTop="15dp"
             >
-            </android.support.v7.widget.SearchView>
+            </android.support.v7.widget.SearchView>-->
 
             <ImageButton
+                android:id="@+id/btn_return"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:background="@drawable/boton_accueil"
-                android:id="@+id/btn_home"
-                android:layout_gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_return" />
+
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"/>
-        </LinearLayout>
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/boton_accueil" />
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/routes_list_linearlayout"
