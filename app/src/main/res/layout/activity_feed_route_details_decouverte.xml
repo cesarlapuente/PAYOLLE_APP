@@ -187,7 +187,7 @@
                     android:src="@drawable/estrella_icono_5"/>
             </LinearLayout>-->
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/route_difficulty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -195,7 +195,7 @@
                 android:src="@drawable/dificultad_3"
                 android:layout_marginLeft="3dp"
                 android:layout_marginStart="3dp"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"/>-->
 
 
 

@@ -68,7 +68,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
     ImageButton btn_home;
     ImageButton btn_return;
-    private ImageView img_difficulty ;
+    //private ImageView img_difficulty ;
     //private ImageView img_stars;
     FloatingActionButton toggle_display_map_decouverte;
 
@@ -115,7 +115,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
         btn_return = (ImageButton) findViewById(R.id.btn_return);
 
         main_image = (ImageView) findViewById(R.id.main_image);
-        img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
+        //img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
         //img_stars = (ImageView) findViewById(R.id.stars_vote);
 
         toggle_display_map_decouverte = (FloatingActionButton)findViewById(R.id.toggle_display_map_decouverte);
@@ -187,7 +187,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
         // DIFFICULT PICTURE
 
-        switch (route.getDifficulty_tid()) {
+        /*switch (route.getDifficulty_tid()) {
             case "18":
                 img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
 
@@ -203,7 +203,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
             case "22":
                 img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
                 break;
-        }
+        }*/
 /*
         // STARS ICONS
 
