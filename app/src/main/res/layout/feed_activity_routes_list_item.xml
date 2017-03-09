@@ -48,6 +48,23 @@
                 android:textColor="#DFFF">
 
             </TextView>
+            <!-- Bug with auto scroll
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true"
+                android:text="Title hfshgsf hghfgh gdjgh j"
+                android:textColor="#DFFF"/>-->
 
             <!--<ImageView
                 android:id="@+id/item_difficulty"

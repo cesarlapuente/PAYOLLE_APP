@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
@@ -36,6 +40,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -280,12 +285,39 @@ public class FeedRouteDetailsDecouverte extends Activity {
                             private LayoutInflater mInflater = (LayoutInflater) FeedRouteDetailsDecouverte.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                             @Override
                             public View getInfoWindow(@NonNull Marker marker) {
+                                Location temp = new Location(LocationManager.GPS_PROVIDER);
+
+                                temp.setLatitude(marker.getPosition().getLatitude());
+                                temp.setLongitude(marker.getPosition().getLongitude());
+
                                 View convertView = mInflater.inflate(R.layout.activity_feed_route_decouverte_popup, null);
 
                                 ImageView poi_image = (ImageView)convertView.findViewById(R.id.poi_image);
-                                TextView poi_title = (TextView)convertView.findViewById(R.id.poi_title);
+                                final TextView poi_title = (TextView)convertView.findViewById(R.id.poi_title);
+                                ImageView poi_close = (ImageView)convertView.findViewById(R.id.validation_close);
+                                ImageView poi_more = (ImageView)convertView.findViewById(R.id.imageView2);
+                                TextView poi_text = (TextView)convertView.findViewById(R.id.textView);
 
                                 poi_title.setText(marker.getTitle());
+
+
+
+                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //Bug avec l'utf8
+                                    poi_more.setVisibility(View.VISIBLE);
+                                    poi_text.setVisibility(View.INVISIBLE);
+                                    poi_more.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
+                                            intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
+                                            startActivity(intent);
+                                        }
+                                    });
+                                } else {
+                                    poi_more.setVisibility(View.INVISIBLE);
+                                    poi_text.setVisibility(View.VISIBLE);
+
+                                }
 
                                 return convertView;
 
@@ -293,7 +325,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                             }
                         });
 
-                        mapboxMap.setOnInfoWindowClickListener(
+                        /*mapboxMap.setOnInfoWindowClickListener(
                                 new MapboxMap.OnInfoWindowClickListener() {
                                     @Override
                                     public boolean onInfoWindowClick(@NonNull Marker marker) {
@@ -304,7 +336,15 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                         return false;
                                     }
                                 }
-                        );
+                        );*/
+                        /*Recup from FeedRouteBalise*/
+                        /*mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(@NonNull Marker marker) {
+                                marker.hideInfoWindow();
+                                return true;
+                            }
+                        });*/
 
                         //add Poi
                         alLatLng.add(poiPosition);

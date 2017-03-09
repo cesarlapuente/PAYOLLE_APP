@@ -8,6 +8,74 @@
     android:background="@drawable/fondo_ficha"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="top"
+            android:background="@drawable/header"
+            android:orientation="horizontal">
+
+            <!--<android.support.v7.widget.SearchView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="5"
+                android:background="@drawable/barra_busqueda"
+                android:id="@+id/feed_search_bar"
+                android:layout_marginTop="15dp"
+            >
+            </android.support.v7.widget.SearchView>-->
+
+            <ImageButton
+                android:id="@+id/btn_return"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_return" />
+
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/boton_accueil" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/routes_list_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/routes_list_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="90dp"
+                android:scrollbars="none"></ListView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="90dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -134,72 +202,6 @@
 
     </TableLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_gravity="top"
-            android:background="@drawable/header"
-            android:orientation="horizontal">
-
-            <!--<android.support.v7.widget.SearchView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_weight="5"
-                android:background="@drawable/barra_busqueda"
-                android:id="@+id/feed_search_bar"
-                android:layout_marginTop="15dp"
-            >
-            </android.support.v7.widget.SearchView>-->
-
-            <ImageButton
-                android:id="@+id/btn_return"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/btn_return" />
-
-            <ImageButton
-                android:id="@+id/btn_home"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/boton_accueil" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/routes_list_linearlayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <ListView
-                android:id="@+id/routes_list_listview"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="90dp"
-                android:scrollbars="none"></ListView>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="90dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
 </FrameLayout>

@@ -245,6 +245,7 @@ public class DecouverteRoutesListActivity extends Activity {
 
             // Title
             holder.routeItemTitle.setText(item.getTitle());
+            //holder.routeItemTitle.setSelected(true); //Bug with auto scroll
 
             // Image
             if (item.getMainImage() != null) {
