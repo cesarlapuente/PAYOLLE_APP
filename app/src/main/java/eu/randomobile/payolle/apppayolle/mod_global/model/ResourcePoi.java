@@ -14,6 +14,7 @@ public class ResourcePoi extends Resource implements Parcelable {
 	private int type;
 	private int nid;
 	private String code1;
+	private String mainImage;
 	private ArrayList<ResourceFile> images;
 
 
@@ -43,6 +44,13 @@ public class ResourcePoi extends Resource implements Parcelable {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getMainImage() {
+		return mainImage;
+	}
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
 	}
 
 	public int getNumber() {

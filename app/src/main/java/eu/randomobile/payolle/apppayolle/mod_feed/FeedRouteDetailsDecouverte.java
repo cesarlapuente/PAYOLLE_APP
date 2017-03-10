@@ -98,6 +98,11 @@ public class FeedRouteDetailsDecouverte extends Activity {
             }
         }
 
+        /*Pierre debug POI image*/
+        for (ResourcePoi poi : route.getPois()){
+            Log.d("PierreLog", "Objet POI : title : " + poi.getTitle() + " image : " + poi.getMainImage());
+        }
+
         initMapView(savedInstanceState);
         initComponents();
         setData();
@@ -267,7 +272,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
                 // if Poi not null
                 if (alPoi != null) {
-                    for (ResourcePoi poi : alPoi) {
+                    for (final ResourcePoi poi : alPoi) {
                         final String poiNid = String.valueOf(poi.getNid());
                         // create poiPosition Lat/Lng
                         // Icon icon = determinateCategoryPoi(poi);
@@ -302,7 +307,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
 
 
-                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //Bug avec l'utf8
+                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //Bug avec l'utf8 //TODO : en prod, changer pour <=
                                     poi_more.setVisibility(View.VISIBLE);
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_more.setOnClickListener(new View.OnClickListener() {

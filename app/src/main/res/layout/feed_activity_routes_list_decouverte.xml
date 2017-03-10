@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_routes_list"
     android:layout_width="match_parent"
@@ -36,8 +37,8 @@
                 android:layout_height="55dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/btn_return" />
 
@@ -75,6 +76,14 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <!--<ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="50dp"
+        app:srcCompat="@drawable/hide_bot_menu" />-->
 
     <TextView
         android:layout_width="match_parent"
@@ -149,7 +158,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="0.2"
                 android:src="@drawable/separacion_menu"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
@@ -166,7 +175,7 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
+                android:layout_weight="0.2"
                 android:src="@drawable/separacion_menu"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
@@ -201,7 +210,6 @@
         </TableRow>
 
     </TableLayout>
-
 
 
 </FrameLayout>

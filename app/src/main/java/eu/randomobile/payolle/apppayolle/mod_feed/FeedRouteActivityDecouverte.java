@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -236,7 +237,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
                 if(alRoute != null) {
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
-                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()));
+                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(Color.BLUE));
                         }
                     }
                 }
