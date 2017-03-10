@@ -54,10 +54,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:ellipsize="end"
-                    android:maxLines="2"
-                    android:text="Title hfshgsf hghfgh gdjgh j"
+                    android:maxLines="3"
+                    android:text="Title hfshgsf hghfgh gdjgh jzefzef zef efzef fezef zefzefze fzefzef efzefz "
                     android:textColor="#DFFF"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold">
 
                 </TextView>
