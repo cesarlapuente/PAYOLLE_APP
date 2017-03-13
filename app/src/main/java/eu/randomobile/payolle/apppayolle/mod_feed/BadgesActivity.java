@@ -22,7 +22,7 @@ public class BadgesActivity extends Activity {
 
         this.app = (MainApp) getApplication();
 
-        app.getSuccessByRoute("toto"); // TODO change by route name in route loop to check associated badges
+        //app.getSuccessByRoute("toto"); // TODO change by route name in route loop to check associated badges
         capturarControles();
         escucharEventos();
     }

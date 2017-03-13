@@ -234,7 +234,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         intent.putExtra(ResultsActivity.DISTANCE_TRAVELLED, txt_distance.getText());
         intent.putExtra(ResultsActivity.PARAM_KEY_NID, route.getNid());
         /*Bagdes*/ //TODO test
-        app.setSuccessByRoute(route.getTitle());
+        //app.setSuccessByRoute(route.getTitle());
 
         startActivity(intent);
         resetData();

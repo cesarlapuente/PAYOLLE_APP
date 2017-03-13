@@ -150,11 +150,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 ");";
         db.execSQL(query_poi);
 
+        //TODO init with data from routes (CO)
         String query_badges = "CREATE TABLE " + TABLE_BADGES +
                 "(" +
                 COLUMN_BADGE_ID + " INTEGER PRIMARY KEY, " +
                 COLUMN_BADGE_ROUTE_ID + " INTEGER, " +
-                COLUMN_BADGE_SUCCESS + " INTEGER, " +
+                COLUMN_BADGE_SUCCESS + " INTEGER " +
                 ");";
         db.execSQL(query_badges);
     }
