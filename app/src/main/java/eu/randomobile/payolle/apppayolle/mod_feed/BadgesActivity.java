@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 
 
 public class BadgesActivity extends Activity {
+    private MainApp app;
     ImageButton btn_home;
     ImageButton btn_return;
 
@@ -18,6 +20,9 @@ public class BadgesActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feed_activity_badges);
 
+        this.app = (MainApp) getApplication();
+
+        app.getSuccessByRoute("toto"); // TODO change by route name in route loop to check associated badges
         capturarControles();
         escucharEventos();
     }

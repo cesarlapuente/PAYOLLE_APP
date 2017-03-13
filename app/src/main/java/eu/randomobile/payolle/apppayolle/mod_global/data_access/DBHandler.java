@@ -74,6 +74,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_POI_LON = "lon";
     public static final String COLUMN_POI_GAME = "game";
     public static final String COLUMN_POI_CODE1 = "code1";
+    // <---------->__TABLE_BADGES_CONFIGURATION____<---------->
+    private static final String TABLE_BADGES = "badges";
+    public static final String COLUMN_BADGE_ID = "id";
+    public static final String COLUMN_BADGE_ROUTE_ID = "route_id";
+    public static final String COLUMN_BADGE_SUCCESS = "success";
     // <---------->__CONFIGURATION_END____________<---------->
 
     public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, MainApp app) {
@@ -145,6 +150,13 @@ public class DBHandler extends SQLiteOpenHelper {
                 ");";
         db.execSQL(query_poi);
 
+        String query_badges = "CREATE TABLE " + TABLE_BADGES +
+                "(" +
+                COLUMN_BADGE_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_BADGE_ROUTE_ID + " INTEGER, " +
+                COLUMN_BADGE_SUCCESS + " INTEGER, " +
+                ");";
+        db.execSQL(query_badges);
     }
 
     @Override
@@ -155,6 +167,7 @@ public class DBHandler extends SQLiteOpenHelper {
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_POI);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_PAGES);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_MAPS);
+            db.execSQL("DROP_TABLE IF EXIST " + TABLE_BADGES);
 
             onCreate(db);
 
@@ -931,6 +944,38 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
 
         return result;
+    }
+
+    // <-------------------->_BADGES_<-------------------->
+
+    public Boolean getSuccessByRoute(String route){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selectQuery = "SELECT " + COLUMN_BADGE_SUCCESS + " FROM " + TABLE_BADGES + " INNER JOIN " + TABLE_ROUTES +
+                " ON " + TABLE_BADGES + "." + COLUMN_BADGE_ROUTE_ID + " = " + TABLE_ROUTES + "." + COLUMN_ROUTE_ID +
+                " WHERE " +  COLUMN_ROUTE_TITLE + " = " + route;
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            if(c.getString(c.getColumnIndex(COLUMN_BADGE_SUCCESS)).equals("1"))
+                return true;
+        }
+
+        db.close();
+
+        return false;
+    }
+
+    public void setSuccessByRoute(String route){
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selectQuery = "UPDATE " + TABLE_BADGES + " INNER JOIN " + TABLE_ROUTES +
+                " ON " + TABLE_BADGES + "." + COLUMN_BADGE_ROUTE_ID + " = " + TABLE_ROUTES + "." + COLUMN_ROUTE_ID +
+                " SET " + COLUMN_BADGE_SUCCESS + " = " + 1 +
+                " WHERE " +  COLUMN_ROUTE_TITLE + " = " + route;
+        db.rawQuery(selectQuery, null);
+
+        db.close();
     }
 
     // <-------------------->_END_OF_FILE_<-------------------->

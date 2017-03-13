@@ -233,6 +233,9 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         intent.putExtra(ResultsActivity.BALISE_VALIDATE_MAX, String.valueOf(route.getPois().size()));
         intent.putExtra(ResultsActivity.DISTANCE_TRAVELLED, txt_distance.getText());
         intent.putExtra(ResultsActivity.PARAM_KEY_NID, route.getNid());
+        /*Bagdes*/ //TODO test
+        app.setSuccessByRoute(route.getTitle());
+
         startActivity(intent);
         resetData();
         TChrono.purge();
