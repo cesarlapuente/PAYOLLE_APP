@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_routes_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -64,14 +64,14 @@
                 android:id="@+id/routes_list_listview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="90dp"
+                android:layout_marginTop="65dp"
+                android:nestedScrollingEnabled="true"
                 android:scrollbars="none"
-
-                ></ListView>
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"></ListView>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="60dp"/>
+                android:layout_height="65dp"/>
 
         </LinearLayout>
 
@@ -108,83 +108,118 @@
         android:layout_marginStart="30dp"
 
     />
+    <!-- Partie auto-hide toolbar du bas, mais non fonctionnelle, il manque quelque chose, mais on est pas loin-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        android:gravity="bottom|center"
-        android:shrinkColumns="*"
-        android:stretchColumns="*"
-        android:background="@drawable/fondo_menu_footer">
-        <TableRow
-            android:layout_height="wrap_content"
+        <android.support.design.widget.CoordinatorLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/coordinatorLayout"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:paddingTop="15dp">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icono_lista_actif"
-                android:id="@+id/btn_footer_list"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.2"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-            />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icon_map_white"
-                android:id="@+id/btn_footer_map"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-            />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icono_info_deactif"
-                android:id="@+id/btn_footer_info"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-            />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icono_badges_deactif"
-                android:id="@+id/btn_footer_passport"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
+            android:layout_height="match_parent">
 
-        </TableRow>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_bottom"
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_height="80dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:contentInsetLeft="0dp"
+                android:contentInsetStart="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                android:contentInsetRight="0dp"
+                android:contentInsetEnd="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                >
 
-    </TableLayout>
+                <TableLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/fondo_menu_footer"
+                    android:shrinkColumns="*"
+                    android:stretchColumns="*">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="15dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_footer_list"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="2"
+                            android:adjustViewBounds="true"
+                            android:background="@color/transparent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/icono_lista_actif" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/separacion_menu" />
+
+                        <ImageButton
+                            android:id="@+id/btn_footer_map"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="2"
+                            android:adjustViewBounds="true"
+                            android:background="@color/transparent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/icon_map_white" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/separacion_menu" />
+
+                        <ImageButton
+                            android:id="@+id/btn_footer_info"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="2"
+                            android:adjustViewBounds="true"
+                            android:background="@color/transparent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/icono_info_deactif" />
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/separacion_menu" />
+
+                        <ImageButton
+                            android:id="@+id/btn_footer_passport"
+                            android:layout_width="0dp"
+                            android:layout_height="50dp"
+                            android:layout_weight="2"
+                            android:adjustViewBounds="true"
+                            android:background="@color/transparent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/icono_badges_deactif" />
+
+                    </TableRow>
+
+                </TableLayout>
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
 
 </FrameLayout>
