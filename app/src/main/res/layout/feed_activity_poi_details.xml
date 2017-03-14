@@ -66,7 +66,8 @@
                 android:id="@+id/main_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/POI_default"/>
 
             <ImageView
                 android:layout_width="match_parent"
@@ -183,23 +184,6 @@
                 android:layout_weight="2"
                 android:src="@drawable/icono_info_deactif"
                 android:id="@+id/btn_footer_info"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-            />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icono_badges_deactif"
-                android:id="@+id/btn_footer_passport"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:background="@color/transparent"/>

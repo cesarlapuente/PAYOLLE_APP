@@ -167,7 +167,7 @@ public class SplashActivity extends Activity {
     }
 
     public void feedInfo(){
-        app.clienteDrupal.customMethodCallPost("info/get_list", new AsyncHttpResponseHandler() {
+        app.clienteDrupal.customMethodCallPost("info/get_list", new AsyncHttpResponseHandler() { //TODO fix first launch bug nullPointerException
                     public void onSuccess(String response) {
                         Log.d("JmmLog","response :="+response);
 
