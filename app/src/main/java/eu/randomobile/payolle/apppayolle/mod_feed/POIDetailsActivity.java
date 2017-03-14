@@ -31,7 +31,7 @@ public class POIDetailsActivity extends Activity {
     private ImageButton btn_read;
     private ImageButton btn_game;
     private ImageButton btn_info;
-    private ImageButton btn_badges;
+    //private ImageButton btn_badges;
 
     String paramTitle;
     @Override
@@ -81,7 +81,7 @@ public class POIDetailsActivity extends Activity {
         btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
     }
 
     private void escucharEventos() {
@@ -138,14 +138,14 @@ public class POIDetailsActivity extends Activity {
                 startActivity(intent);
             }
         });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(POIDetailsActivity.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
 
 
     }

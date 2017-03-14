@@ -24,7 +24,7 @@ public class GameActivity extends Activity {
     private ImageButton btn_return;
     private ImageButton btn_read;
     private ImageButton btn_info;
-    private ImageButton btn_badges;
+    //private ImageButton btn_badges;
     private FrameLayout btn_play;
 
     @Override
@@ -47,7 +47,7 @@ public class GameActivity extends Activity {
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
         btn_play = (FrameLayout) findViewById(R.id.btn_play);
     }
 
@@ -67,14 +67,14 @@ public class GameActivity extends Activity {
 //                        startActivity(intent);
                     }
                 });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(GameActivity.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_return.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

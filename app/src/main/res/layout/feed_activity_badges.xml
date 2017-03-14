@@ -13,55 +13,56 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/layout_header"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_gravity="top"
             android:background="@drawable/header"
             android:orientation="horizontal"
-            android:padding="5dp"
-            android:layout_gravity="top"
-            android:id="@+id/layout_header">
+            android:padding="5dp">
 
             <ImageButton
+                android:id="@+id/btn_return"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:id="@+id/btn_return"
-                android:background="@drawable/btn_return"
                 android:layout_gravity="center_vertical"
-                android:scaleType="fitCenter"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"/>
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginStart="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_return"
+                android:scaleType="fitCenter" />
+
             <TextView
+                android:id="@+id/route_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:id="@+id/route_title"
-                android:text="MES BADGES"
                 android:layout_gravity="center_vertical"
+                android:layout_weight="5"
                 android:gravity="center"
+                android:text="MES BADGES"
+                android:textAllCaps="true"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:textAllCaps="true">
-            </TextView>
+                android:textStyle="bold"></TextView>
 
             <ImageButton
+                android:id="@+id/btn_home"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:background="@drawable/boton_accueil"
-                android:id="@+id/btn_home"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="5dp"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"/>
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/boton_accueil" />
         </LinearLayout>
 
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -70,18 +71,22 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_competition_actif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge1"
+                    android:src="@drawable/badges_competition_deactif" />
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_competition_deactif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge2"
+                    android:src="@drawable/badges_competition_deactif" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -90,18 +95,22 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_ludique_actif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge3"
+                    android:src="@drawable/badges_competition_deactif" />
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_ludique_deactif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge4"
+                    android:src="@drawable/badges_competition_deactif" />
             </TableRow>
+
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -110,21 +119,23 @@
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_juer_actif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge5"
+                    android:src="@drawable/badges_competition_deactif" />
+
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/badges_juer_deactif"
-                    android:layout_margin="5dp"/>
+                    android:id="@+id/badge6"
+                    android:src="@drawable/badges_competition_deactif" />
             </TableRow>
 
         </TableLayout>
-
 
 
     </LinearLayout>

@@ -150,7 +150,6 @@ public class DBHandler extends SQLiteOpenHelper {
                 ");";
         db.execSQL(query_poi);
 
-        //TODO init with data from routes (CO)
         String query_badges = "CREATE TABLE " + TABLE_BADGES +
                 "(" +
                 COLUMN_BADGE_ID + " INTEGER PRIMARY KEY, " +
@@ -954,7 +953,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
         String selectQuery = "SELECT " + COLUMN_BADGE_SUCCESS + " FROM " + TABLE_BADGES + " INNER JOIN " + TABLE_ROUTES +
                 " ON " + TABLE_BADGES + "." + COLUMN_BADGE_ROUTE_ID + " = " + TABLE_ROUTES + "." + COLUMN_ROUTE_ID +
-                " WHERE " +  COLUMN_ROUTE_TITLE + " = " + route;
+                " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
         Cursor c = db.rawQuery(selectQuery, null);
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
@@ -970,12 +969,28 @@ public class DBHandler extends SQLiteOpenHelper {
     public void setSuccessByRoute(String route){
         SQLiteDatabase db = getWritableDatabase();
 
-        String selectQuery = "UPDATE " + TABLE_BADGES + " INNER JOIN " + TABLE_ROUTES +
-                " ON " + TABLE_BADGES + "." + COLUMN_BADGE_ROUTE_ID + " = " + TABLE_ROUTES + "." + COLUMN_ROUTE_ID +
-                " SET " + COLUMN_BADGE_SUCCESS + " = " + 1 +
-                " WHERE " +  COLUMN_ROUTE_TITLE + " = " + route;
-        db.rawQuery(selectQuery, null);
+        String selectQuery = "SELECT " + COLUMN_ROUTE_NID +
+                " FROM " + TABLE_ROUTES +
+                " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
+        Log.d("PierreLog : ", selectQuery);
+        Cursor c = db.rawQuery(selectQuery, null);
+        c.moveToFirst();
 
+        selectQuery = "INSERT INTO " + TABLE_BADGES +" ("+ COLUMN_BADGE_ROUTE_ID + ", " + COLUMN_BADGE_SUCCESS + ")" +
+                " SELECT " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) +", 1" +
+                " WHERE NOT EXISTS(" +
+                "SELECT 1 FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ");";
+        Log.d("PierreLog : ", selectQuery);
+        db.execSQL(selectQuery);
+
+        selectQuery = "SELECT * FROM " + TABLE_BADGES;
+        c = db.rawQuery(selectQuery, null);
+
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_ID)));
+            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_ROUTE_ID)));
+            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_SUCCESS)));
+        }
         db.close();
     }
 
