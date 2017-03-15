@@ -97,13 +97,13 @@ public class LireActivity extends Activity {
                 });
 
 
-        btn_read.setOnClickListener(new View.OnClickListener() {
+        /*btn_read.setOnClickListener(new View.OnClickListener() { //Not usefull, we are already here
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LireActivity.this, LireActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         btn_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

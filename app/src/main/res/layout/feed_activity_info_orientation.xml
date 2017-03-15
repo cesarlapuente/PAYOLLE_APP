@@ -165,7 +165,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="2"
-                android:src="@drawable/icono_info_actif"
+                android:src="@drawable/icono_info_new_actif"
                 android:id="@+id/btn_footer_info"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"

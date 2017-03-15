@@ -107,14 +107,14 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         FeedRouteActivityDecouverte.this.finish();
                     }
                 });
-        btn_map.setOnClickListener(
+        /*btn_map.setOnClickListener( //Not usefull, we are already here
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(FeedRouteActivityDecouverte.this, FeedRouteActivityDecouverte.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_info.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -173,7 +173,8 @@ public class FeedRouteActivityDecouverte extends Activity  {
 
 
                 // if Poi not null
-                if(alPoi != null) {
+                // delete from the view, not usefull here, WARNING there is a conversion double -> int problem for POIs
+                /*if(alPoi != null) {
                     for (Poi poi : alPoi) {
                         // create poiPosition Lat/Lng
                         // Icon icon = determinateCategoryPoi(poi);
@@ -184,8 +185,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
                                 .position(poiPosition)
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
-
-
+                        Log.d("PierreLog : MArker bug ", poi.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
@@ -222,7 +222,6 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         alLatLng.add(poiPosition);
                         //add Marker
                         mapboxMap.addMarker(marker);
-
                     }
                     if(!alLatLng.isEmpty()) {
                         //Create LatLng Fit all Markers
@@ -233,7 +232,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50));
                     }
 
-                }
+                }*/
                 if(alRoute != null) {
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
@@ -241,6 +240,8 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         }
                     }
                 }
+                /*TODO il faut bouger la camera ...*/
+                //mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds.Builder().include(new ArrayList<LatLng>().add(new LatLng(42.941305, 0.281269))).build(), 50));
             }
 
         });

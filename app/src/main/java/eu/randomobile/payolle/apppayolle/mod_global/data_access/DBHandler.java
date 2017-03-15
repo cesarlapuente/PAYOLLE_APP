@@ -972,7 +972,6 @@ public class DBHandler extends SQLiteOpenHelper {
         String selectQuery = "SELECT " + COLUMN_ROUTE_NID +
                 " FROM " + TABLE_ROUTES +
                 " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
-        Log.d("PierreLog : ", selectQuery);
         Cursor c = db.rawQuery(selectQuery, null);
         c.moveToFirst();
 
@@ -980,16 +979,12 @@ public class DBHandler extends SQLiteOpenHelper {
                 " SELECT " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) +", 1" +
                 " WHERE NOT EXISTS(" +
                 "SELECT 1 FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ");";
-        Log.d("PierreLog : ", selectQuery);
         db.execSQL(selectQuery);
 
         selectQuery = "SELECT * FROM " + TABLE_BADGES;
         c = db.rawQuery(selectQuery, null);
 
         for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_ID)));
-            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_ROUTE_ID)));
-            Log.d("PierreLog baseBadges: ", c.getString(c.getColumnIndex(COLUMN_BADGE_SUCCESS)));
         }
         db.close();
     }

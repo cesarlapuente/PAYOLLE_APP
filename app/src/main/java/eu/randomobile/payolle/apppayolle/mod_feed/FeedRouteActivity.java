@@ -96,14 +96,14 @@ public class FeedRouteActivity extends Activity  {
                         FeedRouteActivity.this.finish();
                     }
                 });
-        btn_map.setOnClickListener(
+        /*btn_map.setOnClickListener( //Not usefull, we are already here
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(FeedRouteActivity.this, FeedRouteActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_info.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

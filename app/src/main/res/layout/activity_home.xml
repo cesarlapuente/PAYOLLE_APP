@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="vertical"
-        android:background="@drawable/boton_orientation_fondo"
+        android:background="@drawable/boton_orientation_fondo_new"
         android:clickable="true"
         android:id="@+id/btn_orientation"
         >
@@ -54,7 +54,7 @@
         android:layout_height="0dp"
         android:layout_weight="4"
         android:orientation="vertical"
-        android:background="@drawable/boton_decouverte_fondo"
+        android:background="@drawable/boton_decouverte_fondo_new"
         android:clickable="true"
         android:id="@+id/btn_discover">
 

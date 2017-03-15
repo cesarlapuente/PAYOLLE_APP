@@ -196,7 +196,7 @@
                             android:adjustViewBounds="true"
                             android:background="@color/transparent"
                             android:scaleType="centerInside"
-                            android:src="@drawable/icono_info_deactif" />
+                            android:src="@drawable/icono_info_new_deactif" />
 
                         <ImageView
                             android:layout_width="0dp"

@@ -344,7 +344,7 @@ public class SplashActivity extends Activity {
                                     route_DE.add(route);
                                     /*Pierre debug POI image*/ //TODO a supprimer
                                     for (ResourcePoi poi : route.getPois()){
-                                        Log.d("PierreLog", "Objet POI splash : title : " + poi.getTitle() + " image : " + poi.getMainImage());
+                                        Log.d("PierreLog", "Objet POI splash : title : " + poi.getTitle() + " image : " + poi.getMainImage() + " lat " + poi.getLatitude()+ " long "+ poi.getLongitude());
                                     }
                                 }
 

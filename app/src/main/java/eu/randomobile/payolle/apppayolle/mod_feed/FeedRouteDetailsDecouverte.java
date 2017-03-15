@@ -94,13 +94,14 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 if (route.getNid().equals(paramNid)) {
                     this.route = route;
                     Log.d("JmLog", "Objet route : " + route.getTitle() + " " + route.getUrlMap() + " " + route.getImages());
+
                 }
             }
         }
 
         /*Pierre debug POI image*/
         for (ResourcePoi poi : route.getPois()){
-            Log.d("PierreLog", "Objet POI : title : " + poi.getTitle() + " image : " + poi.getMainImage());
+            Log.d("PierreLog", "Objet POI route : title : " + poi.getTitle() + " image : " + poi.getMainImage() + " lat " + poi.getLatitude()+ " long "+ poi.getLongitude());
         }
 
         initMapView(savedInstanceState);
@@ -283,6 +284,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                 .position(poiPosition)
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
+                        Log.d("PierreLog : MArker bug ", "dans le truc individuel "+ marker.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
