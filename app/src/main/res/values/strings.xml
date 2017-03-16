@@ -416,8 +416,8 @@
 
 
     <!--New layout-->
-    <string name="mod_home__btn_orientation">Course \nd\'orientation</string>
-    <string name="mod_home__btn_discover">Découverte</string>
+    <string name="mod_home__btn_orientation">Parcours\nd\'orientation</string>
+    <string name="mod_home__btn_discover">Parcours\nde découverte</string>
 
     <string name="mod_discover__txt_info">Metuentes igitur idem latrones Lycaoniam magna parte campestrem cum se inpares nostris fore congressione stataria documentis frequentibus scirent, tramitibus deviis petivere Pamphyliam diu quidem intactam sed timore populationum et caedium, milite per omnia diffuso propinqua, magnis undique praesidiis conmunitam.
 

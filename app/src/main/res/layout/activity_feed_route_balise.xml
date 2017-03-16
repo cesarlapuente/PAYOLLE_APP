@@ -38,7 +38,8 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:maxLines="3"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:textAllCaps="true">
         </TextView>

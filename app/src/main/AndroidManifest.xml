@@ -53,6 +53,7 @@
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".mod_home.SplashActivity"
