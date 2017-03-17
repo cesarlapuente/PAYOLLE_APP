@@ -63,7 +63,8 @@ public class ResultsActivity extends Activity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed();
+                ResultsActivity.this.finish();
+                /*Possible cheat here, if the runner stop the course and go back, he can do the previous activity without running chrono, but there is no ranking, so this is not a problem*/
             }
         });
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +129,7 @@ public class ResultsActivity extends Activity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() { /*Unused*/
         Intent intent = new Intent(ResultsActivity.this,FeedRouteDetails.class);
         intent.putExtra(FeedRouteDetails.PARAM_KEY_NID,paramNid);
         startActivity(intent);

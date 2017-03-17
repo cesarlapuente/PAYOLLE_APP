@@ -27,6 +27,7 @@ import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.Style;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -35,7 +36,9 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -234,13 +237,23 @@ public class FeedRouteActivityDecouverte extends Activity  {
 
                 }*/
                 if(alRoute != null) {
+                    int i = 0;
+                    //8 colors, repetable
+                    ArrayList<Integer> colors = new ArrayList(Arrays.asList(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED, Color.rgb(255,128,0), Color.CYAN, Color.rgb(127,0,255), Color.rgb(127,255,0)));
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
-                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(Color.BLUE));
+                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(colors.get(i%colors.size())));
                         }
+                        i++;
                     }
                 }
                 /*TODO il faut bouger la camera ...*/
+                mapboxMap.moveCamera(CameraUpdateFactory.newCameraPosition(
+                        new CameraPosition.Builder()
+                                .target(new LatLng(42.941305, 0.281269))  // set the camera's center position
+                                .zoom(12)  // set the camera's zoom level
+                                .tilt(20)  // set the camera's tilt
+                                .build()));
                 //mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds.Builder().include(new ArrayList<LatLng>().add(new LatLng(42.941305, 0.281269))).build(), 50));
             }
 

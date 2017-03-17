@@ -185,7 +185,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        onBackPressed();
+                        FeedRouteBalise.this.finish();
                     }
                 });
 
