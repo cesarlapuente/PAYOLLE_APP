@@ -15,6 +15,7 @@ public class HomeActivity extends Activity {
     //ImageButton btn_badges;
     //ImageButton btn_info;
     //ImageButton btn_read;
+    ImageButton btn_settings;
     FrameLayout btn_orientation;
     FrameLayout btn_discover;
 
@@ -28,6 +29,7 @@ public class HomeActivity extends Activity {
         //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
         //btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
         //btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
+        btn_settings = (ImageButton) findViewById(R.id.btn_settings);
         btn_orientation = (FrameLayout) findViewById(R.id.btn_orientation);
         btn_discover = (FrameLayout) findViewById(R.id.btn_discover);
 
@@ -59,6 +61,14 @@ public class HomeActivity extends Activity {
                     }
                 });*/
 
+        btn_settings.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(HomeActivity.this, FeedSettingsActivity.class);
+                        startActivity(intent);
+                    }
+                });
         btn_orientation.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
