@@ -12,48 +12,45 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@drawable/header"
-            android:orientation="horizontal"
             android:layout_gravity="top"
-            android:padding="5dp">
+            android:background="@drawable/header"
+            android:orientation="horizontal">
 
-            <ImageButton
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:id="@+id/btn_return"
-                android:background="@drawable/btn_return"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginEnd="50dp"
-                android:adjustViewBounds="true"
-                />
-            <android.support.v7.widget.SearchView
+            <!--<android.support.v7.widget.SearchView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="5"
                 android:background="@drawable/barra_busqueda"
                 android:id="@+id/feed_search_bar"
-                android:layout_gravity="center_vertical"
-                >
-            </android.support.v7.widget.SearchView>
+                android:layout_marginTop="15dp"
+            >
+            </android.support.v7.widget.SearchView>-->
 
             <ImageButton
+                android:id="@+id/btn_return"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
-                android:background="@drawable/boton_accueil"
-                android:id="@+id/btn_home"
-                android:layout_gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
-                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_return" />
+
+            <ImageButton
+                android:id="@+id/btn_home"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"/>
-        </LinearLayout>
+                android:layout_marginRight="5dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/boton_accueil" />
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/routes_list_linearlayout"
@@ -75,7 +72,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="90dp"/>
+                android:layout_height="60dp"/>
 
         </LinearLayout>
 
@@ -98,8 +95,8 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center_vertical|end"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginEnd="50dp"
         android:shadowColor="#657072"
         android:shadowDx="1"
         android:shadowDy="-1"
@@ -117,7 +114,7 @@
 
     <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="110dp"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
         android:gravity="bottom|center"
         android:shrinkColumns="*"
@@ -127,10 +124,10 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:gravity="center"
-            android:paddingTop="20dp">
+            android:paddingTop="15dp">
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="2"
                 android:src="@drawable/icono_lista_deactif"
                 android:id="@+id/btn_footer_list"
@@ -140,14 +137,14 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
                 android:src="@drawable/separacion_menu"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 />
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="2"
                 android:src="@drawable/icono_mapa_actif"
                 android:id="@+id/btn_footer_map"
@@ -157,34 +154,17 @@
             <ImageView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="0.2"
                 android:src="@drawable/separacion_menu"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 />
             <ImageButton
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="2"
                 android:src="@drawable/icono_info_deactif"
                 android:id="@+id/btn_footer_info"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:src="@drawable/icono_badges_deactif"
-                android:id="@+id/btn_footer_passport"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:background="@color/transparent"/>

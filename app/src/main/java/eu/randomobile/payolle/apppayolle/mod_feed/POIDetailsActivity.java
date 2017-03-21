@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
@@ -31,7 +32,7 @@ public class POIDetailsActivity extends Activity {
     private ImageButton btn_read;
     private ImageButton btn_game;
     private ImageButton btn_info;
-    private ImageButton btn_badges;
+    //private ImageButton btn_badges;
 
     String paramTitle;
     @Override
@@ -47,7 +48,7 @@ public class POIDetailsActivity extends Activity {
             final ArrayList<Poi> alPoi =  app.getPoisList();
 
             for (Poi poi : alPoi) {
-                if (poi.getTitle().equals(paramTitle)) {
+                if (Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").equals(Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", ""))) {
                     this.poi = poi;
                     Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
@@ -81,7 +82,7 @@ public class POIDetailsActivity extends Activity {
         btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
     }
 
     private void escucharEventos() {
@@ -138,14 +139,14 @@ public class POIDetailsActivity extends Activity {
                 startActivity(intent);
             }
         });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(POIDetailsActivity.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
 
 
     }
@@ -162,8 +163,6 @@ public class POIDetailsActivity extends Activity {
             Log.d("MainImage", poi.getMainImage());
             BitmapManager.INSTANCE.loadBitmap(poi.getMainImage(),
                     main_image, 90, 90);
-        } else {
-            main_image.setImageResource(R.mipmap.ic_launcher);
         }
         /* if (poi.getImages().get(0).getFileUrl() != null) {
             Log.d("First image", poi.getImages().get(0).getFileUrl());

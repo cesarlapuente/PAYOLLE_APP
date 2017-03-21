@@ -56,7 +56,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import eu.randomobile.payolle.apppayolle.R;
-public class ImageMap extends ImageView
+public class ImageMap extends android.support.v7.widget.AppCompatImageView
 {
 	// mFitImageToScreen
 	// if true - initial image resized to fit the screen, aspect ratio may be broken

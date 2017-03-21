@@ -7,15 +7,42 @@
     tools:context=".mod_feed.HomeActivity"
     android:background="@drawable/fondo_accueil">
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Les secrets de payolle"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:layout_centerVertical="true">
+        </TextView>
+        <ImageButton
+            android:id="@+id/btn_settings"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/icono_settings"
+            android:background="@color/transparent"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:background="@drawable/boton_orientation_fondo"
+        android:background="@drawable/boton_orientation_fondo_new"
         android:clickable="true"
         android:id="@+id/btn_orientation"
         >
+        <!--Use image view for not image deformation-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +51,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="29sp"
+                android:textSize="24sp"
                 android:text="@string/mod_home__btn_orientation"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
@@ -36,8 +63,8 @@
                 android:layout_gravity="top"
                 android:paddingTop="16dp" />
             <ImageView
-                android:layout_width="145dp"
-                android:layout_height="145dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:background="@drawable/icono_orientation"
                 android:layout_marginEnd="16dp"
                 android:layout_gravity="bottom|end"
@@ -52,9 +79,9 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="4"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:background="@drawable/boton_decouverte_fondo"
+        android:background="@drawable/boton_decouverte_fondo_new"
         android:clickable="true"
         android:id="@+id/btn_discover">
 
@@ -65,8 +92,8 @@
             android:gravity="bottom">
 
             <ImageView
-                android:layout_width="145dp"
-                android:layout_height="145dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:background="@drawable/icono_decouverte"
                 android:gravity="bottom|end|start"
                 android:layout_marginLeft="21dp"
@@ -74,7 +101,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="29sp"
+                android:textSize="24sp"
                 android:text="@string/mod_home__btn_discover"
                 android:textAllCaps="true"
                 android:id="@+id/btn_discover_txt"
@@ -87,69 +114,4 @@
         </LinearLayout>
 
     </FrameLayout>
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:shrinkColumns="*"
-        android:stretchColumns="*"
-        android:layout_gravity="bottom">
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content">
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                android:src="@drawable/icono_info_home"
-                android:id="@+id/btn_footer_info"
-                android:layout_gravity="center"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:src="@drawable/separacion_menu"/>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                android:src="@drawable/icono_badges"
-                android:id="@+id/btn_footer_passport"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:src="@drawable/separacion_menu"/>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                android:src="@drawable/icono_pois"
-                android:id="@+id/btn_footer_poi"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:src="@drawable/separacion_menu"/>
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                android:src="@drawable/icono_infos"
-                android:id="@+id/btn_footer_read"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-        </TableRow>
-    </TableLayout>
 </LinearLayout>

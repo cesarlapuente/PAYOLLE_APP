@@ -36,7 +36,7 @@ public class LireActivity extends Activity {
     private ImageButton btn_read;
     private ImageButton btn_game;
     private ImageButton btn_info;
-    private ImageButton btn_badges;
+    //private ImageButton btn_badges;
 
     FeedLireAdapter listLireAdapter;
     LinearLayout list_linearlayout;
@@ -70,7 +70,7 @@ public class LireActivity extends Activity {
         btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
 
     }
 
@@ -97,13 +97,13 @@ public class LireActivity extends Activity {
                 });
 
 
-        btn_read.setOnClickListener(new View.OnClickListener() {
+        /*btn_read.setOnClickListener(new View.OnClickListener() { //Not usefull, we are already here
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LireActivity.this, LireActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         btn_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -119,14 +119,14 @@ public class LireActivity extends Activity {
                 startActivity(intent);
             }
         });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(LireActivity.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
     }
     public  class FeedLireAdapter extends BaseAdapter {
         private LayoutInflater mInflater;

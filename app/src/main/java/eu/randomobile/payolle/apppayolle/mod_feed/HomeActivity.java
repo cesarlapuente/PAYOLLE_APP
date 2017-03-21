@@ -11,10 +11,11 @@ import eu.randomobile.payolle.apppayolle.R;
 
 public class HomeActivity extends Activity {
 
-    ImageButton btn_general_map;
-    ImageButton btn_badges;
-    ImageButton btn_info;
-    ImageButton btn_read;
+    //ImageButton btn_general_map;
+    //ImageButton btn_badges;
+    //ImageButton btn_info;
+    //ImageButton btn_read;
+    ImageButton btn_settings;
     FrameLayout btn_orientation;
     FrameLayout btn_discover;
 
@@ -24,15 +25,16 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.activity_home);
 
 
-        btn_general_map = (ImageButton) findViewById(R.id.btn_footer_poi);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
-        btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
-        btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
+        //btn_general_map = (ImageButton) findViewById(R.id.btn_footer_poi);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
+        //btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
+        btn_settings = (ImageButton) findViewById(R.id.btn_settings);
         btn_orientation = (FrameLayout) findViewById(R.id.btn_orientation);
         btn_discover = (FrameLayout) findViewById(R.id.btn_discover);
 
 
-        btn_general_map.setOnClickListener(
+        /*btn_general_map.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -57,8 +59,16 @@ public class HomeActivity extends Activity {
                         Intent intent = new Intent(HomeActivity.this, InfoDecouverteActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
 
+        btn_settings.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(HomeActivity.this, FeedSettingsActivity.class);
+                        startActivity(intent);
+                    }
+                });
         btn_orientation.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -77,14 +87,14 @@ public class HomeActivity extends Activity {
                     }
                 });
 
-        btn_read.setOnClickListener(
+        /*btn_read.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(HomeActivity.this, LireActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
 
 
     }

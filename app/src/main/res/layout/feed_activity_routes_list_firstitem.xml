@@ -1,40 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/item_container"
-              android:layout_width="match_parent"
-              android:layout_height="146dp"
-              android:background="@drawable/fondo_lista_ruta"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
-              android:layout_marginTop="65dp"
-              android:layout_marginBottom="5dp"
-              android:padding="10dp"
-              android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="108dp"
-        android:layout_height="108dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginEnd="5dp"
-        android:scaleType="centerCrop"/>
 
+    android:layout_width="match_parent"
+    android:layout_height="201dp"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <!--BugFix doesn't work, margin still clickable ...-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom"
-        android:layout_marginTop="2dp"
-        >
-        <LinearLayout
-            android:id="@+id/textos"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:orientation="horizontal">
+        android:layout_height="65dp"
+        android:clickable="false"
+        android:orientation="horizontal"></LinearLayout>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fondo_lista_ruta"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/textos"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/item_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="Title hfshgsf hghfgh gdjgh jzefzef zef efzef fezef zefzefze fzefzef efzefz "
+                    android:textColor="#DFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold">
+
+                </TextView>
+                <!-- Bug with auto scroll
             <TextView
                 android:id="@+id/item_title"
                 android:layout_width="0dp"
@@ -43,42 +70,46 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:maxLines="2"
-                android:ellipsize="end"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:freezesText="true"
                 android:text="Title hfshgsf hghfgh gdjgh j"
-                android:textColor="#DFFF">
+                android:textColor="#DFFF"/>-->
 
-            </TextView>
-
-            <ImageView
+                <!--<ImageView
                 android:id="@+id/item_difficulty"
                 android:layout_width="70dp"
-                android:layout_height="70dp"/>
+                android:layout_height="70dp"/>-->
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_rutes"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <include layout="@layout/feed_activity_routes_list_info" />
+
+                <ImageView
+                    android:id="@+id/game_image"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icono_juer_inactif"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/more_detail"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right|center"
+                    android:src="@drawable/icono_plus" />
+            </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:id="@+id/row_rutes"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2">
 
-            <include layout="@layout/feed_activity_routes_list_info" />
 
-            <ImageView
-                android:id="@+id/game_image"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/icono_juer_inactif"
-                android:visibility="gone"/>
-
-            <ImageView
-                android:id="@+id/more_detail"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/icono_plus"
-                android:layout_gravity="right|center"
-                />
-        </LinearLayout>
     </LinearLayout>
-
-
 </LinearLayout>

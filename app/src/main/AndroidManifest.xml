@@ -53,6 +53,7 @@
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".mod_home.SplashActivity"
@@ -88,6 +89,10 @@
             <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
+        <activity android:name=".mod_feed.FeedSettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"/>
+
         <activity android:name=".mod_feed.FeedRouteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"/>

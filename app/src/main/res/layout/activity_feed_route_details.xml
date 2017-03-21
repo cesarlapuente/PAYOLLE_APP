@@ -40,7 +40,8 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:maxLines="3"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:textAllCaps="true">
         </TextView>
@@ -207,16 +208,15 @@
                     android:src="@drawable/estrella_icono_5"/>
             </LinearLayout>-->
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/route_difficulty"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/dificultad_3"
+                android:layout_gravity="end"
                 android:layout_marginLeft="3dp"
                 android:layout_marginStart="3dp"
-                android:layout_gravity="end"/>
-
+                android:layout_weight="1"
+                android:src="@drawable/dificultad_3" />-->
 
 
         </LinearLayout>

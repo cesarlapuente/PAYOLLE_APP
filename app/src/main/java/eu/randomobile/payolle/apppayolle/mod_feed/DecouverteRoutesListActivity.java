@@ -34,7 +34,7 @@ public class DecouverteRoutesListActivity extends Activity {
     private ImageButton btn_return;
     private ImageButton btn_map;
     private ImageButton btn_info;
-    private ImageButton btn_badges;
+    //private ImageButton btn_badges;
     //private TextView btn_galerie;
     private ImageView game_image;
 
@@ -75,7 +75,7 @@ public class DecouverteRoutesListActivity extends Activity {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
         //btn_galerie = (TextView) findViewById(R.id.btn_galerie);
         game_image = (ImageView) findViewById(R.id.game_image);
 
@@ -97,14 +97,14 @@ public class DecouverteRoutesListActivity extends Activity {
                         startActivity(intent);
                     }
                 });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(DecouverteRoutesListActivity.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_return.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -161,7 +161,7 @@ public class DecouverteRoutesListActivity extends Activity {
             LinearLayout routeItemContainer;
             ImageView routeItemImage;
             TextView routeItemTitle;
-            ImageView routeItemDifficulty;
+            //ImageView routeItemDifficulty;
             TextView routeItemDuration;
             TextView routeItemDistance;
             //ImageView routeItemRating;
@@ -222,7 +222,7 @@ public class DecouverteRoutesListActivity extends Activity {
             if (convertView == null) {
                 holder = new ViewHolder();
 
-                if(position==0) {
+                if(position==0) {  //Pierre : Why doing this ? Just a different size ?
                     convertView = mInflater.inflate(R.layout.feed_activity_routes_list_firstitem, mViewGroup);
                 }
                 else {
@@ -232,7 +232,7 @@ public class DecouverteRoutesListActivity extends Activity {
                 holder.routeItemContainer = (LinearLayout) convertView.findViewById(R.id.item_container);
                 holder.routeItemImage = (ImageView) convertView.findViewById(R.id.item_image);
                 holder.routeItemTitle = (TextView) convertView.findViewById(R.id.item_title);
-                holder.routeItemDifficulty = (ImageView) convertView.findViewById(R.id.item_difficulty);
+                //holder.routeItemDifficulty = (ImageView) convertView.findViewById(R.id.item_difficulty);
                 holder.routeItemDuration = (TextView) convertView.findViewById(R.id.item_duration);
                 holder.routeItemDistance = (TextView) convertView.findViewById(R.id.item_distance);
                 //holder.routeItemRating = (ImageView) convertView.findViewById(R.id.item_rating);
@@ -245,6 +245,7 @@ public class DecouverteRoutesListActivity extends Activity {
 
             // Title
             holder.routeItemTitle.setText(item.getTitle());
+            //holder.routeItemTitle.setSelected(true); //Bug with auto scroll
 
             // Image
             if (item.getMainImage() != null) {
@@ -259,7 +260,7 @@ public class DecouverteRoutesListActivity extends Activity {
             String dificultad = item.getDifficulty_tid();
             Log.d("Debug", "difficult? :" + item.getDifficulty_tid());
             //Tr?s Facile
-            if (dificultad.equals("18"))
+            /*if (dificultad.equals("18"))
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_1);
                 //Facile
             else if (dificultad.equals("16"))
@@ -270,7 +271,7 @@ public class DecouverteRoutesListActivity extends Activity {
                 //Difficile
             else if (dificultad.equals("22"))
                 holder.routeItemDifficulty.setBackgroundResource(R.drawable.dificultad_2);
-
+            */
             // Duration
             holder.routeItemDuration.setText(item.timeToHoursMinutes(item.getEstimatedTime()));
 

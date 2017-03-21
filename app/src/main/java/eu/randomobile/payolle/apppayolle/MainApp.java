@@ -177,6 +177,14 @@ public class MainApp extends Application {
         return especiesInRoute;
     }
 
+    public Boolean getSuccessByRoute(String route){
+        return dBHandler.getSuccessByRoute(route);
+    }
+
+    public void setSuccessByRoute(String route){
+        dBHandler.setSuccessByRoute(route);
+    }
+
     // Nombres de dominios y urls de servicios
     //public String URL_SERVIDOR = "http://185.18.198.182/"; // Altoagueda (por defecto)
     //public String URL_SERVIDOR = "http://dns198182.phdns.es/"; //Altoagueda (nuevo -ha habido redireccion ips-)

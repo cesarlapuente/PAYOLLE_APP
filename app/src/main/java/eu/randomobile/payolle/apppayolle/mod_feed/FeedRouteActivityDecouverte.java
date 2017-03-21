@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -26,6 +27,7 @@ import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.Style;
 import com.mapbox.mapboxsdk.geometry.LatLng;
@@ -34,7 +36,9 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -50,7 +54,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
     ImageButton btn_home;
     ImageButton btn_return;
     ImageButton btn_map;
-    ImageButton btn_badges;
+    //ImageButton btn_badges;
 
     private ImageButton btn_info;
     public MapView mapView;
@@ -86,7 +90,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
         btn_list = (ImageButton) findViewById(R.id.btn_footer_list);
-        btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
 
     }
     private void escucharEventos(){
@@ -106,14 +110,14 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         FeedRouteActivityDecouverte.this.finish();
                     }
                 });
-        btn_map.setOnClickListener(
+        /*btn_map.setOnClickListener( //Not usefull, we are already here
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(FeedRouteActivityDecouverte.this, FeedRouteActivityDecouverte.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_info.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -122,14 +126,14 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         startActivity(intent);
                     }
                 });
-        btn_badges.setOnClickListener(
+        /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(FeedRouteActivityDecouverte.this, BadgesActivity.class);
                         startActivity(intent);
                     }
-                });
+                });*/
         btn_list.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -172,7 +176,8 @@ public class FeedRouteActivityDecouverte extends Activity  {
 
 
                 // if Poi not null
-                if(alPoi != null) {
+                // delete from the view, not usefull here, WARNING there is a conversion double -> int problem for POIs
+                /*if(alPoi != null) {
                     for (Poi poi : alPoi) {
                         // create poiPosition Lat/Lng
                         // Icon icon = determinateCategoryPoi(poi);
@@ -183,8 +188,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
                                 .position(poiPosition)
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
-
-
+                        Log.d("PierreLog : MArker bug ", poi.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
@@ -221,7 +225,6 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         alLatLng.add(poiPosition);
                         //add Marker
                         mapboxMap.addMarker(marker);
-
                     }
                     if(!alLatLng.isEmpty()) {
                         //Create LatLng Fit all Markers
@@ -232,14 +235,26 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, 50));
                     }
 
-                }
+                }*/
                 if(alRoute != null) {
+                    int i = 0;
+                    //8 colors, repetable
+                    ArrayList<Integer> colors = new ArrayList(Arrays.asList(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED, Color.rgb(255,128,0), Color.CYAN, Color.rgb(127,0,255), Color.rgb(127,255,0)));
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
-                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()));
+                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(colors.get(i%colors.size())));
                         }
+                        i++;
                     }
                 }
+                /*TODO il faut bouger la camera ...*/
+                mapboxMap.moveCamera(CameraUpdateFactory.newCameraPosition(
+                        new CameraPosition.Builder()
+                                .target(new LatLng(42.941305, 0.281269))  // set the camera's center position
+                                .zoom(12)  // set the camera's zoom level
+                                .tilt(20)  // set the camera's tilt
+                                .build()));
+                //mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds.Builder().include(new ArrayList<LatLng>().add(new LatLng(42.941305, 0.281269))).build(), 50));
             }
 
         });

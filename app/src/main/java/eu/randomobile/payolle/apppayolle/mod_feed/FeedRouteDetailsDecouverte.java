@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
@@ -36,6 +40,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -68,7 +73,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
     ImageButton btn_home;
     ImageButton btn_return;
-    private ImageView img_difficulty ;
+    //private ImageView img_difficulty ;
     //private ImageView img_stars;
     FloatingActionButton toggle_display_map_decouverte;
 
@@ -89,8 +94,14 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 if (route.getNid().equals(paramNid)) {
                     this.route = route;
                     Log.d("JmLog", "Objet route : " + route.getTitle() + " " + route.getUrlMap() + " " + route.getImages());
+
                 }
             }
+        }
+
+        /*Pierre debug POI image*/
+        for (ResourcePoi poi : route.getPois()){
+            Log.d("PierreLog", "Objet POI route : title : " + poi.getTitle() + " image : " + poi.getMainImage() + " lat " + poi.getLatitude()+ " long "+ poi.getLongitude());
         }
 
         initMapView(savedInstanceState);
@@ -115,7 +126,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
         btn_return = (ImageButton) findViewById(R.id.btn_return);
 
         main_image = (ImageView) findViewById(R.id.main_image);
-        img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
+        //img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
         //img_stars = (ImageView) findViewById(R.id.stars_vote);
 
         toggle_display_map_decouverte = (FloatingActionButton)findViewById(R.id.toggle_display_map_decouverte);
@@ -187,7 +198,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
         // DIFFICULT PICTURE
 
-        switch (route.getDifficulty_tid()) {
+        /*switch (route.getDifficulty_tid()) {
             case "18":
                 img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_1));
 
@@ -203,7 +214,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
             case "22":
                 img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.dificultad_2));
                 break;
-        }
+        }*/
 /*
         // STARS ICONS
 
@@ -262,7 +273,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
                 // if Poi not null
                 if (alPoi != null) {
-                    for (ResourcePoi poi : alPoi) {
+                    for (final ResourcePoi poi : alPoi) {
                         final String poiNid = String.valueOf(poi.getNid());
                         // create poiPosition Lat/Lng
                         // Icon icon = determinateCategoryPoi(poi);
@@ -273,6 +284,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                 .position(poiPosition)
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
+                        Log.d("PierreLog : MArker bug ", "dans le truc individuel "+ marker.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
@@ -280,12 +292,39 @@ public class FeedRouteDetailsDecouverte extends Activity {
                             private LayoutInflater mInflater = (LayoutInflater) FeedRouteDetailsDecouverte.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                             @Override
                             public View getInfoWindow(@NonNull Marker marker) {
+                                Location temp = new Location(LocationManager.GPS_PROVIDER);
+
+                                temp.setLatitude(marker.getPosition().getLatitude());
+                                temp.setLongitude(marker.getPosition().getLongitude());
+
                                 View convertView = mInflater.inflate(R.layout.activity_feed_route_decouverte_popup, null);
 
                                 ImageView poi_image = (ImageView)convertView.findViewById(R.id.poi_image);
-                                TextView poi_title = (TextView)convertView.findViewById(R.id.poi_title);
+                                final TextView poi_title = (TextView)convertView.findViewById(R.id.poi_title);
+                                ImageView poi_close = (ImageView)convertView.findViewById(R.id.validation_close);
+                                ImageView poi_more = (ImageView)convertView.findViewById(R.id.imageView2);
+                                TextView poi_text = (TextView)convertView.findViewById(R.id.textView);
 
                                 poi_title.setText(marker.getTitle());
+
+
+
+                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //Bug avec l'utf8 //TODO : en prod, changer pour <=
+                                    poi_more.setVisibility(View.VISIBLE);
+                                    poi_text.setVisibility(View.INVISIBLE);
+                                    poi_more.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
+                                            intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
+                                            startActivity(intent);
+                                        }
+                                    });
+                                } else {
+                                    poi_more.setVisibility(View.INVISIBLE);
+                                    poi_text.setVisibility(View.VISIBLE);
+
+                                }
 
                                 return convertView;
 
@@ -293,7 +332,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                             }
                         });
 
-                        mapboxMap.setOnInfoWindowClickListener(
+                        /*mapboxMap.setOnInfoWindowClickListener(
                                 new MapboxMap.OnInfoWindowClickListener() {
                                     @Override
                                     public boolean onInfoWindowClick(@NonNull Marker marker) {
@@ -304,7 +343,15 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                         return false;
                                     }
                                 }
-                        );
+                        );*/
+                        /*Recup from FeedRouteBalise*/
+                        /*mapboxMap.setOnMarkerClickListener(new MapboxMap.OnMarkerClickListener() {
+                            @Override
+                            public boolean onMarkerClick(@NonNull Marker marker) {
+                                marker.hideInfoWindow();
+                                return true;
+                            }
+                        });*/
 
                         //add Poi
                         alLatLng.add(poiPosition);

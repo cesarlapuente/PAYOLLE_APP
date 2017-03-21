@@ -67,7 +67,7 @@ public class FeedRouteDetails extends Activity {
 
     ImageButton btn_home;
     ImageButton btn_return;
-    private ImageView img_difficulty ;
+    //private ImageView img_difficulty ;
     //private ImageView img_stars;
 
     boolean isEndNotified;
@@ -114,7 +114,7 @@ public class FeedRouteDetails extends Activity {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         main_image = (ImageView) findViewById(R.id.main_image);
-        img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
+        //img_difficulty = (ImageView) findViewById(R.id.route_difficulty);
         //img_stars = (ImageView) findViewById(R.id.stars_vote);
 
 
@@ -194,7 +194,7 @@ public class FeedRouteDetails extends Activity {
 
         // DIFFICULT PICTURE
 
-        if (route.getDifficulty_tid().equals("18")) {
+        /*if (route.getDifficulty_tid().equals("18")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_1));
 
         } else if (route.getDifficulty_tid().equals("16")) {
@@ -205,7 +205,7 @@ public class FeedRouteDetails extends Activity {
 
         } else if (route.getDifficulty_tid().equals("22")) {
             img_difficulty.setImageDrawable(ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.dificultad_2));
-        }
+        }*/
 /*
         // STARS ICONS
 
