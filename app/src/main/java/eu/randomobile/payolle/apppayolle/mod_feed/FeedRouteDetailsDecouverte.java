@@ -309,7 +309,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
 
 
-                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //Bug avec l'utf8 //TODO : en prod, changer pour <=
+                                if (mapboxMap.getMyLocation().distanceTo(temp) >= 40.0) { //TODO : en prod, changer pour <=
                                     poi_more.setVisibility(View.VISIBLE);
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_more.setOnClickListener(new View.OnClickListener() {

@@ -38,29 +38,36 @@ public class POIDetailsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.app = (MainApp)  getApplication();
+        this.app = (MainApp) getApplication();
         //Get Parameters from ROutesListActivity
         Bundle b = getIntent().getExtras();
         if (b != null) {
             // paramTitle = b.getString(PARAM_KEY_NID);
             paramTitle = b.getString(PARAM_KEY_TITLE_POI);
 
-            final ArrayList<Poi> alPoi =  app.getPoisList();
+            final ArrayList<Poi> alPoi = app.getPoisList();
 
             for (Poi poi : alPoi) {
-                if (Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").equals(Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", ""))) {
+                String poiLog1 = Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
+                String poiLog2 = Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
+                Log.d("PierreDebug", "Poi source : " + poiLog2 + "      Poi cible : " + poiLog1);
+                if (poiLog1.equals(poiLog2)) {
                     this.poi = poi;
                     Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
 
                 }
             }
+
         }
         setContentView(R.layout.feed_activity_poi_details);
 
-        initComponents();
-        setData();
-        escucharEventos();
+        if (poi == null) POIDetailsActivity.this.finish(); //In case of bug, not crashing
+        else {
+            initComponents();
+            setData();
+            escucharEventos();
+        }
     }
 
 

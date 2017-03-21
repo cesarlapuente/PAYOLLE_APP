@@ -67,68 +67,31 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            android:layout_weight="3"
-            android:padding="5dp">
-
-            <ScrollView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="65dp"
-                android:padding="5dp"
-                android:fadeScrollbars="false">
-                <TextView
-                    android:id="@+id/poi_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/mod_discover__txt_info"
-                    android:textSize="16sp"
-                    android:textColor="#FFFFFF"/>
-
-            </ScrollView>
-
-            <FrameLayout
-                android:id="@+id/btn_play"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:padding="10dp"
-                android:clickable="true">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxWidth="200dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/boton_juer"
-                    android:layout_gravity="center"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_gravity="center">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="4"
-                        android:text="@string/mod_discover__play"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center|bottom"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:textColor="#FFFFFF"
-                        android:lines="2"/>
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="3"/>
-                </LinearLayout>
-            </FrameLayout>
-
+            android:layout_weight="4">
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="60dp"/>
+                android:layout_height="65dp"/>
+            <TextView
+                android:id="@+id/poi_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:text="@string/mod_discover__txt_info"
+                android:gravity="center_horizontal"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"/>
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingBottom="15dp"
+                android:layout_marginBottom="64dp"
+                android:id="@+id/scrollView_game"
+                android:layout_gravity="center_horizontal"
+                android:nestedScrollingEnabled="true"
+                android:fadeScrollbars="false"
+                android:visibility="visible">
+            </ListView>
 
         </LinearLayout>
     </LinearLayout>

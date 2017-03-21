@@ -19,7 +19,7 @@ import eu.randomobile.payolle.apppayolle.utils.JSONManager;
 
 //import eu.randomobile.payolle.apppayolle.R;
 
-public class Poi {
+public class Poi { /*TODO merge with RessourcePoi, please */
 
 	private String nid;
 	private String title;

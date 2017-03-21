@@ -247,14 +247,13 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         i++;
                     }
                 }
-                /*TODO il faut bouger la camera ...*/
+
                 mapboxMap.moveCamera(CameraUpdateFactory.newCameraPosition(
                         new CameraPosition.Builder()
-                                .target(new LatLng(42.941305, 0.281269))  // set the camera's center position
+                                .target(new LatLng(42.941305, 0.281269))  // set the camera's center position -> Focus on Payolle, no dynamics
                                 .zoom(12)  // set the camera's zoom level
                                 .tilt(20)  // set the camera's tilt
                                 .build()));
-                //mapboxMap.moveCamera(CameraUpdateFactory.newLatLngBounds(new LatLngBounds.Builder().include(new ArrayList<LatLng>().add(new LatLng(42.941305, 0.281269))).build(), 50));
             }
 
         });
