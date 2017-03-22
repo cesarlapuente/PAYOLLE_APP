@@ -129,16 +129,17 @@ public class POIDetailsActivity extends Activity {
                 startActivity(intent);
             }
         });
-        if (poi.getGame().equals("1")) {
+        //if (poi.getGame().equals("1")) {
             btn_game.setOnClickListener(
                     new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(POIDetailsActivity.this, GameActivity.class);
+                            intent.putExtra(GameActivity.PARAM_KEY_POI_TITLE, poi.getTitle());
                             startActivity(intent);
                         }
                     });
-        }
+        //}
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,11 +181,11 @@ public class POIDetailsActivity extends Activity {
         } */
 
         // GAME
-        if (poi.getGame().equals("1")) {
+        //if (poi.getGame().equals("1")) {
             btn_game.setImageResource(R.drawable.icono_juer_deactif);
-        } else {
+        /*} else {
             btn_game.setImageResource(R.drawable.icono_juer_inactif);
-        }
+        }*/
 
     }
 

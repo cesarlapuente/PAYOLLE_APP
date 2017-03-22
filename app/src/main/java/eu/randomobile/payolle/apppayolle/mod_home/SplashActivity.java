@@ -53,7 +53,7 @@ public class SplashActivity extends Activity {
     private Route routeItem ;
     private Poi poiItem  ;
 
-    private static final int SPLASH_TIME = 1 * 2000; // seconds
+    private static final int SPLASH_TIME = 1 * 2000; // seconds //TODO change for full download
     private static boolean splashActivado = true;
 
     // Coordenadas GPS de Fuerteventura

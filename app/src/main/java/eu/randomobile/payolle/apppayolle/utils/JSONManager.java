@@ -5,9 +5,9 @@ import org.json.JSONObject;
 public abstract class JSONManager {
 	
 	/**
-	 * Devuelve el valor de un parámetro del JSON.
+	 * Devuelve el valor de un parametro del JSON.
 	 * @param json JSON a parsear.
-	 * @param parametro Parámetro a recuperar.
+	 * @param parametro Parametro a recuperar.
 	 * @return
 	 */
 	public static String getString(final JSONObject json, final String parametro) {
