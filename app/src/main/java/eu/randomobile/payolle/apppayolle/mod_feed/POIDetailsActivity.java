@@ -53,7 +53,7 @@ public class POIDetailsActivity extends Activity {
                 Log.d("PierreDebug", "Poi source : " + poiLog2 + "      Poi cible : " + poiLog1);
                 if (poiLog1.equals(poiLog2)) {
                     this.poi = poi;
-                    Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame());
+                    Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame()+ "     ID " + poi.getNid());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
 
                 }

@@ -22,6 +22,7 @@ import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
 public class DecouverteRoutesListActivity extends Activity {
@@ -51,7 +52,10 @@ public class DecouverteRoutesListActivity extends Activity {
         arrayRoutes = app.getRoutesListDE();
         listRoutesAdapter = new ListRoutesAdapter(this, arrayRoutes);
         mListView.setAdapter(listRoutesAdapter);
-
+        final ArrayList<Poi> alPoi = app.getPoisList();
+        for(Poi poi : alPoi){
+            Log.d("Affichage PoiList : ", "  titre " + poi.getTitle() + "      lat " + poi.getCoordinates().getLatitude());
+        }
         capturarControles();
         escucharEventos();
 

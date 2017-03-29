@@ -167,11 +167,6 @@
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".mod_feed.RAActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-
-        <activity
             android:name=".mod_feed.LireActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />

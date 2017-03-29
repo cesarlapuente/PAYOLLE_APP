@@ -22,7 +22,6 @@ import eu.randomobile.payolle.apppayolle.mod_global.data_access.DBHandler;
 import eu.randomobile.payolle.apppayolle.mod_global.environment.Drupal7RESTClient;
 import eu.randomobile.payolle.apppayolle.mod_global.environment.Drupal7Security;
 import eu.randomobile.payolle.apppayolle.mod_global.environment.ExternalStorage;
-import eu.randomobile.payolle.apppayolle.mod_global.model.Especie;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_offline.Offline;
@@ -57,8 +56,6 @@ public class MainApp extends Application {
     public String COOKIE_KEY_COMUNIDAD_AUTONOMA_USUARIO_LOGUEADO = "isoCCAAUsuarioLogueado";
     public String COOKIE_KEY_PAIS_USUARIO_LOGUEADO = "isoPaisUsuarioLogueado";
 
-    public String KEY_ESPECIES_NID="especie_nid";
-    public String KEY_ESPECIES_ESPACIOS_STATE = "0";
 
     private ArrayList<Route> routesList;
     private ArrayList<Route> routesList_CO;
@@ -69,21 +66,9 @@ public class MainApp extends Application {
     public ArrayList<FeedInfo> listInfo_LI = new ArrayList<>();
 
     private ArrayList<Poi> poisList;
-    private ArrayList<Especie> especies;
-    private ArrayList<Especie> especiesInRoute;
-    private int poisOfEspecie[];
-    private int especiesListaEspacios[];
     private int espaciosRuta[];
     private int filtroCategoriasPOIs[];
-    private String id_especie_ficha;
 
-    public String getId_especie_ficha() {
-        return id_especie_ficha;
-    }
-
-    public void setId_especie_ficha(String id_especie_ficha) {
-        this.id_especie_ficha = id_especie_ficha;
-    }
 
     public ArrayList<Route> getRoutesListCO() {
         return routesList_CO;
@@ -119,14 +104,6 @@ public class MainApp extends Application {
         return poisList;
     }
 
-    public int[] getPoisOfEspecie() {
-        return poisOfEspecie;
-    }
-
-    public void setPoisOfEspecie(int[] poisOfEspecie) {
-        this.poisOfEspecie = poisOfEspecie;
-    }
-
     public void setPoisList(ArrayList<Poi> poisList) {
         this.poisList = poisList;
     }
@@ -151,31 +128,7 @@ public class MainApp extends Application {
         this.espaciosRuta = espaciosRutaN;
     }
 
-    public int[] getEspeciesListaEspacios() {
-        return especiesListaEspacios;
-    }
 
-    public void setEspeciesListaEspacios(int[] especiesListaEspacios) {
-        this.especiesListaEspacios = especiesListaEspacios;
-    }
-
-    public void setEspecies(ArrayList<Especie> especies) {
-        this.especies = especies;
-    }
-
-    public ArrayList<Especie> getEspecies() {
-
-        return especies;
-    }
-
-    public void setEspeciesInRoute(ArrayList<Especie> especiesInRoute) {
-        this.especiesInRoute = especiesInRoute;
-    }
-
-    public ArrayList<Especie> getEspeciesInRoute() {
-
-        return especiesInRoute;
-    }
 
     public Boolean getSuccessByRoute(String route){
         return dBHandler.getSuccessByRoute(route);

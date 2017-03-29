@@ -120,7 +120,7 @@ public class SplashActivity extends Activity {
             feedInfo();
             updateLocalDatabase_Routes();
 
-        } else {
+        } else { //TODO delete next line
             try {
                 app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
                 //app.setRoutesList(app.getDBHandler().getRouteList());
@@ -129,12 +129,11 @@ public class SplashActivity extends Activity {
                 Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas", Toast.LENGTH_LONG).show();
             }
 
-            // app.setPOIsList(app.getDBHandler().getPOIsList());
+            app.setPoisList(app.getDBHandler().getPoiList());
             try {
                 app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));
-                app.setPoisList(app.getDBHandler().getPoiList());
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las especies", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas decouverte", Toast.LENGTH_LONG).show();
             }
 
             loadedComponents = 4;
@@ -946,11 +945,9 @@ public class SplashActivity extends Activity {
                 null // Texto a buscar
         );
 
-        app.setEspecies(app.getDBHandler().getEspeciesList());
+        progressBar.incrementProgressBy(50);
 
-        progressBar.incrementProgressBy(25);
-
-        updateLocalDatabase_Especies();
+        loadMainActivity();
     }
 
     private void cargarListaPoisOrdenadosDistancia(final Application application, double lat, double lon, int radio, int num, int pag, String catTid, String searchTxt) {
@@ -1127,59 +1124,6 @@ public class SplashActivity extends Activity {
 
         return listaPois;
     }
-
-    //
-
-    private void updateLocalDatabase_Especies() {
-//        if (app.getNetStatus() != 0) {
-//            AsyncHttpClient client_especies = new AsyncHttpClient();
-//            client_especies.get(SplashActivity.this, "http://sitedepayolle.randomobile.eu/api/routedata/route/retrieve.json", new AsyncHttpResponseHandler() {
-//                @Override
-//                public void onSuccess(String s) {
-//                    super.onSuccess(s);
-//
-//                    Gson gson = new Gson();
-//                    Especie[] especiesArray = gson.fromJson(s, Especie[].class);
-//
-//                    ArrayList<Especie> especies = new ArrayList<Especie>(Arrays.asList(especiesArray));
-//
-//                    for (Especie especie : especies) {
-//                        Log.d("updateLocalDatabase():", " Especie Nid: " + especie.getNid());
-//                        Log.d("updateLocalDatabase():", " Especie Title: " + especie.getTitle());
-//                        Log.d("updateLocalDatabase():", " Especie Description: " + especie.getDescription());
-//                        Log.d("updateLocalDatabase():", " Especie Body: " + especie.getBody());
-//
-//                        app.getDBHandler().addOrReplaceEspecie(especie);
-//                    }
-//
-//                    progressBar.incrementProgressBy(25);
-//                    app.setEspecies(app.getDBHandler().getEspeciesList());
-//                    loadedComponents++;
-//                    loadMainActivity();
-//                }
-//
-//                @Override
-//                public void onFailure(Throwable throwable, String s) {
-//                    super.onFailure(throwable, s);
-//                }
-//
-//                @Override
-//                public void onFinish() {
-//                    super.onFinish();
-//                }
-//            });
-//        }
-//
-//        app.setEspecies(app.getDBHandler().getEspeciesList());
-
-        progressBar.incrementProgressBy(25);
-
-        updateLocalDatabase_Pages();
-
-//        loadMainActivity();
-    }
-
-    //
 
     private void updateLocalDatabase_Pages() {
         try {

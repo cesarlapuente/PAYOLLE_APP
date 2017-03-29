@@ -59,13 +59,7 @@ public class BasicArchitectActivity extends Activity {
 		/* pressing volume up/down should cause music volume changes */
         this.setVolumeControlStream( AudioManager.STREAM_MUSIC );
 
-		/* set samples content view */
-        this.setContentView( R.layout.mod_ra__layout_ra );
-
         this.setTitle(this.getActivityTitle());
-
-		/* set AR-view for life-cycle notifications etc. */
-        this.architectView = (ArchitectView)this.findViewById( R.id.architectView );
 
 		/* pass SDK key if you have one, this one is only valid for this package identifier and must not be used somewhere else */
 //		final ArchitectConfig config = new ArchitectConfig( MainApp.WIKITUDE_SDK_KEY );

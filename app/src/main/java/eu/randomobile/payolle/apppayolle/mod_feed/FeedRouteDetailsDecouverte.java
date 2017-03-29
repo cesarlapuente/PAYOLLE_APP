@@ -274,6 +274,8 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 // if Poi not null
                 if (alPoi != null) {
                     for (final ResourcePoi poi : alPoi) {
+                        Log.d("Affichage PoiList : ", "  titre " + poi.getTitle() + "      lat " + poi.getLatitude() + "     ID " + poi.getNid());
+
                         final String poiNid = String.valueOf(poi.getNid());
                         // create poiPosition Lat/Lng
                         // Icon icon = determinateCategoryPoi(poi);

@@ -154,11 +154,6 @@
   		<area shape="poly" coords="541,82,606,160,738,74,726,24,642,18,591,55" id="@+id/area_ip4" name = "PLUS"/>
   		<area shape="poly" coords="607,160,739,75,743,246,682,216,647,192" id="@+id/area_ip5" name = "HOME"/>
    </map>
-	<map name="lista_item_especie">
-		<area shape="poly" coords="0,0,83,1,81,29,77,59,73,94,1,99" id="@+id/area_ip1" name = "BACK"/>
-		<area shape="poly" coords="541,82,606,160,738,74,726,24,642,18,591,55" id="@+id/area_ip4" name = "PLUS"/>
-		<area shape="poly" coords="607,160,739,75,743,246,682,216,647,192" id="@+id/area_ip5" name = "HOME"/>
-	</map>
 	<map name="mapa_lista_videos">
        	<area shape="poly" coords="0,0,0,98,81,92,89,0" id="@+id/area_im1" name = "BACK"/>
   		<area shape="poly" coords="623,0,612,69,749,174,750,0" id="@+id/area_im2" name = "HOME"/>
