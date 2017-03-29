@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class HomeActivity extends Activity {
     //ImageButton btn_badges;
     //ImageButton btn_info;
     //ImageButton btn_read;
+    private MainApp app; //TODO delete after synchro fix
     ImageButton btn_settings;
     FrameLayout btn_orientation;
     FrameLayout btn_discover;
@@ -27,7 +29,7 @@ public class HomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        this.app = (MainApp) getApplication();
         //btn_general_map = (ImageButton) findViewById(R.id.btn_footer_poi);
         //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
         //btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
@@ -77,8 +79,12 @@ public class HomeActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(HomeActivity.this, RoutesListActivity.class);
-                        startActivity(intent);
+                        if(app.getRoutesListCO().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Application is loading ...", Toast.LENGTH_LONG).show();
+                        } else {
+                            Intent intent = new Intent(HomeActivity.this, RoutesListActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 });
 
@@ -86,8 +92,12 @@ public class HomeActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(HomeActivity.this, DecouverteRoutesListActivity.class);
-                        startActivity(intent);
+                        if(app.getRoutesListDE().isEmpty() || app.getPoisList().isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Application is loading ...", Toast.LENGTH_LONG).show();
+                        } else {
+                            Intent intent = new Intent(HomeActivity.this, DecouverteRoutesListActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 });
 

@@ -46,7 +46,7 @@ public class RoutesListActivity extends Activity {
         mListView = (ListView) findViewById(R.id.routes_list_listview);
 
         arrayRoutes = app.getRoutesListCO();
-        Log.d("JmLog","size of RouteList CO : "+ arrayRoutes.size());
+        //Log.d("JmLog","size of RouteList CO : "+ arrayRoutes.size());
         listRoutesAdapter = new ListRoutesAdapter(this, arrayRoutes);
         mListView.setAdapter(listRoutesAdapter);
 

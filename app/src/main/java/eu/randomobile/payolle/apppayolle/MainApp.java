@@ -257,6 +257,13 @@ public class MainApp extends Application {
 
         initImageLoader();
 
+        /*For debug, need to be initialized*/ //TODO remote that part
+        routesList = new ArrayList<Route>();
+        routesList_CO = new ArrayList<Route>();
+        routesList_DE = new ArrayList<Route>();
+        poisList = new ArrayList<Poi>();
+
+
         dBHandler = new DBHandler(getApplicationContext(), null, null, 1, MainApp.this);
         Log.d("Milog","Fin On Create MAINAPP");
     }

@@ -118,51 +118,58 @@ public class SplashActivity extends Activity {
         if (app.getNetStatus() != 0) {
 
             feedInfo();
-            updateLocalDatabase_Routes();
 
-        } else { //TODO delete next line
-            try {
-                app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
-                //app.setRoutesList(app.getDBHandler().getRouteList());
 
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas", Toast.LENGTH_LONG).show();
-            }
+        } else {
 
-            app.setPoisList(app.getDBHandler().getPoiList());
-            try {
-                app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas decouverte", Toast.LENGTH_LONG).show();
-            }
+            updateDataOffline();
 
-            loadedComponents = 4;
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
-
-            builder.setTitle(R.string.txt_sin_conexion);
-            builder.setMessage(R.string.txt_caracteristicas_no_disponibles);
-            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    loadMainActivity();
-                }
-            });
-            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    loadMainActivity();
-                }
-            });
-            builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialog) {
-                    loadMainActivity();
-                }
-            });
-
-            builder.show();
         }
+    }
+
+    public void updateDataOffline(){ //TODO in a new thread
+
+        try {
+            app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
+            //app.setRoutesList(app.getDBHandler().getRouteList());
+
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas", Toast.LENGTH_LONG).show();
+        }
+
+        app.setPoisList(app.getDBHandler().getPoiList());
+        try {
+            app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas decouverte", Toast.LENGTH_LONG).show();
+        }
+
+        loadedComponents = 4;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+
+        builder.setTitle(R.string.txt_sin_conexion);
+        builder.setMessage(R.string.txt_caracteristicas_no_disponibles);
+        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                loadMainActivity();
+            }
+        });
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                loadMainActivity();
+            }
+        });
+        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                loadMainActivity();
+            }
+        });
+
+        builder.show();
     }
 
     public void feedInfo(){
@@ -218,6 +225,7 @@ public class SplashActivity extends Activity {
                         app.setInfoListCO(alListeCO);
                         app.setInfoListDE(alListeDE);
                         app.setInfoListLI(alListeLI);
+                        updateLocalDatabase_Routes();
                     }
                 },
                 null);
@@ -1187,7 +1195,6 @@ public class SplashActivity extends Activity {
         // if (loadedComponents > 3) {
         Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
         startActivity(intent);
-
         SplashActivity.this.finish();
         //}
     }

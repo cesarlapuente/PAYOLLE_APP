@@ -99,10 +99,11 @@
                     android:src="@drawable/boton_galerie_green"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"/>
+                <!--android:text="@string/mod_discover__gallery"-->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/mod_discover__gallery"
+                    android:text="Galerie (non disponible)"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:paddingStart="10dp"
@@ -169,23 +170,6 @@
                 android:layout_weight="2"
                 android:src="@drawable/icono_juer_deactif"
                 android:id="@+id/btn_footer_game"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:background="@color/transparent"/>
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:src="@drawable/separacion_menu"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-            />
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_weight="2"
-                android:src="@drawable/icono_info_deactif"
-                android:id="@+id/btn_footer_info"
                 android:scaleType="centerInside"
                 android:adjustViewBounds="true"
                 android:background="@color/transparent"/>

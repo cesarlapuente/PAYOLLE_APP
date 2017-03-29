@@ -31,7 +31,7 @@ public class POIDetailsActivity extends Activity {
     ImageButton btn_return;
     private ImageButton btn_read;
     private ImageButton btn_game;
-    private ImageButton btn_info;
+    //private ImageButton btn_info;
     //private ImageButton btn_badges;
 
     String paramTitle;
@@ -88,7 +88,7 @@ public class POIDetailsActivity extends Activity {
 
         btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
-        btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
+        //btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
         //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
     }
 
@@ -140,13 +140,13 @@ public class POIDetailsActivity extends Activity {
                         }
                     });
         //}
-        btn_info.setOnClickListener(new View.OnClickListener() {
+        /*btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(POIDetailsActivity.this, InfoDecouverteActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
         /*btn_badges.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

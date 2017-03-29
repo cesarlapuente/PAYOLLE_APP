@@ -305,7 +305,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
                             temp.setLatitude(marker.getPosition().getLatitude());
                             temp.setLongitude(marker.getPosition().getLongitude());
-                            if (mapboxMap.getMyLocation().distanceTo(temp) <= 20.0) {
+                            if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO on prod, change with <=20.0
                                 //Log.d("Debug", "marker lat / lon : " + marker.getPosition().getLatitude() + " / " + marker.getPosition().getLongitude());
                                 //Log.d("Debug", "MyLocation lat / lon : " + mapboxMap.getMyLocation().getLatitude() + " / " + mapboxMap.getMyLocation().getLongitude());
                                 //Log.d("Debug", "Difference : " + mapboxMap.getMyLocation().distanceTo(temp) + " m");
