@@ -75,7 +75,7 @@ public class Drupal7RESTClient {
 	
 	/* Llamada a services a trav�s de POST */
 	private void callPost(final AsyncHttpResponseHandler responseHandler, final String uri, final RequestParams parametros){
-		Log.d("JmLog","URL POST :"+uri+" parametros"+parametros);
+		Log.d("JmLog","URL POST :"+uri+"?="+parametros);
 		Log.d("Milog", "Entra en callPost");
 		final String sessid = this.getSessionID();
 
@@ -260,6 +260,7 @@ public class Drupal7RESTClient {
 	
 	public void customMethodCallPost(String serviceURLPart, AsyncHttpResponseHandler responseHandler, HashMap<String, String> params){
 		String uri = url + serviceURLPart;
+		Log.d("PierreLog", "PierreURL : "+ uri);
 		
 		RequestParams rm = new RequestParams();
 		

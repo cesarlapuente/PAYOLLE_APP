@@ -2,18 +2,22 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
 public class HomeActivity extends Activity {
     //ImageButton btn_general_map;

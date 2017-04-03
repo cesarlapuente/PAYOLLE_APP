@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -184,12 +185,17 @@ public class FeedRouteDetails extends Activity {
         txt_description_body.setText(Html.fromHtml(route.getBody()).toString().trim(), TextView.BufferType.SPANNABLE);
 
         // Image
-        if (route.getMainImage() != null) {
-            Log.d("MainImage", route.getMainImage());
-            BitmapManager.INSTANCE.loadBitmap(route.getMainImage(),
-                    main_image, 90, 90);
+        if(route.getMainImage()!=null){
+            main_image.setImageBitmap(route.getMainImage());
+            //app.storeMainImage(route);
         } else {
-            main_image.setImageResource(R.mipmap.ic_launcher);
+            if (route.getMainImageURL() != null) {
+                Log.d("MainImage", route.getMainImageURL());
+                BitmapManager.INSTANCE.loadBitmap(route.getMainImageURL(),
+                        main_image, 90, 90, route, app);
+            } else {
+                main_image.setImageResource(R.mipmap.ic_launcher);
+            }
         }
 
         // DIFFICULT PICTURE

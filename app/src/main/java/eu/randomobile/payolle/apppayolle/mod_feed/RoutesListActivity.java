@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -132,7 +133,7 @@ public class RoutesListActivity extends Activity {
                 intent.putExtra(FeedRouteDetails.PARAM_KEY_MAP_URL, routePulsado.getUrlMap());
                // intent.putExtra(RouteDetailActivity.PARAM_KEY_COLOR_ROUTE, Integer.toString(routePulsado.getColorForMap(ctxList)));
 
-              //  BitmapManager.INSTANCE.cache.remove(routePulsado.getMainImage());
+              //  BitmapManager.INSTANCE.cache.remove(routePulsado.getMainImageURL());
 
                 startActivity(intent);
             }
@@ -234,12 +235,17 @@ public class RoutesListActivity extends Activity {
             holder.routeItemTitle.setText(item.getTitle());
 
             // Image
-            if (item.getMainImage() != null) {
-                Log.d("MainImage", item.getMainImage());
-                BitmapManager.INSTANCE.loadBitmap(item.getMainImage(),
-                        holder.routeItemImage, 90, 90);
+            if(item.getMainImage()!=null){
+                holder.routeItemImage.setImageBitmap(item.getMainImage());
+                //app.storeMainImage(item);
             } else {
-                holder.routeItemImage.setImageResource(R.mipmap.ic_launcher);
+                if (item.getMainImageURL() != null) {
+                    Log.d("MainImage", item.getMainImageURL());
+                    BitmapManager.INSTANCE.loadBitmap(item.getMainImageURL(),
+                            holder.routeItemImage, 90, 90, item, app);
+                } else {
+                    holder.routeItemImage.setImageResource(R.mipmap.ic_launcher);
+                }
             }
 
             // Difficulty

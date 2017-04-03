@@ -2,6 +2,7 @@ package eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -19,11 +20,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.WeakHashMap;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.environment.DataConection;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
 public enum BitmapManager {
 	INSTANCE;
@@ -51,7 +55,7 @@ public enum BitmapManager {
 	}
 
 	public void queueJob(final String url, final ImageView imageView,
-			final int width, final int height) {
+			final int width, final int height, final Route route, final MainApp app) {
 		/* Create handler in UI thread. */
 		final Handler handler = new Handler() {
 			@Override
@@ -74,14 +78,59 @@ public enum BitmapManager {
 				Message message = Message.obtain();
 				message.obj = bmp;
 				Log.d(null, "Item downloaded: " + url);
+				route.setMainImage(bmp); //TODO AHAHAHAHHSHAHHSHHAHSHHAH
+				app.storeMainImage(route);
+				handler.sendMessage(message);
+			}
+		});
+	}
 
+	public void queueJob(final String url, final ImageView imageView,
+						 final int width, final int height) {
+		/* Create handler in UI thread. */
+		final Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				String tag = imageViews.get(imageView);
+				if (tag != null && tag.equals(url)) {
+					if (msg.obj != null) {
+						imageView.setImageBitmap((Bitmap) msg.obj);
+					} else {
+						imageView.setImageBitmap(placeholder);
+						Log.d(null, "fail " + url);
+					}
+				}
+			}
+		};
+
+		pool.submit(new Runnable() {
+			public void run() {
+				final Bitmap bmp = downloadBitmap(url, width, height);
+				Message message = Message.obtain();
+				message.obj = bmp;
+				Log.d(null, "Item downloaded: " + url);
 				handler.sendMessage(message);
 			}
 		});
 	}
 
 	public void loadBitmap(final String url, final ImageView imageView,
-			final int width, final int height) {
+			final int width, final int height, final Route route, final MainApp app) {
+		imageViews.put(imageView, url);
+		Bitmap bitmap = getBitmapFromCache(url);
+		// check in UI thread, so no concurrency issues
+		if (bitmap != null) {
+			Log.d(null, "Item loaded from cache: " + url);
+			imageView.setImageBitmap(bitmap);
+		} else {
+			Log.d("BitmapManager", "download");
+			imageView.setImageBitmap(placeholder);
+			queueJob(url, imageView, width, height, route, app);
+		}
+	}
+
+	public void loadBitmap(final String url, final ImageView imageView,
+						   final int width, final int height) {
 		imageViews.put(imageView, url);
 		Bitmap bitmap = getBitmapFromCache(url);
 		// check in UI thread, so no concurrency issues
@@ -127,11 +176,10 @@ public enum BitmapManager {
 //				bitmap = Bitmap.createScaledBitmap(bitmap, width, height, true);
 			}
 
-
-
-
 			bitmap = BitmapFactory.decodeStream( (InputStream) new URL(url).getContent());
 			cache.put(url, new SoftReference<Bitmap>(bitmap));
+
+
 			return bitmap;
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

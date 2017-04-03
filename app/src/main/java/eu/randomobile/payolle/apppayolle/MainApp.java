@@ -25,8 +25,6 @@ import eu.randomobile.payolle.apppayolle.mod_global.environment.ExternalStorage;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_offline.Offline;
-import eu.randomobile.payolle.apppayolle.mod_offline.OfflinePoi;
-import eu.randomobile.payolle.apppayolle.mod_offline.OfflineRoute;
 
 
 public class MainApp extends Application {
@@ -344,8 +342,8 @@ public class MainApp extends Application {
 //		Offline.fillRoutesTable(this);
 //		OfflineRoute.cargaListaRutasOffline (this);
 //		OfflineRoute.fillRouteItem(this, "962");
-        OfflineRoute.fillRoutesTable(this);
-OfflinePoi.fillPoisTable(this);
+ //       OfflineRoute.fillRoutesTable(this);
+//OfflinePoi.fillPoisTable(this);
 //		jsonString = Offline.extractJsonList (this, this.DRUPAL_TYPE_POI);
 //		jsonString = Offline.extractJsonList (this, this.DRUPAL_TYPE_ROUTE);
 //		jsonString = "";
@@ -419,6 +417,8 @@ OfflinePoi.fillPoisTable(this);
     }
 
 
-
+    public void storeMainImage(Route route){
+        dBHandler.storeMainImage(route);
+    }
 
 }

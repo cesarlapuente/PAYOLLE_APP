@@ -2,8 +2,10 @@ package eu.randomobile.payolle.apppayolle.mod_global.model;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -15,6 +17,7 @@ import java.util.HashMap;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.RouteCategoryTerm;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.RouteDifficultyTerm;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.TagTerm;
@@ -32,7 +35,8 @@ public class Route {
     private double routeLengthMeters;
     private double estimatedTime;
     private double slope;
-    private String mainImage;
+    private String mainImageURL;
+    private Bitmap mainImage;
     private String track;
     private String url_map;
     private String local_directory_map;
@@ -270,9 +274,9 @@ public class Route {
                             }
 
                             if (image != null && (image.equals("") || image.equals("null"))) {
-                                item.setMainImage(null);
+                                item.setMainImageURL(null);
                             } else {
-                                item.setMainImage(image);
+                                item.setMainImageURL(image);
                             }
 
                             if (!recDic.getString("difficulty").equals("null"))
@@ -593,6 +597,10 @@ public class Route {
         this.circular = circular;
     }
 
+    public Bitmap getMainImage() {return mainImage;}
+
+    public void setMainImage(Bitmap mainImage) {this.mainImage = mainImage;}
+
     public double getEstimatedTime() {
         return estimatedTime;
     }
@@ -689,12 +697,12 @@ public class Route {
         this.routeLengthMeters = routeLenghtMeters;
     }
 
-    public String getMainImage() {
-        return mainImage;
+    public String getMainImageURL() {
+        return mainImageURL;
     }
 
-    public void setMainImage(String mainImage) {
-        this.mainImage = mainImage;
+    public void setMainImageURL(String mainImageURL) {
+        this.mainImageURL = mainImageURL;
     }
 
     public Vote getVote() {

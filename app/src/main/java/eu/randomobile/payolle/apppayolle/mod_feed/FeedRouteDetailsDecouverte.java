@@ -9,7 +9,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,7 +21,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.MapboxAccountManager;
@@ -40,14 +38,12 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.WKTUtil;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
-import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
@@ -188,12 +184,17 @@ public class FeedRouteDetailsDecouverte extends Activity {
         txt_description_body.setText(Html.fromHtml(route.getBody()).toString().trim(), TextView.BufferType.SPANNABLE);
 
         // Image
-        if (route.getMainImage() != null) {
-            Log.d("MainImage", route.getMainImage());
-            BitmapManager.INSTANCE.loadBitmap(route.getMainImage(),
-                    main_image, 90, 90);
+        if(route.getMainImage()!=null){
+            main_image.setImageBitmap(route.getMainImage());
+            //app.storeMainImage(route);
         } else {
-            main_image.setImageResource(R.mipmap.ic_launcher);
+            if (route.getMainImageURL() != null) {
+                Log.d("MainImage", route.getMainImageURL());
+                BitmapManager.INSTANCE.loadBitmap(route.getMainImageURL(),
+                        main_image, 90, 90, route, app);
+            } else {
+                main_image.setImageResource(R.mipmap.ic_launcher);
+            }
         }
 
         // DIFFICULT PICTURE

@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
-import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
@@ -140,7 +140,7 @@ public class DecouverteRoutesListActivity extends Activity {
                 intent.putExtra(FeedRouteDetailsDecouverte.PARAM_KEY_MAP_URL, routePulsado.getUrlMap());
                // intent.putExtra(RouteDetailActivity.PARAM_KEY_COLOR_ROUTE, Integer.toString(routePulsado.getColorForMap(ctxList)));
 
-              //  BitmapManager.INSTANCE.cache.remove(routePulsado.getMainImage());
+              //  BitmapManager.INSTANCE.cache.remove(routePulsado.getMainImageURL());
 
                 startActivity(intent);
             }
@@ -252,12 +252,17 @@ public class DecouverteRoutesListActivity extends Activity {
             //holder.routeItemTitle.setSelected(true); //Bug with auto scroll
 
             // Image
-            if (item.getMainImage() != null) {
-                Log.d("MainImage", item.getMainImage());
-                BitmapManager.INSTANCE.loadBitmap(item.getMainImage(),
-                        holder.routeItemImage, 90, 90);
+            if(item.getMainImage()!=null){
+                holder.routeItemImage.setImageBitmap(item.getMainImage());
+                //app.storeMainImage(item);
             } else {
-                holder.routeItemImage.setImageResource(R.mipmap.ic_launcher);
+                if (item.getMainImageURL() != null) {
+                    Log.d("MainImage", item.getMainImageURL());
+                    BitmapManager.INSTANCE.loadBitmap(item.getMainImageURL(),
+                            holder.routeItemImage, 90, 90, item, app);
+                } else {
+                    holder.routeItemImage.setImageResource(R.mipmap.ic_launcher);
+                }
             }
 
             // Difficulty

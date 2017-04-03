@@ -7,10 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_feed.FeedInfo;
 import eu.randomobile.payolle.apppayolle.mod_feed.HomeActivity;
 import eu.randomobile.payolle.apppayolle.mod_global.environment.DataConection;
+import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.GeoPoint;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Page;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
@@ -129,6 +132,7 @@ public class SplashActivity extends Activity {
 
     public void updateDataOffline(){ //TODO in a new thread
 
+        app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
         try {
             app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
             //app.setRoutesList(app.getDBHandler().getRouteList());
@@ -523,9 +527,9 @@ public class SplashActivity extends Activity {
                             }
 
                             if (image != null && (image.equals("") || image.equals("null"))) {
-                                item.setMainImage(null);
+                                item.setMainImageURL(null);
                             } else {
-                                item.setMainImage(image);
+                                item.setMainImageURL(image);
                             }
 
                             if (!recDic.getString("difficulty").equals("null"))
@@ -567,7 +571,7 @@ public class SplashActivity extends Activity {
                                         poi.setLatitude(latitudePoi);
                                         poi.setLongitude(longitudePoi);
                                         poi.setCode1(poi_code1);
-                                        //poi.setMainImage(poi_image);
+                                        //poi.setMainImageURL(poi_image);
 
                                         /*************
 
@@ -1026,6 +1030,7 @@ public class SplashActivity extends Activity {
 
         try {
             JSONArray arrayRes = new JSONArray(response);
+            Log.d("qqq", "qqq : "+ response);
             if (arrayRes != null) {
                 if (arrayRes.length() > 0) {
                     listaPois = new ArrayList<Poi>();

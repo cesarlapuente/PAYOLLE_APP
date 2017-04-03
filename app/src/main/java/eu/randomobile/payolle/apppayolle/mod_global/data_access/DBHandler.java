@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.esri.core.geodatabase.Geopackage;
-
 import java.text.Normalizer;
 import java.util.ArrayList;
 
@@ -20,6 +18,7 @@ import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.RouteCategoryTerm;
+import eu.randomobile.payolle.apppayolle.mod_imgmapping.DbBitmapUtility;
 
 public class DBHandler extends SQLiteOpenHelper {
     MainApp app;
@@ -171,6 +170,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_ROUTE_CATEGORY_NAME, route.getCategory().getName());
         values.put(COLUMN_ROUTE_BODY, route.getBody());
 
+
         // values.put(COLUMN_ROUTE_DIFFICULTY, route.getDifficulty().getTid());
 
         values.put(COLUMN_ROUTE_DIFFICULTY_TID, route.getDifficulty_tid());
@@ -178,7 +178,7 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_ROUTE_LENGTH, route.getRouteLengthMeters());
         values.put(COLUMN_ROUTE_TIME, route.getEstimatedTime());
         values.put(COLUMN_ROUTE_SLOPE, route.getSlope());
-        values.put(COLUMN_ROUTE_MAIN_PICTURE, route.getMainImage());
+        //values.put(COLUMN_ROUTE_MAIN_PICTURE, DbBitmapUtility.getBytes(route.getMainImage()));
         values.put(COLUMN_ROUTE_TRACK, route.getTrack());
         values.put(COLUMN_ROUTE_MAP_URL, route.getUrlMap());
         values.put(COLUMN_ROUTE_MAP_DIRECTORY, route.getLocalDirectoryMap());
@@ -196,6 +196,17 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.close();
     }
+
+    public void storeMainImage(Route route) {
+        String id = route.getNid();
+        SQLiteDatabase db = getWritableDatabase();
+
+        String selectQuery = "UPDATE " + TABLE_ROUTES + " SET " + COLUMN_ROUTE_MAIN_PICTURE + " = \'" + DbBitmapUtility.SaveImage(route.getMainImage(),id) +
+                "\' WHERE " + COLUMN_ROUTE_NID + " = " + id;
+        db.execSQL(selectQuery);
+        db.close();
+    }
+
     public void addOrReplacePoi(Poi poi) {
         ContentValues values = new ContentValues();
 
@@ -388,7 +399,7 @@ public class DBHandler extends SQLiteOpenHelper {
 //            item.setRouteLengthMeters(Double.valueOf(c.getString(iLenght)));
 //            item.setEstimatedTime(Double.valueOf(c.getString(iTime)));
 //            item.setSlope(Double.valueOf(c.getString(iSlope)));
-//            item.setMainImage(c.getString(iMain_Picture));
+//            item.setMainImageURL(c.getString(iMain_Picture));
 //            item.setTrack(c.getString(iTrack));
 //
 //            item.setUrlMap(c.getString(iMap_URL));
@@ -558,7 +569,8 @@ public class DBHandler extends SQLiteOpenHelper {
             item.setRouteLengthMeters(Double.valueOf(c.getString(iLenght)));
             item.setEstimatedTime(Double.valueOf(c.getString(iTime)));
             item.setSlope(Double.valueOf(c.getString(iSlope)));
-            item.setMainImage(c.getString(iMain_Picture));
+            if(c.getString(iMain_Picture) != null)
+                item.setMainImage(DbBitmapUtility.getImage(c.getString(iMain_Picture)));
             item.setTrack(c.getString(iTrack));
 
             item.setUrlMap(c.getString(iMap_URL));
@@ -763,7 +775,7 @@ public class DBHandler extends SQLiteOpenHelper {
         String selectQuery = "SELECT " + COLUMN_ROUTE_NID +
                 " FROM " + TABLE_ROUTES +
                 " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
-        Cursor c = db.rawQuery(selectQuery, null);
+        Cursor c = db.rawQuery(selectQuery, null); //Find ID
         c.moveToFirst();
 
         selectQuery = "INSERT INTO " + TABLE_BADGES +" ("+ COLUMN_BADGE_ROUTE_ID + ", " + COLUMN_BADGE_SUCCESS + ")" +
@@ -772,11 +784,6 @@ public class DBHandler extends SQLiteOpenHelper {
                 "SELECT 1 FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ");";
         db.execSQL(selectQuery);
 
-        selectQuery = "SELECT * FROM " + TABLE_BADGES;
-        c = db.rawQuery(selectQuery, null);
-
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-        }
         db.close();
     }
 
