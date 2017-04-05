@@ -167,8 +167,9 @@ public class POIDetailsActivity extends Activity {
         txt_description_body.setText(Html.fromHtml(poi.getBody()).toString().trim(), TextView.BufferType.SPANNABLE);
 
         // Image
+        Log.d("MainImagePoi", ""+poi.getMainImage());
         if (poi.getMainImage() != null) {
-            Log.d("MainImage", poi.getMainImage());
+            Log.d("MainImagePoi2", poi.getMainImage());
             BitmapManager.INSTANCE.loadBitmap(poi.getMainImage(),
                     main_image, 90, 90);
         }

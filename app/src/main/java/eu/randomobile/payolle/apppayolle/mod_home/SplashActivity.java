@@ -997,7 +997,7 @@ public class SplashActivity extends Activity {
                         }
 
                         if (listaPois != null) {
-                            // app.setPoisList(listaPois);
+                            app.setPoisList(listaPois);
 
                             for (Poi poi : listaPois) {
                                 //Log.d("ForEach poi sais:", " POI ID: " + poi.getNid());
@@ -1008,7 +1008,7 @@ public class SplashActivity extends Activity {
                             }
 
                             progressBar.incrementProgressBy(25);
-                            app.setPoisList(app.getDBHandler().getPoiList());
+                            //app.setPoisList(app.getDBHandler().getPoiList()); //TODO fix image stockage in database, and don't to that, because it require read in database, witch is longer than just app.setPoisList(listaPois);
                             loadedComponents++;
 
                         } else {
@@ -1030,7 +1030,6 @@ public class SplashActivity extends Activity {
 
         try {
             JSONArray arrayRes = new JSONArray(response);
-            Log.d("qqq", "qqq : "+ response);
             if (arrayRes != null) {
                 if (arrayRes.length() > 0) {
                     listaPois = new ArrayList<Poi>();
@@ -1103,8 +1102,9 @@ public class SplashActivity extends Activity {
                                 item.setVote(vote);
                             }
 
-                            if (image != null && (image.equals("") || image.equals("null"))) {
+                            if (image == null || image.equals("") || image.equals("null")) {
                                 item.setMainImage(null);
+                                Log.d("PierreDebug", "Poi title : "+title+"     image : "+image);
 
                             } else {
                                 item.setMainImage(image);
