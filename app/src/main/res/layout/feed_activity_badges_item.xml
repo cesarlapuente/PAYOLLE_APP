@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_container_badge"
+    android:layout_width="match_parent"
+    android:layout_height="136dp"
+    android:background="@drawable/fondo_lista_ruta"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:padding="10dp"
+    android:orientation="horizontal">
+
+    <TableLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="Parcours"
+                android:id="@+id/badge_item_title"
+                android:maxLines="1"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/badge_item_novice"
+                android:src="@drawable/badges_debutant_deactif3x" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/badge_item_amater"
+                android:src="@drawable/badges_amateur_deactif3x" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/badge_item_pro"
+                android:src="@drawable/badges_pro_deactif3x" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</LinearLayout>

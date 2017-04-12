@@ -58,8 +58,14 @@
                 android:background="@drawable/boton_accueil" />
         </LinearLayout>
 
-
-        <TableLayout
+        <ListView
+            android:id="@+id/badges_list_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
+            android:scrollbars="none"
+            ></ListView>
+        <!--<TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -68,23 +74,92 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <ImageView
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge1"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
 
-                <ImageView
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_actif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_actif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_actif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge2"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_deactif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
             </TableRow>
 
             <TableRow
@@ -92,23 +167,92 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <ImageView
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge3"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
 
-                <ImageView
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_deactif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge4"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_deactif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
             </TableRow>
 
             <TableRow
@@ -116,26 +260,95 @@
                 android:layout_height="0dp"
                 android:layout_weight="1">
 
-                <ImageView
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge5"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
 
-                <ImageView
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_deactif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
+                <TableLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:id="@+id/badge6"
-                    android:src="@drawable/badges_competition_deactif" />
+                    android:padding="5dp"
+                    android:background="@drawable/layout_border">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_debutant_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_amateur_deactif3x" />
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@drawable/badges_pro_deactif3x" />
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.1">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:text="Parcours"
+                            android:textColor="#FFFFFF"
+                            android:textSize="12sp"/>
+                    </TableRow>
+                </TableLayout>
             </TableRow>
 
-        </TableLayout>
+        </TableLayout>-->
 
 
     </LinearLayout>

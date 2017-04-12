@@ -128,12 +128,12 @@ public class MainApp extends Application {
 
 
 
-    public Boolean getSuccessByRoute(String route){
+    public int getSuccessByRoute(String route){
         return dBHandler.getSuccessByRoute(route);
     }
 
-    public void setSuccessByRoute(String route){
-        dBHandler.setSuccessByRoute(route);
+    public void setSuccessByRoute(String route, int success){
+        dBHandler.setSuccessByRoute(route, success);
     }
 
     // Nombres de dominios y urls de servicios

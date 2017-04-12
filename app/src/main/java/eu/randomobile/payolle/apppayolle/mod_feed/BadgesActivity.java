@@ -1,17 +1,25 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
 
@@ -19,13 +27,9 @@ public class BadgesActivity extends Activity {
     private MainApp app;
     ImageButton btn_home;
     ImageButton btn_return;
+    private ListView mListView;
     private ArrayList<Route> arrayRoutes = null;
-    ImageView badge1;
-    ImageView badge2;
-    ImageView badge3;
-    ImageView badge4;
-    ImageView badge5;
-    ImageView badge6;
+    private BadgesActivity.ListBadgesAdapter listBadgesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,38 +39,17 @@ public class BadgesActivity extends Activity {
         this.app = (MainApp) getApplication();
 
         arrayRoutes = app.getRoutesListCO();
+        mListView = (ListView) findViewById(R.id.badges_list_listview);
+        listBadgesAdapter = new BadgesActivity.ListBadgesAdapter(this, arrayRoutes);
+        mListView.setAdapter(listBadgesAdapter);
 
-
-        //app.getSuccessByRoute("toto"); // TODO change by route name in route loop to check associated badges
         capturarControles();
-
-
-        if(arrayRoutes.size()>5) { //Normalement c'est bon si on ne change pas le nombre de routes CO
-            Log.d("PierreLog : Badge", "");
-            if(app.getSuccessByRoute(arrayRoutes.get(0).getTitle())){
-                badge1.setImageResource(R.drawable.badges_competition_actif);
-                Log.d("PierreLog : Badge1", "");
-            }
-            if(app.getSuccessByRoute(arrayRoutes.get(1).getTitle()))badge2.setImageResource(R.drawable.badges_competition_actif);
-            if(app.getSuccessByRoute(arrayRoutes.get(2).getTitle()))badge3.setImageResource(R.drawable.badges_competition_actif);
-            if(app.getSuccessByRoute(arrayRoutes.get(3).getTitle()))badge4.setImageResource(R.drawable.badges_competition_actif);
-            if(app.getSuccessByRoute(arrayRoutes.get(4).getTitle()))badge5.setImageResource(R.drawable.badges_competition_actif);
-            if(app.getSuccessByRoute(arrayRoutes.get(5).getTitle()))badge6.setImageResource(R.drawable.badges_competition_actif);
-        }
-
-
         escucharEventos();
     }
 
     private void capturarControles() {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
-        badge1 = (ImageView) findViewById(R.id.badge1);
-        badge2 = (ImageView) findViewById(R.id.badge2);
-        badge3 = (ImageView) findViewById(R.id.badge3);
-        badge4 = (ImageView) findViewById(R.id.badge4);
-        badge5 = (ImageView) findViewById(R.id.badge5);
-        badge6 = (ImageView) findViewById(R.id.badge6);
     }
 
     private void escucharEventos() {
@@ -88,5 +71,109 @@ public class BadgesActivity extends Activity {
                     }
                 });
 
+    }
+
+    public class ListBadgesAdapter extends BaseAdapter {
+        private LayoutInflater mInflater;
+        private Context ctx;
+        private ArrayList<Route> listaItems;
+
+        public class ViewHolder {
+
+            ImageView badgeProItemImage;
+            ImageView badgeAmaterItemImage;
+            ImageView badgeNoviceItemImage;
+            TextView badgeItemTitle;
+
+            int index;
+        }
+
+        public ListBadgesAdapter(Context _ctx, ArrayList<Route> _items) {
+            this.listaItems = _items;
+            this.ctx = _ctx;
+            mInflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        public int getCount() {
+            if (listaItems != null) {
+                return listaItems.size();
+
+            } else {
+                return 0;
+            }
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 2;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            if (position == 0) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            BadgesActivity.ListBadgesAdapter.ViewHolder holder;
+            LinearLayout mViewGroup = new LinearLayout(BadgesActivity.this);
+
+            // Recoger el item
+            Route item = listaItems.get(position);
+
+
+            if (convertView == null) {
+                holder = new BadgesActivity.ListBadgesAdapter.ViewHolder();
+
+                convertView = mInflater.inflate(R.layout.feed_activity_badges_item, mViewGroup);
+
+
+                holder.badgeItemTitle = (TextView) convertView.findViewById(R.id.badge_item_title);
+                holder.badgeNoviceItemImage = (ImageView) convertView.findViewById(R.id.badge_item_novice);
+                holder.badgeAmaterItemImage = (ImageView) convertView.findViewById(R.id.badge_item_amater);
+                holder.badgeProItemImage = (ImageView) convertView.findViewById(R.id.badge_item_pro);
+
+                convertView.setTag(holder);
+            } else {
+                holder = (BadgesActivity.ListBadgesAdapter.ViewHolder) convertView.getTag();
+            }
+
+            // Title
+            holder.badgeItemTitle.setText(item.getTitle());
+
+            switch (app.getSuccessByRoute(item.getTitle())) {
+                case 1:
+                    holder.badgeNoviceItemImage.setImageResource(R.drawable.badges_debutant_actif3x);
+                    break;
+                case 2:
+                    holder.badgeNoviceItemImage.setImageResource(R.drawable.badges_debutant_actif3x);
+                    holder.badgeAmaterItemImage.setImageResource(R.drawable.badges_amateur_actif3x);
+                    break;
+                case 3:
+                    holder.badgeNoviceItemImage.setImageResource(R.drawable.badges_debutant_actif3x);
+                    holder.badgeAmaterItemImage.setImageResource(R.drawable.badges_amateur_actif3x);
+                    holder.badgeProItemImage.setImageResource(R.drawable.badges_pro_actif3x);
+                    break;
+                default:
+                    break;
+            }
+
+            return convertView;
+        }
     }
 }

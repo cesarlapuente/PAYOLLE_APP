@@ -751,25 +751,25 @@ public class DBHandler extends SQLiteOpenHelper {
 
     // <-------------------->_BADGES_<-------------------->
 
-    public Boolean getSuccessByRoute(String route){
+    public int getSuccessByRoute(String route){
         SQLiteDatabase db = getWritableDatabase();
+        int success = 0;
 
         String selectQuery = "SELECT " + COLUMN_BADGE_SUCCESS + " FROM " + TABLE_BADGES + " INNER JOIN " + TABLE_ROUTES +
                 " ON " + TABLE_BADGES + "." + COLUMN_BADGE_ROUTE_ID + " = " + TABLE_ROUTES + "." + COLUMN_ROUTE_ID +
                 " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
         Cursor c = db.rawQuery(selectQuery, null);
 
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-            if(c.getString(c.getColumnIndex(COLUMN_BADGE_SUCCESS)).equals("1"))
-                return true;
+        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) { //only one row, but I preferes to catch with loop
+            success=Integer.parseInt(c.getString(c.getColumnIndex(COLUMN_BADGE_SUCCESS)));
         }
 
         db.close();
 
-        return false;
+        return success;
     }
 
-    public void setSuccessByRoute(String route){
+    public void setSuccessByRoute(String route, int success){
         SQLiteDatabase db = getWritableDatabase();
 
         String selectQuery = "SELECT " + COLUMN_ROUTE_NID +
@@ -779,7 +779,7 @@ public class DBHandler extends SQLiteOpenHelper {
         c.moveToFirst();
 
         selectQuery = "INSERT INTO " + TABLE_BADGES +" ("+ COLUMN_BADGE_ROUTE_ID + ", " + COLUMN_BADGE_SUCCESS + ")" +
-                " SELECT " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) +", 1" +
+                " SELECT " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) +", " + success +
                 " WHERE NOT EXISTS(" +
                 "SELECT 1 FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ");";
         db.execSQL(selectQuery);

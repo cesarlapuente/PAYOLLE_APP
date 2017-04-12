@@ -27,6 +27,8 @@ import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
+import com.mapbox.mapboxsdk.annotations.Polyline;
+import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.Style;
@@ -39,6 +41,7 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -158,7 +161,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
 
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
-            public void onMapReady(MapboxMap mapboxMap) {
+            public void onMapReady(final MapboxMap mapboxMap) {
                 Log.d("JmLog", "OnMapReady yes !");
                 // Customize map with markers, polylines, etc.
                 FeedRouteActivityDecouverte.this.prvMapBox = mapboxMap;
@@ -244,7 +247,9 @@ public class FeedRouteActivityDecouverte extends Activity  {
                     ArrayList<Integer> colors = new ArrayList(Arrays.asList(Color.BLUE, Color.GREEN, Color.MAGENTA, Color.RED, Color.rgb(255,128,0), Color.CYAN, Color.rgb(127,0,255), Color.rgb(127,255,0)));
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
-                            mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(colors.get(i%colors.size())));
+                            PolylineOptions track = WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(colors.get(i%colors.size()));
+
+                            mapboxMap.addPolyline(track);
                         }
                         i++;
                     }
@@ -256,9 +261,52 @@ public class FeedRouteActivityDecouverte extends Activity  {
                                 .zoom(12)  // set the camera's zoom level
                                 .tilt(20)  // set the camera's tilt
                                 .build()));
+
+                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(@NonNull LatLng point) {
+                        //for (Polyline pol : mapboxMap.getPolylines()) {
+                        for (int i = 0; i<mapboxMap.getPolylines().size(); i++) {
+                            if (isPointInPolygon(new LatLng(point.getLatitude(), point.getLongitude()), mapboxMap.getPolylines().get(i))) {
+                                Route route = alRoute.get(i);
+                                Log.d("Pierre debug", "OnclickTrack : " + route.getTitle());
+                                Intent intent = new Intent(FeedRouteActivityDecouverte.this, FeedRouteDetailsDecouverte.class);
+                                intent.putExtra(FeedRouteDetailsDecouverte.PARAM_KEY_NID, route.getNid());
+                                intent.putExtra(FeedRouteDetailsDecouverte.PARAM_KEY_DISTANCE, route.getDistanceMeters());
+                                intent.putExtra(FeedRouteDetailsDecouverte.PARAM_KEY_TITLE_ROUTE, route.getTitle());
+                                intent.putExtra(FeedRouteDetailsDecouverte.PARAM_KEY_MAP_URL, route.getUrlMap());
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
             }
 
         });
+    }
+
+    /*2 methods for OnPolylineClickListener from https://github.com/mapbox/mapbox-gl-native/issues/3720*/
+    public boolean isPointInPolygon(LatLng coordsOfPoint, Polyline pol) {
+
+        List<LatLng> latlngsOfPolygon =  extractPolygonToPoints(pol);
+        int i;
+        int j;
+        boolean contains = false;
+        for (i = 0, j = latlngsOfPolygon.size() - 1; i < latlngsOfPolygon.size(); j = i++) {
+            if ((latlngsOfPolygon.get(i).getLongitude() > coordsOfPoint.getLongitude()) != (latlngsOfPolygon.get(j).getLongitude() > coordsOfPoint.getLongitude()) &&
+                    (coordsOfPoint.getLatitude() < (latlngsOfPolygon.get(j).getLatitude() - latlngsOfPolygon.get(i).getLatitude()) * (coordsOfPoint.getLongitude() - latlngsOfPolygon.get(i).getLongitude()) / (latlngsOfPolygon.get(j).getLongitude() - latlngsOfPolygon.get(i).getLongitude()) + latlngsOfPolygon.get(i).getLatitude())) {
+                contains = !contains;
+            }
+        }
+        return contains;
+    }
+    public List<LatLng> extractPolygonToPoints(Polyline p) {
+        List <LatLng> latlngsOfPolygon = new ArrayList<>();
+        for (int x = 0; x < p.getPoints().size(); ++x) {
+            LatLng coords = new LatLng(p.getPoints().get(x).getLatitude(), p.getPoints().get(x).getLongitude());
+            latlngsOfPolygon.add(coords);
+        }
+        return latlngsOfPolygon;
     }
 
 
