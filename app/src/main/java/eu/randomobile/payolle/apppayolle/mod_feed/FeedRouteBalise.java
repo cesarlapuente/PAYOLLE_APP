@@ -236,7 +236,14 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
 
         /*Bagdes*/ //TODO PierreBadges
-        app.setSuccessByRoute(route.getTitle(),2);
+        Double chronoTime = Double.parseDouble(txt_chrono_hours.getText().toString())*3600
+                +Double.parseDouble(txt_chrono_minutes.getText().toString())*60
+                +Double.parseDouble(txt_chrono_secondes.getText().toString());
+        Log.d("PierreLog", chronoTime+" et "+route.getEstimatedTime()*60);
+        if (route.getPois().size() == NB_POIS_VALIDATE) {
+            if (route.getEstimatedTime()*60>=chronoTime) app.setSuccessByRoute(route.getTitle(),3); //Faster than estimated and all balises
+            else app.setSuccessByRoute(route.getTitle(),2); //All balises
+        } else app.setSuccessByRoute(route.getTitle(),2); //Just finished
 
         startActivity(intent);
         resetData();

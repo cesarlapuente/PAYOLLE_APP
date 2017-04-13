@@ -11,7 +11,31 @@ import java.util.ArrayList;
 public class WKTUtil {
 
 
+    public static LatLng getFirstLatLngFromWKTLineStringFieldFEED(String wktLineString){
+        LatLng coord = null;
 
+        // Quitar la palabra LINESTRING
+        String textoSustituido = wktLineString.replace("LINESTRING (", "");
+
+        // Quitar los par�ntesis de cierre ))
+        textoSustituido = textoSustituido.replace( ")", "");
+
+        String[] separadosComaEspacio = textoSustituido.split(", ");
+        if(separadosComaEspacio != null){
+            String coordStr = separadosComaEspacio[0];
+            // Obtener latitud, longitud
+            String[] latLonTexto = coordStr.split(" ");
+            if(latLonTexto != null){
+                if(latLonTexto.length == 2){
+                    String longitud = latLonTexto[0];
+                    String latitud = latLonTexto[1];
+                    coord = new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud));
+                }
+            }
+        }
+
+        return coord;
+    }
 
 
     public static PolylineOptions getPolylineFromWKTLineStringFieldFEED( String wktLineString){

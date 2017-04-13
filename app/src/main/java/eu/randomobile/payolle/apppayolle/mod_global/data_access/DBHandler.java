@@ -135,6 +135,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 COLUMN_BADGE_SUCCESS + " INTEGER " +
                 ");";
         db.execSQL(query_badges);
+        db.execSQL("CREATE UNIQUE INDEX idx_badges_route ON "+TABLE_BADGES+" ("+COLUMN_BADGE_ROUTE_ID+")"); //Required for insert or replace
     }
 
     @Override
@@ -777,12 +778,15 @@ public class DBHandler extends SQLiteOpenHelper {
                 " WHERE " +  COLUMN_ROUTE_TITLE + " = \"" + route + "\"";
         Cursor c = db.rawQuery(selectQuery, null); //Find ID
         c.moveToFirst();
+        String idRoute = c.getString(c.getColumnIndex(COLUMN_ROUTE_NID));
 
-        selectQuery = "INSERT INTO " + TABLE_BADGES +" ("+ COLUMN_BADGE_ROUTE_ID + ", " + COLUMN_BADGE_SUCCESS + ")" +
-                " SELECT " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) +", " + success +
-                " WHERE NOT EXISTS(" +
-                "SELECT 1 FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ");";
-        db.execSQL(selectQuery);
+        selectQuery = "SELECT "+ COLUMN_BADGE_SUCCESS +" FROM "+ TABLE_BADGES + " WHERE " + COLUMN_BADGE_ROUTE_ID + " = " + c.getString(c.getColumnIndex(COLUMN_ROUTE_NID)) + ";";
+        c = db.rawQuery(selectQuery, null);
+        if (!c.moveToFirst()/*Check if not exist*/ || success > c.getInt(c.getColumnIndex(COLUMN_BADGE_SUCCESS))/*Or check if better*/){
+            selectQuery = "REPLACE INTO "+ TABLE_BADGES +" ("+ COLUMN_BADGE_ROUTE_ID + ", " + COLUMN_BADGE_SUCCESS + ")" +
+                    " VALUES ("+idRoute +", " + success+");";
+            db.execSQL(selectQuery);
+        }
 
         db.close();
     }
