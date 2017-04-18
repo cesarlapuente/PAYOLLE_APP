@@ -12,10 +12,9 @@ public class WKTUtil {
 
 
     public static LatLng getFirstLatLngFromWKTLineStringFieldFEED(String wktLineString){
-        LatLng coord = null;
-
+        Log.d("PierreLog","Toto "+wktLineString);
         // Quitar la palabra LINESTRING
-        String textoSustituido = wktLineString.replace("LINESTRING (", "");
+        String textoSustituido = wktLineString.replace("LINESTRING ( ", "");
 
         // Quitar los par�ntesis de cierre ))
         textoSustituido = textoSustituido.replace( ")", "");
@@ -29,12 +28,26 @@ public class WKTUtil {
                 if(latLonTexto.length == 2){
                     String longitud = latLonTexto[0];
                     String latitud = latLonTexto[1];
-                    coord = new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud));
+                    return new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud));
                 }
             }
         }
 
-        return coord;
+        String[] separadosComa = textoSustituido.split(",");
+        if(separadosComa != null){
+            String coordStr = separadosComa[0];
+            // Obtener latitud, longitud
+            String[] latLonTexto = coordStr.split(" ");
+            if(latLonTexto != null){
+                if(latLonTexto.length == 2){
+                    String longitud = latLonTexto[0];
+                    String latitud = latLonTexto[1];
+                    return new LatLng(Double.parseDouble(latitud),Double.parseDouble(longitud));
+                }
+            }
+        }
+
+        return null;
     }
 
 
@@ -42,7 +55,7 @@ public class WKTUtil {
         Log.d("Milog", "Inicio de parseo de wkt a coordenadas");
         PolylineOptions polylineOptions = null ;
         // Quitar la palabra LINESTRING
-        String textoSustituido = wktLineString.replace("LINESTRING (", "");
+        String textoSustituido = wktLineString.replace("LINESTRING ( ", "");
 
         // Quitar los par�ntesis de cierre ))
         textoSustituido = textoSustituido.replace( ")", "");

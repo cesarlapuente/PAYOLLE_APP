@@ -271,6 +271,12 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_start_ex);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_info_ex);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);
 
                 // if Poi not null
                 if (alPoi != null) {
@@ -287,7 +293,14 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                 .position(poiPosition)
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
-                        Log.d("PierreLog : MArker bug ", "dans le truc individuel "+ marker.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
+                        Log.d("PierreLog : Marker bug ", "dans le poi individuel "+ marker.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
+
+                        LatLng poi_start = WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack());
+                        MarkerViewOptions marker_start = new MarkerViewOptions()
+                                .position(WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack()))
+                                .title("Depart : " + route.getTitle())
+                                .icon(icon_balise_start);
+                        mapboxMap.addMarker(marker_start);
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {

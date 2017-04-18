@@ -260,7 +260,6 @@ public class Drupal7RESTClient {
 	
 	public void customMethodCallPost(String serviceURLPart, AsyncHttpResponseHandler responseHandler, HashMap<String, String> params){
 		String uri = url + serviceURLPart;
-		Log.d("PierreLog", "PierreURL : "+ uri);
 		
 		RequestParams rm = new RequestParams();
 		

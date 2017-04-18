@@ -178,6 +178,12 @@ public class FeedRouteActivityDecouverte extends Activity  {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_start_ex);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_info_ex);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);
 
 
                 // if Poi not null
@@ -248,8 +254,16 @@ public class FeedRouteActivityDecouverte extends Activity  {
                     for (Route route : alRoute) {
                         if (route.getTrack() != null) {
                             PolylineOptions track = WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()).color(colors.get(i%colors.size()));
+                            LatLng coord = WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack());
+                            Log.d("Pierre debug", "PoiPoiPoi : " + coord.getLongitude() +"      " + coord.getLatitude());
+                            MarkerViewOptions marker = new MarkerViewOptions()
+                                    .position(WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack()))
+                                    .title("Depart : " + route.getTitle())
+                                    .icon(icon_balise_start);
+
 
                             mapboxMap.addPolyline(track);
+                            mapboxMap.addMarker(marker);
                         }
                         i++;
                     }

@@ -183,7 +183,7 @@ public class InfoDecouverteActivity extends Activity {
                                     holder.legende_text.setVisibility(View.VISIBLE);
                                     holder.open_info_legende.setImageResource(R.drawable.info_open_b_fondo);
 
-                                    holder.legende_text.setPadding(((7 * holder.open_info_legende.getWidth())/100),holder.open_info_legende.getHeight(),((18 * holder.open_info_legende.getWidth())/100),0);
+                                    holder.legende_text.setPadding(((7 * holder.open_info_legende.getWidth())/100),holder.open_info_legende.getHeight()-10,((18 * holder.open_info_legende.getWidth())/100),70);
                                     Log.e("VH", "openInfoLegende.getWidth() = " + holder.open_info_legende.getWidth());
                                     Log.e("VH", "(18 * openInfoLegende.getWidth())/100 = " + (18 * holder.open_info_legende.getWidth())/100);
                                     holder.legende_description.getHeight();
@@ -201,7 +201,9 @@ public class InfoDecouverteActivity extends Activity {
             }
 
             holder.legende_title.setText(item.getTitle());
-            holder.legende_description.setText(Html.fromHtml(item.getBody()));
+            //holder.legende_description.setText(Html.fromHtml(item.getBody()));
+            holder.legende_description.setText(Html.fromHtml(item.getBody().replace("\n","<br/>").replace("\t","\t\t")).toString().trim(), TextView.BufferType.SPANNABLE);
+
             return convertView;
         }
     }

@@ -1049,6 +1049,7 @@ public class SplashActivity extends Activity {
                             String alt = recDic.getString("altitude");
                             String distance = recDic.getString("distance");
                             String image = recDic.getString("image");
+                            Log.d("PierreLog", "PoiImageURL = "+image);
                             String game = recDic.getString("game");
                             String code1 = recDic.getString("code1");
 
