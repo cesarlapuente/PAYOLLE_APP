@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
+import eu.randomobile.payolle.apppayolle.mod_global.model.ResourceFile;
 
 public class POIDetailsActivity extends Activity {
     private MainApp app;
@@ -31,6 +33,7 @@ public class POIDetailsActivity extends Activity {
     ImageButton btn_return;
     private ImageButton btn_read;
     private ImageButton btn_game;
+    FrameLayout btn_galery;
     //private ImageButton btn_info;
     //private ImageButton btn_badges;
 
@@ -78,7 +81,7 @@ public class POIDetailsActivity extends Activity {
 //        txt_ramp = (TextView) findViewById(R.id.txt_ramp);
 //        txt_duration = (TextView) findViewById(R.id.txt_duration);
         txt_description_body = (TextView) findViewById(R.id.poi_description);
-//        btn_galery = (FrameLayout) findViewById(R.id.btn_galerie);
+        btn_galery = (FrameLayout) findViewById(R.id.btn_galerie);
 
         // <----------------->_IMAGEVIEWS_DECLARATIONS_<----------------->
         btn_home = (ImageButton) findViewById(R.id.btn_home);
@@ -112,15 +115,15 @@ public class POIDetailsActivity extends Activity {
                 });
 
 
-//        btn_galery.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        Intent intent = new Intent(POIDetailsActivity.this, GaleryActivity.class);
-//                        intent.putParcelableArrayListExtra(GaleryActivity.PARAM_KEY_ARRAY_RESOURCES, poi.getImages());
-//                        startActivity(intent);
-//                    }
-//                });
+        btn_galery.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(POIDetailsActivity.this, GaleryActivity.class);
+                        intent.putParcelableArrayListExtra(GaleryActivity.PARAM_KEY_ARRAY_RESOURCES, poi.getImages());
+                        startActivity(intent);
+                    }
+                });
 
         btn_read.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,12 +167,10 @@ public class POIDetailsActivity extends Activity {
         //txt_ramp.setText(Util.formatDesnivel(route.getSlope()));
         // Log.d("Desnivel:", String.valueOf(route.getSlope()));
         // txt_duration.setText(Util.formatDuracion(route.getEstimatedTime()));
-        txt_description_body.setText(Html.fromHtml(poi.getBody()).toString().trim(), TextView.BufferType.SPANNABLE);
+        txt_description_body.setText(Html.fromHtml(poi.getBody().replace("\t","\t\t")).toString().trim(), TextView.BufferType.SPANNABLE);
 
         // Image
-        Log.d("MainImagePoi", ""+poi.getMainImage());
         if (poi.getMainImage() != null) {
-            Log.d("MainImagePoi2", poi.getMainImage());
             BitmapManager.INSTANCE.loadBitmap(poi.getMainImage(),
                     main_image, 90, 90);
         }

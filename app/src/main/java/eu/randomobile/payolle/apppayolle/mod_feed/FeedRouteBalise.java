@@ -235,7 +235,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         intent.putExtra(ResultsActivity.PARAM_KEY_NID, route.getNid());
 
 
-        /*Bagdes*/ //TODO PierreBadges
+        /*Bagdes*/
         Double chronoTime = Double.parseDouble(txt_chrono_hours.getText().toString())*3600
                 +Double.parseDouble(txt_chrono_minutes.getText().toString())*60
                 +Double.parseDouble(txt_chrono_secondes.getText().toString());
@@ -243,7 +243,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         if (route.getPois().size() == NB_POIS_VALIDATE) {
             if (route.getEstimatedTime()*60>=chronoTime) app.setSuccessByRoute(route.getTitle(),3); //Faster than estimated and all balises
             else app.setSuccessByRoute(route.getTitle(),2); //All balises
-        } else app.setSuccessByRoute(route.getTitle(),2); //Just finished
+        } else app.setSuccessByRoute(route.getTitle(),1); //Just finished
 
         startActivity(intent);
         resetData();
@@ -314,7 +314,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
                             temp.setLatitude(marker.getPosition().getLatitude());
                             temp.setLongitude(marker.getPosition().getLongitude());
-                            if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO on prod, change with <=20.0 or >= -1.0 in debug
+                            if (mapboxMap.getMyLocation().distanceTo(temp) <=20.0) { //TODO on prod, change with <=20.0 or >= -1.0 in debug
                                 //Log.d("Debug", "marker lat / lon : " + marker.getPosition().getLatitude() + " / " + marker.getPosition().getLongitude());
                                 //Log.d("Debug", "MyLocation lat / lon : " + mapboxMap.getMyLocation().getLatitude() + " / " + mapboxMap.getMyLocation().getLongitude());
                                 //Log.d("Debug", "Difference : " + mapboxMap.getMyLocation().distanceTo(temp) + " m");

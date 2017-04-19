@@ -271,12 +271,12 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_start_ex);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_depart3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_info_ex);
+                /*iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_info_ex);
                 iconDrawable = resize(iconDrawable);
-                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);
+                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);*/
 
                 // if Poi not null
                 if (alPoi != null) {
@@ -325,7 +325,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
 
 
-                                if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
+                                if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
                                     poi_more.setVisibility(View.VISIBLE);
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_more.setOnClickListener(new View.OnClickListener() {

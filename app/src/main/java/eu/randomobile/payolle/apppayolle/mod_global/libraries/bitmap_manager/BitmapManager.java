@@ -78,7 +78,7 @@ public enum BitmapManager {
 				Message message = Message.obtain();
 				message.obj = bmp;
 				Log.d(null, "Item downloaded: " + url);
-				route.setMainImage(bmp); //TODO AHAHAHAHHSHAHHSHHAHSHHAH
+				route.setMainImage(bmp);
 				app.storeMainImage(route);
 				handler.sendMessage(message);
 			}

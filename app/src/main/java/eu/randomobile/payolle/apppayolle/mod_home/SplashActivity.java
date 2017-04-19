@@ -56,7 +56,7 @@ public class SplashActivity extends Activity {
     private Route routeItem ;
     private Poi poiItem  ;
 
-    private static final int SPLASH_TIME = 1 * 2000; // seconds //TODO change for full download
+    private static final int SPLASH_TIME = 3 * 2000; // seconds //TODO change for full download
     private static boolean splashActivado = true;
 
     // Coordenadas GPS de Fuerteventura
@@ -353,10 +353,6 @@ public class SplashActivity extends Activity {
                                     route_CO.add(route);
                                 }else if (route.getCategory().getName().equals("Decouverte")) {
                                     route_DE.add(route);
-                                    /*Pierre debug POI image*/ //TODO a supprimer
-                                    for (ResourcePoi poi : route.getPois()){
-                                        Log.d("PierreLog", "Objet POI splash : title : " + poi.getTitle() + " image : " + poi.getMainImage() + " lat " + poi.getLatitude()+ " long "+ poi.getLongitude());
-                                    }
                                 }
 
                                 /*
@@ -557,7 +553,6 @@ public class SplashActivity extends Activity {
                                         double longitudePoi = objPOI.getDouble("lon");
                                         double latitudePoi = objPOI.getDouble("lat");
                                         String poi_code1 = objPOI.getString("code1");
-                                        //String poi_image = objPOI.getString("image"); //TODO je ne connais pa la structure du JSON recu depuis le serveur
 
                                         Log.d("--------------------", " ------------------------------------------------------------ ");
 

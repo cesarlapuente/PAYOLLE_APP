@@ -175,13 +175,13 @@ public class FeedRouteActivityDecouverte extends Activity  {
 
                 // Create an Icon object for the marker to use
                 IconFactory iconFactory = IconFactory.getInstance(FeedRouteActivityDecouverte.this);
-                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi0);
+                /*Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi0);
                 iconDrawable = resize(iconDrawable);
-                Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_start_ex);
+                Icon icon_balise = iconFactory.fromDrawable(iconDrawable);*/
+                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_depart3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_info_ex);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_info3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);
 
@@ -257,7 +257,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
                             LatLng coord = WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack());
                             Log.d("Pierre debug", "PoiPoiPoi : " + coord.getLongitude() +"      " + coord.getLatitude());
                             MarkerViewOptions marker = new MarkerViewOptions()
-                                    .position(WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack()))
+                                    .position(coord)
                                     .title("Depart : " + route.getTitle())
                                     .icon(icon_balise_start);
 
@@ -268,6 +268,15 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         i++;
                     }
                 }
+
+                /*POI Services*/
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.936020,0.301284)).title("WC 2").icon(icon_balise_info));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.942485,0.284836)).title("WC 1").icon(icon_balise_info));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.942697,0.283989)).title("Point info").icon(icon_balise_info));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.942441,0.284750)).title("Parking 1").icon(icon_balise_info));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.937415,0.271881)).title("Parking 2").icon(icon_balise_info));
+                mapboxMap.addMarker(new MarkerViewOptions().position(new LatLng(42.942822,0.278855)).title("Parking 3").icon(icon_balise_info));
+
 
                 mapboxMap.moveCamera(CameraUpdateFactory.newCameraPosition(
                         new CameraPosition.Builder()
