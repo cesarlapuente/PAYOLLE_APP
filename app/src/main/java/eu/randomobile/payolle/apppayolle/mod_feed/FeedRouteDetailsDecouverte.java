@@ -274,9 +274,33 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_depart3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
-                /*iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_info_ex);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi1);
                 iconDrawable = resize(iconDrawable);
-                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);*/
+                Icon icon_balise_1 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi2);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_2 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_3 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_4 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_5 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_6 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_7 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_8 = iconFactory.fromDrawable(iconDrawable);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = resize(iconDrawable);
+                Icon icon_balise_9 = iconFactory.fromDrawable(iconDrawable);
 
                 // if Poi not null
                 if (alPoi != null) {
@@ -291,16 +315,41 @@ public class FeedRouteDetailsDecouverte extends Activity {
                         //getCategoryPoi(poi);
                         MarkerViewOptions marker = new MarkerViewOptions()
                                 .position(poiPosition)
-                                .title(poi.getTitle())
-                                .icon(icon_balise);
+                                .title(poi.getTitle());
+                        int poiNum = Integer.parseInt(poi.getTitle().substring(2,3));
+                        switch (poiNum) {
+                            case 1:
+                                marker.icon(icon_balise_1);
+                                break;
+                            case 2:
+                                marker.icon(icon_balise_2);
+                                break;
+                            case 3:
+                                marker.icon(icon_balise_3);
+                                break;
+                            case 4:
+                                marker.icon(icon_balise_4);
+                                break;
+                            case 5:
+                                marker.icon(icon_balise_5);
+                                break;
+                            case 6:
+                                marker.icon(icon_balise_6);
+                                break;
+                            case 7:
+                                marker.icon(icon_balise_7);
+                                break;
+                            case 8:
+                                marker.icon(icon_balise_8);
+                                break;
+                            case 9:
+                                marker.icon(icon_balise_9);
+                                break;
+                            default:
+                                marker.icon(icon_balise);
+                                break;
+                        }
                         Log.d("PierreLog : Marker bug ", "dans le poi individuel "+ marker.getTitle() + " lat " + marker.getPosition().getLatitude()+ " long "+ marker.getPosition().getLongitude());
-
-                        LatLng poi_start = WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack());
-                        MarkerViewOptions marker_start = new MarkerViewOptions()
-                                .position(WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack()))
-                                .title("Depart : " + route.getTitle())
-                                .icon(icon_balise_start);
-                        mapboxMap.addMarker(marker_start);
 
                         // custom infoWindow
                         mapboxMap.setInfoWindowAdapter(new MapboxMap.InfoWindowAdapter() {
@@ -325,7 +374,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
 
 
-                                if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
+                                if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
                                     poi_more.setVisibility(View.VISIBLE);
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_more.setOnClickListener(new View.OnClickListener() {
@@ -386,6 +435,11 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 }
                 if (route.getTrack() != null) {
                     route_polyline = mapboxMap.addPolyline(WKTUtil.getPolylineFromWKTLineStringFieldFEED(route.getTrack()));
+                    MarkerViewOptions marker_start = new MarkerViewOptions()
+                            .position(WKTUtil.getFirstLatLngFromWKTLineStringFieldFEED(route.getTrack()))
+                            .title("Depart : " + route.getTitle())
+                            .icon(icon_balise_start);
+                    mapboxMap.addMarker(marker_start);
                 }
 
 //                mapboxMap.setOnMapClickListener(new MapboxMap.OnMapClickListener() {

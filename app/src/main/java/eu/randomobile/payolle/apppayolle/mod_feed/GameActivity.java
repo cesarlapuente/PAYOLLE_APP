@@ -197,13 +197,41 @@ public class GameActivity extends Activity {
     }
 
     private void check_answer(String ans) {
+        int numTrack = Integer.parseInt(poi.getTitle().substring(0,1));
         if (ans.equals(good_answer)){
-            txt_game.setText("Félicitations, c'est la bonne réponse !");
+            String strGood = "Félicitations, vous avez découvert le secret ";
+            switch (numTrack) {
+                case 1:
+                    strGood += "des frontières !\n\n"
+                            +"De tous temps les communautés se sont affrontées pour la propriété des meilleures estives et des plus belles forêts. Les différents pouvoirs se sont accaparés des territoires puis les ont rendus aux communautés. Cette histoire explique la présence des propriétés indivises et le partage parfois bizarre des territoires comme celui de Payolle réparti sur cinq communes.";
+                    break;
+                case 2:
+                    strGood += "des rigoles !\n\n"
+                            +"Des dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l'eau partout dans la vallée. L'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit.";
+                    break;
+                case 3:
+                    strGood += "de la soupe !\n\n"
+                            +"Le courtaou du Sarroua pourrait s'appeler les cabanes aux épinards.\n" +
+                            "Le sarrou (chénopode bon-Henri) était utilisé par les bergers pour cuisiner la soupe. Cette plante a certainement été introduite en montagne dans la laine des brebis, elle affectionne les reposoirs à bétail riches en nitrates et les brebis en sont friandes à l'automne.";
+                    break;
+                case 4:
+                    strGood += "de la cabane !\n\n"
+                            +"Pour se protéger des intempéries, des loups et des ours, les bergers possédaient une cabane. Comme ils suivaient toujours leurs troupeaux, ils faisaient suivre aussi une cabane mobile : le burguet. Il s'agissait d'une grande caisse de deux mètres de long, avec une petite porte, munie de deux brancards pour la déplacer.";
+                    break;
+                case 5:
+                    strGood += "des paysages !\n\n"
+                            +"Les jolis paysages de montagne sont dus à l'exploitation séculaire des estives et des forêts. Sans cette exploitation, ni belles pelouses ni belles forêts. La chasse permet également de gérer ces paysages. Aujourd'hui l'objectif de cet équilibre est de pérenniser une faune sauvage riche et diversifiée, compatible avec la rentabilité des activités agricoles et sylvicoles.";
+                    break;
+                case 6:
+                    strGood += "du gypaète !\n\n"
+                            +"Le gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d'Europe, il a la particularité de se nourrir presque exclusivement d'os.";
+                    break;
+            }
+            txt_game.setText(strGood);
         } else {
             txt_game.setText("Dommage, ce n'est pas la bonne réponse.");
         }
-        txt_game.setTextSize(20);
-        txt_game.setTypeface(null, Typeface.BOLD);
+        txt_game.setTextSize(16);
         list_answers.setVisibility(View.GONE);
     }
 
