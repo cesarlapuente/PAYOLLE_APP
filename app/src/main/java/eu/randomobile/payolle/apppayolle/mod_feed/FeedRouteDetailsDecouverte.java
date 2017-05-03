@@ -268,37 +268,37 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
                 // Create an Icon object for the marker to use
                 IconFactory iconFactory = IconFactory.getInstance(FeedRouteDetailsDecouverte.this);
-                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
                 iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi_depart3x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi1);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi13x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_1 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi2);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi23x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_2 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi33x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_3 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi43x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_4 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi53x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_5 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi63x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_6 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi73x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_7 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi83x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_8 = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi0);
+                iconDrawable = ContextCompat.getDrawable(FeedRouteDetailsDecouverte.this, R.drawable.poi93x);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise_9 = iconFactory.fromDrawable(iconDrawable);
 
