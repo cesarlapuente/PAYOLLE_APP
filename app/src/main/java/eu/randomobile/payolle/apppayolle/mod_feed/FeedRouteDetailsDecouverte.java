@@ -374,7 +374,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
 
 
 
-                                if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
+                                if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
                                     poi_more.setVisibility(View.VISIBLE);
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_more.setOnClickListener(new View.OnClickListener() {
