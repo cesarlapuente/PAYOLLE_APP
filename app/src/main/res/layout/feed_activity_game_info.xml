@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_routes_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_ficha"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/header"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:layout_gravity="top"
+            android:id="@+id/layout_header">
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:id="@+id/btn_return"
+                android:background="@drawable/btn_return"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"
+                />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:id="@+id/route_title"
+                android:text="INFO jeu"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="true">
+            </TextView>
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:background="@drawable/boton_accueil"
+                android:id="@+id/btn_home"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:adjustViewBounds="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/routes_list_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/routes_list_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="60dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Texte info du jeu"
+                    android:textSize="16sp"
+                    android:textColor="#FFFFFF"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/fondo_menu_footer"
+        android:gravity="bottom|center"
+        android:shrinkColumns="*"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="15dp">
+
+            <ImageButton
+                android:id="@+id/btn_footer_list"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/icono_lista_deactif" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/separacion_menu" />
+
+            <ImageButton
+                android:id="@+id/btn_footer_map"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/icono_mapa_deactif" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/separacion_menu" />
+
+            <ImageButton
+                android:id="@+id/btn_footer_info"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/icono_info_deactif" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:src="@drawable/separacion_menu"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                />
+            <ImageButton
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="2"
+                android:src="@drawable/icono_juer_actif"
+                android:id="@+id/btn_footer_game"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                android:background="@color/transparent"/>
+
+        </TableRow>
+
+    </TableLayout>
+
+
+</FrameLayout>
