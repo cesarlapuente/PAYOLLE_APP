@@ -4,11 +4,40 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondo_ficha">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="top"
+        android:background="@drawable/header"
+        android:orientation="horizontal">
 
+        <ImageButton
+            android:id="@+id/btn_return"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/btn_return" />
+
+        <ImageButton
+            android:id="@+id/btn_home"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/boton_accueil" />
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         android:layout_below="@id/galery_gridView" >
 
         <LinearLayout

@@ -6,35 +6,36 @@
     >
 
     <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_height="113dp"
-        android:layout_width="280dp"
-        android:layout_gravity="center"
         android:id="@+id/poi_popup"
+        android:layout_width="280dp"
+        android:layout_height="113dp"
+        android:layout_gravity="center"
         android:clickable="true">
 
         <ImageView
             android:layout_width="280dp"
             android:layout_height="110dp"
-            android:src="@drawable/fondo_popup"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/fondo_popup" />
+
         <LinearLayout
             android:layout_width="260dp"
             android:layout_height="100dp"
-            android:orientation="horizontal"
             android:layout_gravity="center"
-            android:paddingTop="5dp"
+            android:orientation="horizontal"
             android:paddingBottom="8dp"
-            >
+            android:paddingTop="5dp">
+
             <ImageView
+                android:id="@+id/poi_image"
                 android:layout_width="75dp"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/photo_example"
-                android:layout_marginLeft="5dp"
-                android:id="@+id/poi_image"
 
                 />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,61 +43,75 @@
                 android:layout_marginRight="5dp">
 
                 <TextView
+                    android:id="@+id/poi_title"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@+id/validation_close"
+                    android:layout_toStartOf="@+id/validation_close"
+                    android:maxLines="3"
                     android:text="Nom du POI"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:maxLines="3"
-                    android:id="@+id/poi_title"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@+id/validation_close"
-                    android:layout_toStartOf="@+id/validation_close" />
+                    android:textStyle="bold" />
 
                 <ImageView
+                    android:id="@+id/validation_close"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/boton_wrong"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:adjustViewBounds="true"
                     android:clickable="true"
-                    android:id="@+id/validation_close"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:src="@drawable/boton_wrong" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:text="Approchez-vous de la balise pour découvrir le contenu"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"
-                    android:visibility="gone"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
+                    android:visibility="gone" />
 
                 <ImageView
+                    android:id="@+id/imageView2"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
-                    android:visibility="visible"
+                    android:adjustViewBounds="true"
+                    android:background="@color/transparent"
                     android:src="@drawable/boton_plus"
+                    android:visibility="visible"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/poi_title" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/icono_juer_deactif"
+                    android:id="@+id/btn_popup_game"
+                    android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     android:background="@color/transparent"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/imageView2" />
+                    android:layout_toRightOf="@+id/imageView2"
+                    android:layout_toEndOf="@+id/imageView2"
+                    android:layout_below="@+id/poi_title" />
 
             </RelativeLayout>
         </LinearLayout>
+
         <ImageView
             android:layout_width="20dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/triangulo_black_popup"
-            android:layout_gravity="center|bottom"/>
+            android:src="@drawable/triangulo_black_popup" />
     </FrameLayout>
 </LinearLayout>

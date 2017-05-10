@@ -30,7 +30,7 @@ public class InfoDecouverteActivity extends Activity {
     ImageButton btn_return;
     ImageButton btn_map;
     ImageButton btn_list;
-    //ImageButton btn_badges;
+    ImageButton btn_game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class InfoDecouverteActivity extends Activity {
         btn_list = (ImageButton) findViewById(R.id.btn_footer_list);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
-        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
 
 
     }
@@ -95,14 +95,14 @@ public class InfoDecouverteActivity extends Activity {
                         startActivity(intent);
                     }
                 });
-        /*btn_badges.setOnClickListener(
+        btn_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(InfoDecouverteActivity.this, BadgesActivity.class);
+                        Intent intent = new Intent(InfoDecouverteActivity.this, GameInfoActivity.class);
                         startActivity(intent);
                     }
-                });*/
+                });
     }
 
     public  class FeedInfoList extends BaseAdapter {

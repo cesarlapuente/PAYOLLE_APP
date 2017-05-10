@@ -305,6 +305,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 // if Poi not null
                 if (alPoi != null) {
                     for (final ResourcePoi poi : alPoi) {
+                        //TODO fix a bug in offline while poi title is null .... what ??? it works well in online
                         Log.d("Affichage PoiList : ", "  titre " + poi.getTitle() + "      lat " + poi.getLatitude() + "     ID " + poi.getNid());
 
                         final String poiNid = String.valueOf(poi.getNid());
@@ -356,7 +357,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                             @Nullable
                             private LayoutInflater mInflater = (LayoutInflater) FeedRouteDetailsDecouverte.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                             @Override
-                            public View getInfoWindow(@NonNull Marker marker) {
+                            public View getInfoWindow(@NonNull final Marker marker) {
                                 Location temp = new Location(LocationManager.GPS_PROVIDER);
 
                                 temp.setLatitude(marker.getPosition().getLatitude());
@@ -369,26 +370,46 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                 ImageView poi_close = (ImageView)convertView.findViewById(R.id.validation_close);
                                 ImageView poi_more = (ImageView)convertView.findViewById(R.id.imageView2);
                                 TextView poi_text = (TextView)convertView.findViewById(R.id.textView);
+                                ImageView poi_game = (ImageView) convertView.findViewById(R.id.btn_popup_game);
 
                                 poi_title.setText(marker.getTitle());
 
-
-
-                                if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
-                                    poi_more.setVisibility(View.VISIBLE);
-                                    poi_text.setVisibility(View.INVISIBLE);
-                                    poi_more.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
-                                            intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
-                                            startActivity(intent);
-                                        }
-                                    });
-                                } else {
+                                poi_close.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        marker.hideInfoWindow();
+                                    }
+                                });
+                                if (poi_title.getText().toString().substring(0,6).equals("Depart")) {
                                     poi_more.setVisibility(View.INVISIBLE);
-                                    poi_text.setVisibility(View.VISIBLE);
-
+                                    poi_text.setVisibility(View.INVISIBLE);
+                                    poi_game.setVisibility(View.INVISIBLE);
+                                } else {
+                                    if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0  ) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
+                                        poi_more.setVisibility(View.VISIBLE);
+                                        poi_text.setVisibility(View.INVISIBLE);
+                                        poi_more.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
+                                                intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
+                                                startActivity(intent);
+                                            }
+                                        });
+                                        poi_game.setVisibility(View.VISIBLE);
+                                        poi_game.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                Intent intent = new Intent(FeedRouteDetailsDecouverte.this, GameActivity.class);
+                                                intent.putExtra(GameActivity.PARAM_KEY_POI_TITLE, poi_title.getText());
+                                                startActivity(intent);
+                                            }
+                                        });
+                                    } else {
+                                        poi_more.setVisibility(View.INVISIBLE);
+                                        poi_text.setVisibility(View.VISIBLE);
+                                        poi_game.setVisibility(View.INVISIBLE);
+                                    }
                                 }
 
                                 return convertView;

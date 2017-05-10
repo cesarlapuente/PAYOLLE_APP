@@ -1,11 +1,13 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,6 +72,9 @@ public class FeedImageViewerActivity extends Activity {
 
     private void capturarControles() {
         imageView = (ImageView) findViewById(R.id.imageView);
+
+        btn_home = (ImageButton) findViewById(R.id.btn_home);
+        btn_return = (ImageButton) findViewById(R.id.btn_return);
     }
 
     private void configurarFormulario() {
@@ -127,6 +132,20 @@ public class FeedImageViewerActivity extends Activity {
 
 
     private void escucharEventos() {
-
+        btn_return.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FeedImageViewerActivity.this.finish();
+                    }
+                });
+        btn_home.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(FeedImageViewerActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    }
+                });
     }
 }

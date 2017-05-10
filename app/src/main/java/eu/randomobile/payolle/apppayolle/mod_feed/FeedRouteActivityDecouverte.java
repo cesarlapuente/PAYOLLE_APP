@@ -57,7 +57,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
     ImageButton btn_home;
     ImageButton btn_return;
     ImageButton btn_map;
-    //ImageButton btn_badges;
+    ImageButton btn_game;
 
     private ImageButton btn_info;
     public MapView mapView;
@@ -93,7 +93,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
         btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
         btn_list = (ImageButton) findViewById(R.id.btn_footer_list);
-        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
+        btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
 
     }
     private void escucharEventos(){
@@ -129,14 +129,14 @@ public class FeedRouteActivityDecouverte extends Activity  {
                         startActivity(intent);
                     }
                 });
-        /*btn_badges.setOnClickListener(
+        btn_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(FeedRouteActivityDecouverte.this, BadgesActivity.class);
+                        Intent intent = new Intent(FeedRouteActivityDecouverte.this, GameInfoActivity.class);
                         startActivity(intent);
                     }
-                });*/
+                });
         btn_list.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

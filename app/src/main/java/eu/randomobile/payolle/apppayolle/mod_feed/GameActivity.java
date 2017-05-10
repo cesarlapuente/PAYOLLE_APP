@@ -40,8 +40,8 @@ public class GameActivity extends Activity {
     private Poi poi;
     private ImageButton btn_home;
     private ImageButton btn_return;
-    private ImageButton btn_read;
-    private ImageButton btn_info;
+//    private ImageButton btn_read;
+//    private ImageButton btn_info;
     private TextView txt_game;
     private int type; //1:start(rules, infos), 2:content(hints, answers), 3:end(question, multiple choices)
     private ListView list_answers;
@@ -61,7 +61,9 @@ public class GameActivity extends Activity {
             final ArrayList<Poi> alPoi = app.getPoisList();
 
             for (Poi poi : alPoi) {
-                if (poi.getTitle().equals(paramTitle)) {
+                String poiLog1 = Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
+                String poiLog2 = Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
+                if (poiLog1.equals(poiLog2)) {
                     this.poi = poi;
                     break;
                 }
@@ -79,14 +81,14 @@ public class GameActivity extends Activity {
 
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
-        btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
-        btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
+//        btn_read = (ImageButton) findViewById(R.id.btn_footer_read);
+//        btn_info = (ImageButton) findViewById(R.id.btn_footer_info);
         txt_game = (TextView) findViewById(R.id.poi_game);
         list_answers = (ListView) findViewById(R.id.scrollView_game);
     }
 
     private void escucharEventos() {
-        btn_info.setOnClickListener(new View.OnClickListener() {
+        /*btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GameActivity.this, InfoOrientationActivity.class);
@@ -100,7 +102,7 @@ public class GameActivity extends Activity {
 //                        Intent intent = new Intent(GameActivity.this, FeedRouteActivity.class);
 //                        startActivity(intent);
                     }
-                });
+                });*/
 
         btn_return.setOnClickListener(
                 new View.OnClickListener() {

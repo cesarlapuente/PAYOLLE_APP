@@ -35,9 +35,7 @@ public class DecouverteRoutesListActivity extends Activity {
     private ImageButton btn_return;
     private ImageButton btn_map;
     private ImageButton btn_info;
-    //private ImageButton btn_badges;
-    //private TextView btn_galerie;
-    private ImageView game_image;
+    private ImageButton btn_game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,9 +77,7 @@ public class DecouverteRoutesListActivity extends Activity {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
-        //btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
-        //btn_galerie = (TextView) findViewById(R.id.btn_galerie);
-        game_image = (ImageView) findViewById(R.id.game_image);
+        btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
 
     }
 
@@ -101,14 +97,14 @@ public class DecouverteRoutesListActivity extends Activity {
                         startActivity(intent);
                     }
                 });
-        /*btn_badges.setOnClickListener(
+        btn_game.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(DecouverteRoutesListActivity.this, BadgesActivity.class);
+                        Intent intent = new Intent(DecouverteRoutesListActivity.this, GameInfoActivity.class);
                         startActivity(intent);
                     }
-                });*/
+                });
         btn_return.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

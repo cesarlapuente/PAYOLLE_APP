@@ -133,6 +133,10 @@
             android:theme="@style/AppTheme" />
 
         <activity
+            android:name=".mod_feed.GameInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".mod_feed.ResultsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />

@@ -54,36 +54,36 @@ public enum BitmapManager {
 		return null;
 	}
 
-	public void queueJob(final String url, final ImageView imageView,
-			final int width, final int height, final Route route, final MainApp app) {
-		/* Create handler in UI thread. */
-		final Handler handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				String tag = imageViews.get(imageView);
-				if (tag != null && tag.equals(url)) {
-					if (msg.obj != null) {
-						imageView.setImageBitmap((Bitmap) msg.obj);
-					} else {
-						imageView.setImageBitmap(placeholder);
-						Log.d(null, "fail " + url);
+		public void queueJob(final String url, final ImageView imageView,
+				final int width, final int height, final Route route, final MainApp app) {
+			/* Create handler in UI thread. */
+			final Handler handler = new Handler() {
+				@Override
+				public void handleMessage(Message msg) {
+					String tag = imageViews.get(imageView);
+					if (tag != null && tag.equals(url)) {
+						if (msg.obj != null) {
+							imageView.setImageBitmap((Bitmap) msg.obj);
+						} else {
+							imageView.setImageBitmap(placeholder);
+							Log.d(null, "fail " + url);
+						}
 					}
 				}
-			}
-		};
+			};
 
-		pool.submit(new Runnable() {
-			public void run() {
-				final Bitmap bmp = downloadBitmap(url, width, height);
-				Message message = Message.obtain();
-				message.obj = bmp;
-				Log.d(null, "Item downloaded: " + url);
-				route.setMainImage(bmp);
-				app.storeMainImage(route);
-				handler.sendMessage(message);
-			}
-		});
-	}
+			pool.submit(new Runnable() {
+				public void run() {
+					final Bitmap bmp = downloadBitmap(url, width, height);
+					Message message = Message.obtain();
+					message.obj = bmp;
+					Log.d(null, "Item downloaded: " + url);
+					route.setMainImage(bmp);
+					app.storeMainImage(route);
+					handler.sendMessage(message);
+				}
+			});
+		}
 
 	public void queueJob(final String url, final ImageView imageView,
 						 final int width, final int height) {
