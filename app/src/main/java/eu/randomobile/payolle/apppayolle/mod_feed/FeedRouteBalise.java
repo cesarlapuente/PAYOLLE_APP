@@ -42,6 +42,7 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -282,6 +283,9 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.parcours_0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
+                Drawable iconDrawableStart = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.poi_depart3x);
+                iconDrawableStart = resize(iconDrawableStart);
+                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawableStart);
 
 
                 for (final ResourcePoi poi : alPoi) {
@@ -292,6 +296,9 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                             .title(poi.getTitle())
                             .icon(icon_balise)
                             .snippet(poi.getCode1());
+                    if(Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase().concat("      ").substring(0,6).equals("depart")) {
+                        mk.icon(icon_balise_start);
+                    }
 
                     //alLatLng.add(poiPosition);
                     //mapboxMap.addMarker(mk);
@@ -311,6 +318,11 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
                             balise_distance_ok = (LinearLayout) convertView.findViewById(R.id.balise_distance_ok);
                             balise_distance_nok = (LinearLayout) convertView.findViewById(R.id.balise_distance_nok);
+                            TextView bNameNok = (TextView) convertView.findViewById(R.id.balise_poi_name_nok);
+                            TextView bName = (TextView) convertView.findViewById(R.id.balise_poi_name);
+
+                            bNameNok.setText(marker.getTitle());
+                            bName.setText(marker.getTitle());
 
                             temp.setLatitude(marker.getPosition().getLatitude());
                             temp.setLongitude(marker.getPosition().getLongitude());

@@ -24,6 +24,7 @@ public class POIDetailsActivity extends Activity {
     private MainApp app;
     private Poi poi;
     public static final String PARAM_KEY_TITLE_POI = "poi_title";
+    public static final String PARAM_KEY_TITLE_ROUTE = "route_title";
 
     private TextView txt_poi_title;
     private TextView txt_description_body;
@@ -139,6 +140,7 @@ public class POIDetailsActivity extends Activity {
                         public void onClick(View view) {
                             Intent intent = new Intent(POIDetailsActivity.this, GameActivity.class);
                             intent.putExtra(GameActivity.PARAM_KEY_POI_TITLE, poi.getTitle());
+                            intent.putExtra(GameActivity.PARAM_KEY_TITLE_ROUTE, PARAM_KEY_TITLE_ROUTE);
                             startActivity(intent);
                         }
                     });

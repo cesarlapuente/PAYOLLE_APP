@@ -34,6 +34,8 @@ public class GameInfoActivity extends Activity {
     private ImageButton btn_info;
     private ImageButton btn_list;
 
+    private TextView text;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,15 @@ public class GameInfoActivity extends Activity {
         btn_return = (ImageButton) findViewById(R.id.btn_return);
         btn_map = (ImageButton) findViewById(R.id.btn_footer_map);
         btn_list = (ImageButton) findViewById(R.id.btn_footer_list);
+        text = (TextView) findViewById(R.id.info_jeu);
+
+        text.setText("Dans le lac, dans la forêt ou dans les crêtes de montagnes se cachent des nombreux secrets que vous pouvez dévoiler sur chaque parcours.\n" +
+                "\n" +
+                "Dès que vous arrivez à chaque étape de votre parcours vous pouvez aller sur le jeu de pistes en cliquant sur le bouton de jeu qui est représenté par un dessin d’une manette de jeux.\n" +
+                "\n" +
+                "A chaque étape vous avez un indice ; trouvez la réponse dans le texte qui s’affiche\n" +
+                "\n" +
+                "N’oubliez pas de bien vous approchez avec votre point bleu du GPS de la balise !");
     }
 
     private void escucharEventos() {

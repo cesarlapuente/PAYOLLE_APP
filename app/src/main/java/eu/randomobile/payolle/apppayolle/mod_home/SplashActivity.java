@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
@@ -132,7 +134,7 @@ public class SplashActivity extends Activity {
 
     public void updateDataOffline(){ //TODO in a new thread
 
-        app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
+        //app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
         try {
             app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
             //app.setRoutesList(app.getDBHandler().getRouteList());
@@ -544,6 +546,7 @@ public class SplashActivity extends Activity {
                                 JSONArray arrayPois = recDic.getJSONArray("pois");
                                 if (arrayPois != null) {
                                     ArrayList<ResourcePoi> arrayTemp = new ArrayList<>();
+                                    ArrayList<Boolean> game = new ArrayList<Boolean>();
 
                                     for (int j = 0; j < arrayPois.length(); j++) {
                                         JSONObject objPOI = (JSONObject) arrayPois.get(j);
@@ -576,6 +579,7 @@ public class SplashActivity extends Activity {
                                         *********/
 
                                         arrayTemp.add(poi);
+                                        game.add(Boolean.FALSE);
 
                                         Log.i("JmLog", "resourcePoi Route title =>" + poi.getTitle());
 
@@ -586,6 +590,11 @@ public class SplashActivity extends Activity {
                                         */
                                     }
                                     item.setPois(arrayTemp);
+
+                                    /*Game part*/
+                                    game.remove(game.size()-1);
+                                    item.setNumberPoiGameOk(game);
+
                                 }
 
                             } catch (Exception e) {
@@ -593,7 +602,6 @@ public class SplashActivity extends Activity {
                                 e.printStackTrace();
                                 Log.d("--------------------", " ---------------------------^-ERROR-^------------------------------- ");
                             }
-
 
                             listaRutas.add(item);
 

@@ -37,6 +37,7 @@ import com.mapbox.mapboxsdk.offline.OfflineTilePyramidRegionDefinition;
 
 import org.json.JSONObject;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
@@ -265,6 +266,9 @@ public class FeedRouteDetails extends Activity {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.parcours_0);
                 iconDrawable = app.resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
+                Drawable iconDrawableStart = ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.poi_depart3x);
+                iconDrawableStart = app.resize(iconDrawableStart);
+                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawableStart);
                 if(route.getDifficulty_tid().equals("22")) {
                     mapboxMap.setMyLocationEnabled(false);
                 }
@@ -280,8 +284,10 @@ public class FeedRouteDetails extends Activity {
                         MarkerViewOptions marker = new MarkerViewOptions()
                                 .position(poiPosition)
                                 .title(poi.getTitle())
-                                .icon(icon_balise)
-                                ;
+                                .icon(icon_balise);
+                        if(Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase().concat("      ").substring(0,6).equals("depart")) {
+                            marker.icon(icon_balise_start);
+                        }
                         //add Poi
                         alLatLng.add(poiPosition);
                         //add Marker

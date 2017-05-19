@@ -24,6 +24,7 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
@@ -159,6 +160,9 @@ public class FeedRouteActivity extends Activity  {
                 Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivity.this, R.drawable.parcours_0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
+                Drawable iconDrawableStart = ContextCompat.getDrawable(FeedRouteActivity.this, R.drawable.poi_depart3x);
+                iconDrawableStart = app.resize(iconDrawableStart);
+                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawableStart);
 
                 for(Route route : alRoute){
                     ArrayList<ResourcePoi> alPois =  route.getPois();
@@ -170,6 +174,9 @@ public class FeedRouteActivity extends Activity  {
                                 .title(poi.getTitle())
                                 .icon(icon_balise);
                         //add Poi
+                        if(Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase().concat("      ").substring(0,6).equals("depart")) {
+                            marker.icon(icon_balise_start);
+                        }
                         alLatLng.add(poiPosition);
                         //add Marker
                         mapboxMap.addMarker(marker);

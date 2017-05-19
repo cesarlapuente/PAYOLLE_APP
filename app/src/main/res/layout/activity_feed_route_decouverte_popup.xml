@@ -93,7 +93,9 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/icono_juer_deactif"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="1dp"
+                    android:src="@drawable/boton_juego_popup3x"
                     android:id="@+id/btn_popup_game"
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"

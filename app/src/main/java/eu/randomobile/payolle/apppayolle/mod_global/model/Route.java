@@ -48,6 +48,7 @@ public class Route {
     private ArrayList<TagTerm> tags;
     private Vote vote;
     private int color;
+    private ArrayList<Boolean> numberPoiGameOk;
 
     public static RoutesInterface routesInterface;
 
@@ -729,5 +730,27 @@ public class Route {
         int hours = (int) (estimatedTime / 60); //since both are ints, you get an int
         int minutes = (int) (estimatedTime % 60);
         return hours + "h" + String.format("%02d", minutes);
+    }
+
+    public int getNumberPoiGameOkTrue() {
+        int count = 0;
+        for (Boolean b : numberPoiGameOk) {
+            if (b==Boolean.TRUE) count ++;
+        }
+        return count;
+    }
+
+    public void setGameTrue(int pos){
+        if(pos>=0 && pos<numberPoiGameOk.size()){
+            numberPoiGameOk.set(pos,Boolean.TRUE);
+        }
+    }
+
+    public ArrayList<Boolean> getNumberPoiGameOk() {
+        return numberPoiGameOk;
+    }
+
+    public void setNumberPoiGameOk(ArrayList<Boolean> numberPoiGameOk) {
+        this.numberPoiGameOk = numberPoiGameOk;
     }
 }

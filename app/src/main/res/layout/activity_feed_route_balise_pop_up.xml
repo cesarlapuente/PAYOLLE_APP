@@ -19,11 +19,20 @@
             android:layout_gravity="top" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:visibility="visible"
             android:id="@+id/balise_distance_nok"
             android:layout_gravity="center">
+            <TextView
+                android:id="@+id/balise_poi_name_nok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poi title"
+                android:textColor="#FFFFFF"
+                android:paddingTop="10dp"
+                android:textSize="18sp"
+                android:gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,15 +57,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="invisible"
+            android:visibility="gone"
             android:id="@+id/balise_distance_ok">
+
+            <TextView
+                android:id="@+id/balise_poi_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poi title"
+                android:textColor="#FFFFFF"
+                android:paddingTop="10dp"
+                android:gravity="center"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pour valider cette balise, choisissez le code correct : "
                 android:textColor="#FFFFFF"
-                android:padding="10dp"
+                android:paddingTop="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
                 android:gravity="center"/>
 
             <LinearLayout
@@ -183,20 +204,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:src="@drawable/boton_wrong"
                     android:adjustViewBounds="true"
-                    android:layout_margin="15dp"
                     android:layout_gravity="start"
                     android:clickable="true"
                     android:id="@+id/validation_skip"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_margin="15dp"
                     android:src="@drawable/boton_ok"
                     android:adjustViewBounds="true"
                     android:layout_gravity="end"

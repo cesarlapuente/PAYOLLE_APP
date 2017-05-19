@@ -393,6 +393,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                             public void onClick(View v) {
                                                 Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
                                                 intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
+                                                intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_ROUTE, route.getTitle());
                                                 startActivity(intent);
                                             }
                                         });
@@ -402,6 +403,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                             public void onClick(View v) {
                                                 Intent intent = new Intent(FeedRouteDetailsDecouverte.this, GameActivity.class);
                                                 intent.putExtra(GameActivity.PARAM_KEY_POI_TITLE, poi_title.getText());
+                                                intent.putExtra(GameActivity.PARAM_KEY_TITLE_ROUTE, route.getTitle());
                                                 startActivity(intent);
                                             }
                                         });

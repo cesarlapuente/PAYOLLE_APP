@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,15 +36,16 @@ import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 
 public class GameActivity extends Activity {
     public static final String PARAM_KEY_POI_TITLE = "poi_title";
+    public static final String PARAM_KEY_TITLE_ROUTE = "route_title";
 
     private MainApp app;
     private Poi poi;
+    private Route route;
     private ImageButton btn_home;
     private ImageButton btn_return;
 //    private ImageButton btn_read;
 //    private ImageButton btn_info;
     private TextView txt_game;
-    private int type; //1:start(rules, infos), 2:content(hints, answers), 3:end(question, multiple choices)
     private ListView list_answers;
     private String good_answer;
     private AnswersAdapter answersAdapter;
@@ -65,6 +67,15 @@ public class GameActivity extends Activity {
                 String poiLog2 = Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
                 if (poiLog1.equals(poiLog2)) {
                     this.poi = poi;
+                    break;
+                }
+            }
+            String paramRoute = b.getString(PARAM_KEY_TITLE_ROUTE);
+            final ArrayList<Route> routes = app.getRoutesListDE();
+
+            for (Route route : routes) {
+                if (route.getTitle().equals(paramRoute)) {
+                    this.route = route;
                     break;
                 }
             }
@@ -123,113 +134,111 @@ public class GameActivity extends Activity {
     }
 
     private void play() {
-        String poiGame = "3Question ?;Reponse;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix x"; //Get the string here
+        String poiGame = "Question ?;Reponse;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix 1;Choix 2; ... ;Choix x"; //Get the string here
 
         /* Version statique du jeu */
         String num = poi.getTitle().substring(0,3);
-        if (num.equals("1-1")) poiGame = "1Pour découvrir le \"secret des frontières\" lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours.\n" +
-                "Indice 1 : Comment s'écrivait le nom de l'hôtelier qui à donner son nom à Payolle ?";
-        else if (num.equals("1-2")) poiGame = "2Indice 2 : Exploitation forestière, tourisme, quelle est la troisième activité principale à Payolle ?";
-        else if (num.equals("1-3")) poiGame = "2Indice 3 : Vainqueur de l'étape de la première arrivée à Payolle en 2016.";
-        else if (num.equals("1-4")) poiGame = "2Indice 4 : Une crête en patois.";
-        else if (num.equals("1-5")) poiGame = "2Indice 5 : Dans la légende, comment s'appelle le combattant de la vallée de Campan ?";
-        else if (num.equals("1-6")) poiGame = "2Indice 6 : Je domine Payolle.";
-        else if (num.equals("1-7")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;Paillole – le Dogue – Stephen Cummings - Pastoralisme – Sarrat – L'Arbizon;Paillole – le Dogue – Stephen Cummings - Pastoralisme – Sarrat – L'Arbizon;Thibaut Pinot – Pastoralisme - Sarrat – Pailhole – le Dogue – Le Pic du Midi;Sarrat – Pastoralisme - L'Arbizon – Paillole – Stephen Cummings – Fréchou";
+        if (num.equals("1-1")) poiGame = "Pour découvrir le \"secret des frontières\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "Comment s'écrivait le nom de l'hôtelier qui a donné son nom à Payolle ?;Paillole;Pailhole;Paillole;Payole";
+        else if (num.equals("1-2")) poiGame = "Exploitation forestière, tourisme, quelle est la troisième activité principale à Payolle ?;Le Pastoralisme;Le Pastoralisme;le commerce;L’industrie";
+        else if (num.equals("1-3")) poiGame = "Qui a gagné l'étape de la première arrivée à Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault";
+        else if (num.equals("1-4")) poiGame = "Comment dit-on une crête en patois ?;Sarrat;Corde;Courtaou;Sarrat";
+        else if (num.equals("1-5")) poiGame = "Dans la légende, comment s'appelle le combattant de la vallée de Campan ?;Le Dogue;Le Dogue;Goliath;Fréchou";
+        else if (num.equals("1-6")) poiGame = "Je domine Payolle.;L'Arbizon;Le Pic du Midi;Col d’Aspin;L'Arbizon";
+        else if (num.equals("1-7")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des frontières\" !\n\n"
+                +"De tous temps les communautés se sont affrontées pour la propriété des meilleures estives et des plus belles forêts. Les différents pouvoirs se sont accaparés des territoires puis les ont rendus aux communautés. Cette histoire explique la présence des propriétés indivises et le partage parfois bizarre des territoires comme celui de Payolle réparti sur cinq communes."
+                +";Pour découvrir le \"secret des frontières\" vous devez obtenir toutes les bonnes réponses.";
         /**/
-        else if (num.equals("2-1")) poiGame = "1Pour découvrir le \"secret des rigoles\"  lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours.\n" +
-                "Indice 1 : L'Adour de Payolle, l'Adour de Gripp, comment se nomme la troisième \"source\" du fleuve Adour ?";
-        else if (num.equals("2-2")) poiGame = "2Indice 2 : Quelle est la hauteur maximale de la digue du lac ?";
-        else if (num.equals("2-3")) poiGame = "2Indice 3 : Comment nomme-t-on la fabrication d'électricité grâce à la force de l'eau.";
-        else if (num.equals("2-4")) poiGame = "2Indice 4 : Je nage dans les rivières et le lac de Payolle.";
-        else if (num.equals("2-5")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;16 m – Truite fario - Hydroélectricité - Lesponne;Desman - Hydroélectricité - 15 m - Lesponne;Turbine – Lesponne -12 m – Truite fario;16 m – Truite fario - Hydroélectricité - Lesponne";
+        else if (num.equals("2-1")) poiGame = "Pour découvrir le \"secret des rigoles\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "L'Adour de Payolle, l'Adour de Gripp, comment se nomme la troisième \"source\" du fleuve Adour ?;Lesponne;Lesponne;Bigorre;Campan";
+        else if (num.equals("2-2")) poiGame = "Quelle est la hauteur maximale de la digue du lac ?;16 m;12 m;15 m;16 m";
+        else if (num.equals("2-3")) poiGame = "Comment nomme-t-on la fabrication d'électricité grâce à la force de l'eau ?;Hydroélectricité;Solaire;Hydroélectricité;Turbine";
+        else if (num.equals("2-4")) poiGame = "Je nage dans les rivières et le lac de Payolle.;Truite fario;Truite fario;L’ours;Desman";
+        else if (num.equals("2-5")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des rigoles\" !\n\n"
+                +"Des dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l'eau partout dans la vallée. L'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit."
+                +";Pour découvrir le \"secret des rigoles\" vous devez obtenir toutes les bonnes réponses.";
         /**/
-        else if (num.equals("3-1")) poiGame = "1Pour découvrir le \"secret de de la soupe\"  lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours.\n" +
-                "Indice 1 : Petit animal qui vivait dans les mers il y a environ 360 millions d'années.";
-        else if (num.equals("3-2")) poiGame = "2Indice 2 : Les romains ont envoyé ce marbre à Rome.";
-        else if (num.equals("3-3")) poiGame = "2Indice 3 : Je protège la maison sur le chapeau des cheminées.";
-        else if (num.equals("3-4")) poiGame = "2Indice 4 : Je marche à la queue leu leu.";
-        else if (num.equals("3-5")) poiGame = "2Indice 5 : Maurice Bénézech alias...";
-        else if (num.equals("3-6")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;Loup – Cocut – Goniatite – Vert tendre – Capitaine Bernard;Vert tendre – Goniatite – Pénaous – Capitaine Bernard – Loup;Loup – Cocut – Goniatite – Vert tendre – Capitaine Bernard;Capitaine Bernard - Griotte – Goniatite - Loup - Cocut";
+        else if (num.equals("3-1")) poiGame = "Pour découvrir le \"secret de la soupe\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "Je suis un petit animal qui vivait dans les mers il y a environ 360 millions d'années.;Goniatite;Fossiles;Goniatite;Goniate";
+        else if (num.equals("3-2")) poiGame = "Les Romains ont envoyé ce marbre à Rome.;Vert tendre;Rouge;Griotte;Vert tendre";
+        else if (num.equals("3-3")) poiGame = "Je protège la maison sur le chapeau des cheminées.;Cocut;Cocut;Pénaous;Chaume";
+        else if (num.equals("3-4")) poiGame = "Je marche à la queue leu leu.;Loup;Loup;Fourvel;Renard";
+        else if (num.equals("3-5")) poiGame = "Maurice Bénézech alias...;Capitaine Bernard;Capitaine Bernard;Fourvel;Soubielle";
+        else if (num.equals("3-6")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la soupe\" !\n\n"
+                +"Le courtaou du Sarroua pourrait s'appeler les cabanes aux épinards.\n" +
+                "Le sarrou (chénopode bon-Henri) était utilisé par les bergers pour cuisiner la soupe. Cette plante a certainement été introduite en montagne dans la laine des brebis, elle affectionne les reposoirs à bétail riches en nitrates et les brebis en sont friandes à l'automne."
+                +";Pour découvrir le \"secret de la soupe\" vous devez obtenir toutes les bonnes réponses.";
         /**/
-        else if (num.equals("4-1")) poiGame = "1Pour découvrir le \"secret de de la cabane\" lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours.\n" +
-                "Indice 1 : Le bétail se déplace de la plaine vers la montagne.";
-        else if (num.equals("4-2")) poiGame = "2Indice 2 : Ancien outil pour fabriquer le beurre.";
-        else if (num.equals("4-3")) poiGame = "2Indice 3 : Village de vacher en montagne.";
-        else if (num.equals("4-4")) poiGame = "2Indice 4 : Les chefs de maison composaient la...";
-        else if (num.equals("4-5")) poiGame = "2Indice 5 : Le courtaou des Esclozes a été construit sur une...";
-        else if (num.equals("4-6")) poiGame = "2Indice 6 : Vous êtes passé par ce courtaou avant d'arriver aux Esclozes.";
-        else if (num.equals("4-7")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;Moraine glacière -Bésiau - Artigussy – Baratte – Transhumance - Courtaou;Courtaou – Le Sarroua – Baratte – Moraine glaciaire – Transhumance - Bésiau;Moraine glacière -Bésiau - Artigussy – Baratte – Transhumance - Courtaou;Transhumance – Badino – Courtaou - Bésiau - Artigussy – Moraine glaciaire";
+        else if (num.equals("4-1")) poiGame = "Pour découvrir le \"secret de la cabane\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "Comment appelle-t-on le déplacement du bétail de la plaine vers la montagne.;Transhumance;Migration;Voyage du bétail;Transhumance";
+        else if (num.equals("4-2")) poiGame = "J’étais utilisé pour fabriquer le beurre.;Baratte;Baratte;Courtaou;Badino";
+        else if (num.equals("4-3")) poiGame = "Je suis le nom donné à un village de vachers en montagne.;Courtaou;Village de bergers;Artigussy;Courtaou";
+        else if (num.equals("4-4")) poiGame = "Mon nom était celui donné à l’assemblée composée par les chefs de maison.;Bésiau;Bésiau;Courtaou;Badino";
+        else if (num.equals("4-5")) poiGame = "Le courtaou des Esclozes a été construit sur une...;Moraine glacière;Montagne;Moraine glacière;Glacier";
+        else if (num.equals("4-6")) poiGame = "Vous êtes passés par ce courtaou avant d'arriver aux Esclozes.;Artigussy;Le Sarroua;Artigussy;Bésiau";
+        else if (num.equals("4-7")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la cabane\" !\n\n"
+                +"Pour se protéger des intempéries, des loups et des ours, les bergers possédaient une cabane. Comme ils suivaient toujours leurs troupeaux, ils faisaient suivre aussi une cabane mobile : le burguet. Il s'agissait d'une grande caisse de deux mètres de long, avec une petite porte, munie de deux brancards pour la déplacer."
+                +";Pour découvrir le \"secret de la cabane\" vous devez obtenir toutes les bonnes réponses.";
         /**/
-        else if (num.equals("5-1")) poiGame = "1Pour découvrir le \"secret des paysages\"  lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours..\n" +
-                "Indice 1 : Je ne m'enfonce pas dans la tourbière grâce à son plumet.";
-        else if (num.equals("5-2")) poiGame = "2Indice 2 : Mes cônes poussent vers le bas.";
-        else if (num.equals("5-3")) poiGame = "2Indice 3 : Fleur de la pelouse avec un O dans l'E.";
-        else if (num.equals("5-4")) poiGame = "2Indice 4 : Je nettoie par le feu.";
-        else if (num.equals("5-5")) poiGame = "2Indice 5 : Sangliers et palombes adorent le fruit du hêtre.";
-        else if (num.equals("5-6")) poiGame = "2Indice 6 : Roche qui s'est formée au fond des mers.";
-        else if (num.equals("5-7")) poiGame = "2Indice 7 : Nappe cachée dans la montagne.";
-        else if (num.equals("5-8")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;Calcaire - Epicéa – Faine – Linaigrette - Phréatique - Ecobuage - Œillet;Gentiane - Phréatique - Faine – Linaigrette – Calcaire – Ecobuage - Épicéa;Ecobuage - Vinaigrette - Epicéa - Granite - Phréatique - Œillet - Faine;Calcaire - Epicéa – Faine – Linaigrette - Phréatique - Ecobuage - Œillet";
+        else if (num.equals("5-1")) poiGame = "Pour découvrir le \"secret des paysages\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "Je ne m'enfonce pas dans la tourbière grâce à son plumet.;Linaigrette;Gentiane;Vinaigrette;Linaigrette";
+        else if (num.equals("5-2")) poiGame = "Mes cônes poussent vers le bas.;Épicéa;Épicéa;Sapins;Œillet";
+        else if (num.equals("5-3")) poiGame = "Fleur de la pelouse avec un O dans l'E.;Œillet;Gœntiane;Œuf;Œillet";
+        else if (num.equals("5-4")) poiGame = "Je nettoie par le feu.;Écobuage;Écobuage;Incendie;Faine";
+        else if (num.equals("5-5")) poiGame = "Sangliers et palombes adorent ce fruit du hêtre.;Faine;Épicéa;Faine;Murs";
+        else if (num.equals("5-6")) poiGame = "Roche qui s'est formée au fond des mers.;Calcaire;Marbre;Calcaire;Granite";
+        else if (num.equals("5-7")) poiGame = "Nappe cachée dans la montagne.;Phréatique;Phréatique;Calcaire;Textile";
+        else if (num.equals("5-8")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des paysages\" !\n\n"
+                +"Les jolis paysages de montagne sont dus à l'exploitation séculaire des estives et des forêts. Sans cette exploitation, ni belles pelouses ni belles forêts. La chasse permet également de gérer ces paysages. Aujourd'hui l'objectif de cet équilibre est de pérenniser une faune sauvage riche et diversifiée, compatible avec la rentabilité des activités agricoles et sylvicoles."
+                +";Pour découvrir le \"secret des paysages\" vous devez obtenir toutes les bonnes réponses.";
         /**/
-        else if (num.equals("6-1")) poiGame = "1Pour découvrir le \"secret du gypaète\"  lors de la dernière étape, vous allez devoir trouver un indice dans chaque étape du parcours.\n" +
-                "Indice 1 : A Payolle, je suis le roi de l'apnée.\n";
-        else if (num.equals("6-2")) poiGame = "2Indice 2 : Fleur la plus toxique de France.";
-        else if (num.equals("6-3")) poiGame = "2Indice 3 : Aquila chrysaetos en français.";
-        else if (num.equals("6-4")) poiGame = "2Indice 4 : Animal à raquettes.";
-        else if (num.equals("6-5")) poiGame = "2Indice 5 : Indice de présence odorant.";
-        else if (num.equals("6-6")) poiGame = "2Indice 6 : Je ne mange pas de viande.";
-        else if (num.equals("6-7")) poiGame = "2Indice 7 : Maternité des fourmis.";
-        else if (num.equals("6-8")) poiGame = "3Rappelez-vous des indices et choisissez la bonne liste !;Aconit napel – Couvin - Végétarien - Aigle royal – Desman - Lagopède alpin;Couvin – Desman - Végétarien - Aconit tue-loup – Crotte - Lagopède alpin – Aigle royal;Vautour fauve - Végétarien - Lagopède alpin – Couvin – Desman – Aconit napel - Poil;Aconit napel – Couvin - Végétarien - Aigle royal – Desman - Lagopède alpin";
+        else if (num.equals("6-1")) poiGame = "Pour découvrir le \"secret du gypaète\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n" +
+                "\n" +
+                "À Payolle, je suis le roi de l'apnée.;Desman;Desman;Couvain;Lagopède alpin";
+        else if (num.equals("6-2")) poiGame = "Fleur la plus toxique de France.;Aconit napel;Aconit tue-loup;Aconit napel;Végétarien";
+        else if (num.equals("6-3")) poiGame = "Aquila chrysaetos en français.;Aigle royal;Couvain;Vautour fauve;Aigle royal";
+        else if (num.equals("6-4")) poiGame = "Animal à raquettes.;Lagopède alpin;Isard;Campagnol;Lagopède alpin";
+        else if (num.equals("6-5")) poiGame = "Indice de présence odorant.;Crotte;Crotte;Parfum;Poil";
+        else if (num.equals("6-6")) poiGame = "Je ne mange pas de viande.;Végétarien;Endémique;Végétarien;Mammifère";
+        else if (num.equals("6-7")) poiGame = "Maternité des fourmis.;Couvain;Couvain;Cave;Niche";
+        else if (num.equals("6-8")) poiGame = "LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret du gypaète\" !\n\n"
+                +"Le gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d'Europe, il a la particularité de se nourrir presque exclusivement d'os."
+                +";Pour découvrir le \"secret du gypaète\" vous devez obtenir toutes les bonnes réponses.";
 
         //poiGame = poi.getGame();
         if (poiGame != null){
-            type = Integer.parseInt(poiGame.substring(0,1));
-            if (type == 3) {
+            ArrayList<String> txt_items = new ArrayList<String>(Arrays.asList(poiGame.split(";")));
+
+            if(txt_items.get(0).equals("LASTPOI")){
+                int numOk = route.getNumberPoiGameOkTrue();
+                int numTot = route.getNumberPoiGameOk().size();
+                txt_items.set(1,txt_items.get(1).concat(numOk+" questions sur "+numTot));
+                if (numOk==numTot) {
+                    txt_items.set(1,txt_items.get(1).concat("\n"+txt_items.get(2))); //Game full ok
+                } else {
+                    txt_items.set(1,txt_items.get(1).concat("\n"+txt_items.get(3))); //Game with mistakes
+                }
+                txt_game.setText(txt_items.get(1));
+            } else {
                 list_answers.setVisibility(View.VISIBLE);
-                ArrayList<String> txt_items = new ArrayList<String>(Arrays.asList(poiGame.substring(1).split(";")));
                 txt_game.setText(txt_items.remove(0));
                 good_answer = txt_items.remove(0);
 
-                answersAdapter = new AnswersAdapter(this,txt_items);
+                answersAdapter = new AnswersAdapter(this, txt_items);
                 list_answers.setAdapter(answersAdapter);
-
-            } else {
-                txt_game.setText(poiGame.substring(1));
             }
         }
     }
 
     private void check_answer(String ans) {
-        int numTrack = Integer.parseInt(poi.getTitle().substring(0,1));
         if (ans.equals(good_answer)){
-            String strGood = "Félicitations, vous avez découvert le secret ";
-            switch (numTrack) {
-                case 1:
-                    strGood += "des frontières !\n\n"
-                            +"De tous temps les communautés se sont affrontées pour la propriété des meilleures estives et des plus belles forêts. Les différents pouvoirs se sont accaparés des territoires puis les ont rendus aux communautés. Cette histoire explique la présence des propriétés indivises et le partage parfois bizarre des territoires comme celui de Payolle réparti sur cinq communes.";
-                    break;
-                case 2:
-                    strGood += "des rigoles !\n\n"
-                            +"Des dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l'eau partout dans la vallée. L'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit.";
-                    break;
-                case 3:
-                    strGood += "de la soupe !\n\n"
-                            +"Le courtaou du Sarroua pourrait s'appeler les cabanes aux épinards.\n" +
-                            "Le sarrou (chénopode bon-Henri) était utilisé par les bergers pour cuisiner la soupe. Cette plante a certainement été introduite en montagne dans la laine des brebis, elle affectionne les reposoirs à bétail riches en nitrates et les brebis en sont friandes à l'automne.";
-                    break;
-                case 4:
-                    strGood += "de la cabane !\n\n"
-                            +"Pour se protéger des intempéries, des loups et des ours, les bergers possédaient une cabane. Comme ils suivaient toujours leurs troupeaux, ils faisaient suivre aussi une cabane mobile : le burguet. Il s'agissait d'une grande caisse de deux mètres de long, avec une petite porte, munie de deux brancards pour la déplacer.";
-                    break;
-                case 5:
-                    strGood += "des paysages !\n\n"
-                            +"Les jolis paysages de montagne sont dus à l'exploitation séculaire des estives et des forêts. Sans cette exploitation, ni belles pelouses ni belles forêts. La chasse permet également de gérer ces paysages. Aujourd'hui l'objectif de cet équilibre est de pérenniser une faune sauvage riche et diversifiée, compatible avec la rentabilité des activités agricoles et sylvicoles.";
-                    break;
-                case 6:
-                    strGood += "du gypaète !\n\n"
-                            +"Le gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d'Europe, il a la particularité de se nourrir presque exclusivement d'os.";
-                    break;
-            }
-            txt_game.setText(strGood);
+            txt_game.setText("Bonne réponse !");
+            route.setGameTrue(Integer.parseInt(poi.getTitle().substring(2,3))-1);
         } else {
             txt_game.setText("Dommage, ce n'est pas la bonne réponse.");
         }
@@ -278,12 +287,13 @@ public class GameActivity extends Activity {
 
             GameActivity.AnswersAdapter.ViewHolder holder;
             Button btn = new Button(GameActivity.this);
+            btn.setBackgroundResource(R.drawable.fondo_indice3x);
+            btn.setTextColor(Color.WHITE);
 
             // Recoger el item
             final String item = listaItems.get(position);
 
             btn.setText(item);
-            //TODO add listenner with response comparaison
             btn.setOnClickListener(
                     new View.OnClickListener() {
                         @Override

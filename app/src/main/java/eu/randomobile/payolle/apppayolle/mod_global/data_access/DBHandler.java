@@ -9,6 +9,7 @@ import android.util.Log;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
@@ -69,6 +70,11 @@ public class DBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_BADGE_ID = "id";
     public static final String COLUMN_BADGE_ROUTE_ID = "route_id";
     public static final String COLUMN_BADGE_SUCCESS = "success";
+    // <---------->__TABLE_GAME_CONFIGURATION____<---------->
+    private static final String TABLE_GAME = "game";
+    public static final String COLUMN_GAME_ID = "id";
+    public static final String COLUMN_GAME_POI_ID = "poi_id";
+    public static final String COLUMN_GAME_SUCCESS = "success";
     // <---------->__CONFIGURATION_END____________<---------->
 
     public DBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, MainApp app) {
@@ -136,6 +142,14 @@ public class DBHandler extends SQLiteOpenHelper {
                 ");";
         db.execSQL(query_badges);
         db.execSQL("CREATE UNIQUE INDEX idx_badges_route ON "+TABLE_BADGES+" ("+COLUMN_BADGE_ROUTE_ID+")"); //Required for insert or replace
+
+        String query_game = "CREATE TABLE " + TABLE_GAME +
+                "(" +
+                COLUMN_GAME_ID + " INTEGER PRIMARY KEY, " +
+                COLUMN_GAME_POI_ID + " INTEGER, " +
+                COLUMN_GAME_SUCCESS + " INTEGER " +
+                ");";
+        db.execSQL(query_game);
     }
 
     @Override
@@ -146,6 +160,7 @@ public class DBHandler extends SQLiteOpenHelper {
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_PAGES);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_MAPS);
             db.execSQL("DROP_TABLE IF EXIST " + TABLE_BADGES);
+            db.execSQL("DROP_TABLE IF EXIST " + TABLE_GAME);
 
             onCreate(db);
 
@@ -479,7 +494,7 @@ public class DBHandler extends SQLiteOpenHelper {
         int count_GR = 0;
         int count_PR = 0;
 
-        /*POI recup part*/ //Realy not optimised
+        /*POI recup part*/ //Really not optimised
 
         String[] columns2 = new String[]{COLUMN_POI_ID, COLUMN_POI_TITLE, COLUMN_POI_BODY,COLUMN_POI_LAT,COLUMN_POI_LON};
 
@@ -581,6 +596,7 @@ public class DBHandler extends SQLiteOpenHelper {
             String routeList[] = routeListTemp.split(";");
 
             ArrayList<ResourcePoi> listaPois = new ArrayList<>();
+            ArrayList<Boolean> game = new ArrayList<Boolean>();
 
             for (int i = 0; i < routeList.length; i++) {
                 ResourcePoi poi = new ResourcePoi();
@@ -603,14 +619,15 @@ public class DBHandler extends SQLiteOpenHelper {
                         }
                     }
                 }
-
+                game.add(Boolean.FALSE);
                 listaPois.add(poi);
             }
 
             item.setPois(listaPois);
-            if(item.getCategory().getName().equals(name)){
-                result.add(item);
-            }
+
+             /*Game part*/
+            game.remove(game.size()-1);
+            item.setNumberPoiGameOk(game);
         }
 
         db.close();
@@ -790,6 +807,10 @@ public class DBHandler extends SQLiteOpenHelper {
 
         db.close();
     }
+
+    // <-------------------->_BADGES_<-------------------->
+
+
 
     // <-------------------->_END_OF_FILE_<-------------------->
 }
