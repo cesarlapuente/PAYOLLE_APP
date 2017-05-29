@@ -628,6 +628,10 @@ public class DBHandler extends SQLiteOpenHelper {
              /*Game part*/
             game.remove(game.size()-1);
             item.setNumberPoiGameOk(game);
+
+            if(item.getCategory().getName().equals(name)){
+                result.add(item);
+            }
         }
 
         db.close();

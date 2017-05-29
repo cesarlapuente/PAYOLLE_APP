@@ -142,7 +142,12 @@ public class SplashActivity extends Activity {
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas", Toast.LENGTH_LONG).show();
         }
+        try {
+            app.setPoisList(app.getDBHandler().getPoiList());
 
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar los pois", Toast.LENGTH_LONG).show();
+        }
         app.setPoisList(app.getDBHandler().getPoiList());
         try {
             app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));

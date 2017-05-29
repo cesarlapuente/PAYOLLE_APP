@@ -180,11 +180,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
 
-        <activity
-            android:name=".mod_feed.game.SlideActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
-
         <service android:name="com.mapbox.mapboxsdk.telemetry.TelemetryService" />
     </application>
 
