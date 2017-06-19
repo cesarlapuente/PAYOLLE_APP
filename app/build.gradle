@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion '25.0.0'
     compileOptions.encoding = 'UTF-8'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId 'com.dev44screens.payolle'
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 25
         multiDexEnabled true
     }
     dexOptions {
@@ -43,13 +43,13 @@ dependencies {
     compile files('libs/android-async-http-1.4.2.jar')
     compile files('libs/annotations-12.0.jar')
     compile 'com.esri.arcgis.android:arcgis-android:10.2.8-1'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile 'com.google.code.gson:gson:2.6.2'
     compile files('libs/universal-image-loader-1.9.5.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 
     // add the Mapbox SDK dependency below
-    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:4.2.0-beta.1@aar'){
+    compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:5.0.2@aar'){
         transitive=true
     }
     compile ('com.mapbox.mapboxsdk:mapbox-android-services:1.0.0@aar'){

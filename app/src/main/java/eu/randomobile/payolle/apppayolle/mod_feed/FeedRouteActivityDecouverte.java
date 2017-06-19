@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.Color;
@@ -22,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.mapbox.mapboxsdk.MapboxAccountManager;
+import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
@@ -68,7 +69,7 @@ public class FeedRouteActivityDecouverte extends Activity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.app = (MainApp) getApplication();
-        MapboxAccountManager.start(this, getString(R.string.access_token));
+        Mapbox.getInstance(this, getString(R.string.access_token));
 
         setContentView(R.layout.activity_feed_route_decouverte);
 
@@ -178,12 +179,8 @@ public class FeedRouteActivityDecouverte extends Activity  {
                 /*Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi0);
                 iconDrawable = resize(iconDrawable);
                 Icon icon_balise = iconFactory.fromDrawable(iconDrawable);*/
-                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_depart3x);
-                iconDrawable = resize(iconDrawable);
-                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawable);
-                iconDrawable = ContextCompat.getDrawable(FeedRouteActivityDecouverte.this, R.drawable.poi_info3x);
-                iconDrawable = resize(iconDrawable);
-                Icon icon_balise_info = iconFactory.fromDrawable(iconDrawable);
+                Icon icon_balise_start = iconFactory.fromBitmap(resize(R.drawable.poi_depart3x));
+                Icon icon_balise_info = iconFactory.fromBitmap(resize(R.drawable.poi_info3x));
 
 
                 // if Poi not null
@@ -333,14 +330,20 @@ public class FeedRouteActivityDecouverte extends Activity  {
     }
 
 
-    private Drawable resize(Drawable image) {
-        Bitmap b = ((BitmapDrawable)image).getBitmap();
-        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 110, 110, false);
-        return new BitmapDrawable(getResources(), bitmapResized);
+    private Bitmap resize(int res) {
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), res);
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(bm, 110, 110, false);
+        return bitmapResized;
     }
 
 
     // Add the mapView lifecycle to the activity's lifecycle methods
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -354,15 +357,21 @@ public class FeedRouteActivityDecouverte extends Activity  {
     }
 
     @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 
     @Override

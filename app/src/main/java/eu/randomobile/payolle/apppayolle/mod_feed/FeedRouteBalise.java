@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -28,7 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mapbox.mapboxsdk.MapboxAccountManager;
+import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
@@ -104,6 +105,8 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
         super.onCreate(savedInstanceState);
         this.app = (MainApp) getApplication();
+
+        Mapbox.getInstance(this, "pk.eyJ1IjoibGFwdWVudGUiLCJhIjoiY2l4aWVrdHprMDAwNDJ3bm5hcmR3YnlkaSJ9.jTCAsUxKNME64cQFF0wVcQ");
         Bundle b = getIntent().getExtras();
         if (b != null) {
             paramNid = b.getString(PARAM_KEY_NID);
@@ -251,7 +254,6 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
         TChrono.purge();
     }
     private void initMapView(Bundle savedInstanceState){
-        MapboxAccountManager.start(this, getString(R.string.access_token));
         mapView = (MapView) findViewById(R.id.mapview);
 
         Log.d("Log", "route is null? " + " " + this.route.getTitle());
@@ -267,7 +269,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                 // Customize map with markers, polylines, etc.
                 FeedRouteBalise.this.prvMapBox = mapboxMap;
                 // style of the map
-                FeedRouteBalise.this.prvMapBox.setStyleUrl(Style.OUTDOORS);
+                //FeedRouteBalise.this.prvMapBox.setStyleUrl(Style.OUTDOORS);
                 FeedRouteBalise.this.prvMapBox.getUiSettings().setZoomControlsEnabled(true);
                 if (FeedRouteBalise.this.prvMapBox != null) {
                     FeedRouteBalise.this.prvMapBox.getUiSettings().setCompassEnabled(true);
@@ -280,12 +282,8 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                 }
                 // Create an Icon object for the marker to use
                 IconFactory iconFactory = IconFactory.getInstance(FeedRouteBalise.this);
-                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.parcours_0);
-                iconDrawable = resize(iconDrawable);
-                Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
-                Drawable iconDrawableStart = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.poi_depart3x);
-                iconDrawableStart = resize(iconDrawableStart);
-                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawableStart);
+                Icon icon_balise = iconFactory.fromBitmap(resize(R.drawable.parcours_0));
+                Icon icon_balise_start = iconFactory.fromBitmap(resize(R.drawable.poi_depart3x));
 
 
                 for (final ResourcePoi poi : alPoi) {
@@ -496,10 +494,10 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     }
 
 
-    private Drawable resize(Drawable image) {
-        Bitmap b = ((BitmapDrawable)image).getBitmap();
-        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, 110, 110, false);
-        return new BitmapDrawable(getResources(), bitmapResized);
+    private Bitmap resize(int res) {
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), res);
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(bm, 110, 110, false);
+        return bitmapResized;
     }
 
 
@@ -583,9 +581,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     public void gestionBalise(Marker marker){
 
         IconFactory iconFactory = IconFactory.getInstance(FeedRouteBalise.this);
-        Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.parcours_validate);
-        iconDrawable = resize(iconDrawable);
-        Icon icon_validate = iconFactory.fromDrawable(iconDrawable);
+        Icon icon_validate = iconFactory.fromBitmap(resize(R.drawable.parcours_validate));
         marker.setIcon(icon_validate);
         hsvalidate.put(marker.getId(),"validate");
         NB_POIS_VALIDATE++;
@@ -598,9 +594,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     public void gestionBaliseError(Marker marker){
 
         IconFactory iconFactory = IconFactory.getInstance(FeedRouteBalise.this);
-        Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteBalise.this, R.drawable.parcours_validate);
-        iconDrawable = resize(iconDrawable);
-        Icon icon_validate = iconFactory.fromDrawable(iconDrawable);
+        Icon icon_validate = iconFactory.fromBitmap(resize(R.drawable.parcours_validate));
         marker.setIcon(icon_validate);
         hsvalidate.put(marker.getId(),"no validate");
         NB_POIS_INVALIDATE++;
@@ -618,6 +612,12 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mapView.onResume();
@@ -630,15 +630,21 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
     }
 
     @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 
     @Override

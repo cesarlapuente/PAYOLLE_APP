@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mapbox.mapboxsdk.MapboxAccountManager;
+import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.constants.Style;
@@ -33,7 +33,7 @@ public class FeedRouteBalisePopUp extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MapboxAccountManager.start(this, getString(R.string.access_token));
+        Mapbox.getInstance(this, getString(R.string.access_token));
 
         setContentView(R.layout.activity_feed_route_balise_pop_up);
 

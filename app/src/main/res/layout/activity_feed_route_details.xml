@@ -66,10 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/mapviewdetail"
-            mapbox:center_latitude="0.0"
-            mapbox:center_longitude="0.0"
-            mapbox:style_url="@string/style_mapbox_streets"
-            />
+            mapbox:mapbox_styleUrl="mapbox://styles/lapuente/cj3ueqws000042rqv9bpzgw2y"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/toggle_download"
             android:layout_width="45dp"

@@ -62,14 +62,12 @@
             android:weightSum="1">
 
             <com.mapbox.mapboxsdk.maps.MapView
+                android:id="@+id/mapview"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:id="@+id/mapview"
-                mapbox:center_latitude="0.0"
-                mapbox:center_longitude="0.0"
-                mapbox:style_url="@string/style_mapbox_streets"
-                android:layout_weight="1.00" />
-
+                android:layout_weight="1.00"
+                mapbox:mapbox_styleUrl="mapbox://styles/lapuente/cj3ueqws000042rqv9bpzgw2y"/>
+            <!--mapbox:style_url="@string/style_mapbox_streets"-->
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="60dp"/>

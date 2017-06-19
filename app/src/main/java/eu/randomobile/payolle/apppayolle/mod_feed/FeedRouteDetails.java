@@ -3,6 +3,8 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mapbox.mapboxsdk.MapboxAccountManager;
+import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
@@ -83,6 +85,8 @@ public class FeedRouteDetails extends Activity {
 
         super.onCreate(savedInstanceState);
         this.app = (MainApp)  getApplication();
+
+        Mapbox.getInstance(this, "pk.eyJ1IjoibGFwdWVudGUiLCJhIjoiY2l4aWVrdHprMDAwNDJ3bm5hcmR3YnlkaSJ9.jTCAsUxKNME64cQFF0wVcQ");
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -239,7 +243,6 @@ public class FeedRouteDetails extends Activity {
     }
 
     private void initMapView (Bundle savedInstanceState) {
-        MapboxAccountManager.start(this, getString(R.string.access_token));
         PermissionsRequest.askForPermission(FeedRouteDetails.this, Manifest.permission.ACCESS_COARSE_LOCATION);
         PermissionsRequest.askForPermission(FeedRouteDetails.this, Manifest.permission.ACCESS_FINE_LOCATION);
 
@@ -256,19 +259,15 @@ public class FeedRouteDetails extends Activity {
             public void onMapReady(MapboxMap mapboxMap) {
                 FeedRouteDetails.this.prvMapBox = mapboxMap;
                 // style of the map
-                FeedRouteDetails.this.prvMapBox.setStyleUrl(Style.OUTDOORS);
+                //FeedRouteDetails.this.prvMapBox.setStyleUrl(Style.OUTDOORS);
                 FeedRouteDetails.this.prvMapBox.getUiSettings().setZoomControlsEnabled(true);
                 if (FeedRouteDetails.this.prvMapBox != null) {
                     FeedRouteDetails.this.prvMapBox.getUiSettings().setCompassEnabled(true);
                     FeedRouteDetails.this.prvMapBox.setMyLocationEnabled(true);
                 }
                 IconFactory iconFactory = IconFactory.getInstance(FeedRouteDetails.this);
-                Drawable iconDrawable = ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.parcours_0);
-                iconDrawable = app.resize(iconDrawable);
-                Icon icon_balise = iconFactory.fromDrawable(iconDrawable);
-                Drawable iconDrawableStart = ContextCompat.getDrawable(FeedRouteDetails.this, R.drawable.poi_depart3x);
-                iconDrawableStart = app.resize(iconDrawableStart);
-                Icon icon_balise_start = iconFactory.fromDrawable(iconDrawableStart);
+                Icon icon_balise = iconFactory.fromBitmap(resize(R.drawable.parcours_0));
+                Icon icon_balise_start = iconFactory.fromBitmap(resize(R.drawable.poi_depart3x));
                 if(route.getDifficulty_tid().equals("22")) {
                     mapboxMap.setMyLocationEnabled(false);
                 }
@@ -308,13 +307,26 @@ public class FeedRouteDetails extends Activity {
         });
     }
 
+    private Bitmap resize(int res) {
+        Bitmap bm = BitmapFactory.decodeResource(getResources(), res);
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(bm, 110, 110, false);
+        return bitmapResized;
+    }
+
     public void initMapOffline(){
         //<-- OFFLINE MAP -->//
         // Set up the OfflineManager
         OfflineManager offlineManager = OfflineManager.getInstance(FeedRouteDetails.this);
         // Define the offline region
-        OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
+        /*OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
                 mapView.getStyleUrl(),
+                latLngBounds,
+                10,
+                20,
+                FeedRouteDetails.this.getResources().getDisplayMetrics().density);*/
+
+        OfflineTilePyramidRegionDefinition definition = new OfflineTilePyramidRegionDefinition(
+                "mapbox://styles/mapbox/streets-v9",
                 latLngBounds,
                 10,
                 20,
@@ -414,6 +426,12 @@ public class FeedRouteDetails extends Activity {
 
     // Add the mapView lifecycle to the activity's lifecycle methods
     @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mapView.onResume();
@@ -426,15 +444,21 @@ public class FeedRouteDetails extends Activity {
     }
 
     @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 
     @Override
