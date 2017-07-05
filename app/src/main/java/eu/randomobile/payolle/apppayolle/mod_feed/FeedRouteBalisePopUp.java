@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -78,6 +79,8 @@ public class FeedRouteBalisePopUp extends Activity {
             @Override
             public void onMapReady(MapboxMap mapboxMap) {
                 // Customize map with markers, polylines, etc.
+                mapboxMap.getMyLocationViewSettings().setBackgroundTintColor(Color.rgb(0,102,204));
+                mapboxMap.getMyLocationViewSettings().setForegroundTintColor(Color.rgb(0,128,255));
                 FeedRouteBalisePopUp.this.prvMapBox = mapboxMap;
                 // style of the map
                 FeedRouteBalisePopUp.this.prvMapBox.setStyleUrl(Style.OUTDOORS);

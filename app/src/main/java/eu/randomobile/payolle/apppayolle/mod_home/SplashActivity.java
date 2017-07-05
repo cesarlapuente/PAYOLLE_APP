@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -127,16 +128,60 @@ public class SplashActivity extends Activity {
 
         } else {
 
-            updateDataOffline();
+            new backgroundLoadOffline().execute();
+            AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
+
+            builder.setTitle(R.string.txt_sin_conexion);
+            builder.setMessage(R.string.txt_caracteristicas_no_disponibles);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+
+                }
+            });
+            builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                @Override
+                public void onCancel(DialogInterface dialog) {
+
+                }
+            });
+
+            builder.show();
 
         }
+    }
+
+    public class backgroundLoadOffline extends
+            AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPostExecute(Void result) {
+            // TODO Auto-generated method stub
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            // TODO Auto-generated method stub
+            updateDataOffline();
+            return null;
+        }
+
     }
 
     public void updateDataOffline(){ //TODO in a new thread
 
         //app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
         try {
+            progressBar.incrementProgressBy(25);
             app.setRoutesListCO(app.getDBHandler().getRouteListByCateg("CO"));
+            progressBar.incrementProgressBy(25);
+            loadedComponents = 1;
             //app.setRoutesList(app.getDBHandler().getRouteList());
 
         } catch (Exception e) {
@@ -144,43 +189,22 @@ public class SplashActivity extends Activity {
         }
         try {
             app.setPoisList(app.getDBHandler().getPoiList());
-
+            progressBar.incrementProgressBy(25);
+            loadedComponents = 2;
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar los pois", Toast.LENGTH_LONG).show();
         }
         app.setPoisList(app.getDBHandler().getPoiList());
         try {
             app.setRoutesListDE(app.getDBHandler().getRouteListByCateg("Decouverte"));
+            progressBar.incrementProgressBy(25);
+            loadedComponents = 3;
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Se ha producido un error al actualizar las rutas decouverte", Toast.LENGTH_LONG).show();
         }
 
         loadedComponents = 4;
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
-
-        builder.setTitle(R.string.txt_sin_conexion);
-        builder.setMessage(R.string.txt_caracteristicas_no_disponibles);
-        builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                loadMainActivity();
-            }
-        });
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                loadMainActivity();
-            }
-        });
-        builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                loadMainActivity();
-            }
-        });
-
-        builder.show();
+        loadMainActivity();
     }
 
     public void feedInfo(){
@@ -261,7 +285,6 @@ public class SplashActivity extends Activity {
         super.onResume();
 
         splashActivado = true;
-
         /*
         try {
             new Handler().postDelayed(new Runnable() {

@@ -165,6 +165,8 @@ public class FeedRouteActivityDecouverte extends Activity  {
             public void onMapReady(final MapboxMap mapboxMap) {
                 Log.d("JmLog", "OnMapReady yes !");
                 // Customize map with markers, polylines, etc.
+                mapboxMap.getMyLocationViewSettings().setBackgroundTintColor(Color.rgb(0,102,204));
+                mapboxMap.getMyLocationViewSettings().setForegroundTintColor(Color.rgb(0,128,255));
                 FeedRouteActivityDecouverte.this.prvMapBox = mapboxMap;
                 // style of the map
                 FeedRouteActivityDecouverte.this.prvMapBox.setStyleUrl(Style.OUTDOORS);

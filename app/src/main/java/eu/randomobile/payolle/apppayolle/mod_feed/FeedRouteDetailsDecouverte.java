@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -259,6 +260,8 @@ public class FeedRouteDetailsDecouverte extends Activity {
         mapView.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(final MapboxMap mapboxMap) {
+                mapboxMap.getMyLocationViewSettings().setBackgroundTintColor(Color.rgb(0,102,204));
+                mapboxMap.getMyLocationViewSettings().setForegroundTintColor(Color.rgb(0,128,255));
                 FeedRouteDetailsDecouverte.this.prvMapBox = mapboxMap;
                 // style of the map
                 FeedRouteDetailsDecouverte.this.prvMapBox.setStyleUrl(Style.OUTDOORS);

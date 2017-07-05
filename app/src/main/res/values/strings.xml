@@ -391,9 +391,8 @@
     <string name="alert_dialog_button_close">Cerrar</string>
 
     <!-- Offline Texts -->
-    <string name="txt_sin_conexion">Sin conexión</string>
-    <string name="txt_caracteristicas_no_disponibles">Es posible que algunas caracteristicas no se
-        encuentren disponibles sin conexion a internet.
+    <string name="txt_sin_conexion">Hors connexion</string>
+    <string name="txt_caracteristicas_no_disponibles">Il est possible que certaines fonctionnalités ne soient pas accessibles sans internet.
     </string>
     <string name="txt_funcion_no_disponible">Esta funcion no esta disponible sin conexion a
         internet.
