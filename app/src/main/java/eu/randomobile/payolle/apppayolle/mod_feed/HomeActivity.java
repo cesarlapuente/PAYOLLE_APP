@@ -1,7 +1,10 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,15 +12,18 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class HomeActivity extends Activity {
     //ImageButton btn_general_map;
@@ -41,7 +47,6 @@ public class HomeActivity extends Activity {
         btn_settings = (ImageButton) findViewById(R.id.btn_settings);
         btn_orientation = (FrameLayout) findViewById(R.id.btn_orientation);
         btn_discover = (FrameLayout) findViewById(R.id.btn_discover);
-
 
 
         /*btn_general_map.setOnClickListener(
@@ -75,8 +80,8 @@ public class HomeActivity extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        /*Intent intent = new Intent(HomeActivity.this, FeedSettingsActivity.class);
-                        startActivity(intent);*/
+                        Intent intent = new Intent(HomeActivity.this, FeedSettingsActivity.class);
+                        startActivity(intent);
                     }
                 });
         btn_orientation.setOnClickListener(
@@ -116,4 +121,28 @@ public class HomeActivity extends Activity {
 
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Resources res = getLocalizedResources(this,MainApp.locale);
+        ((TextView) findViewById(R.id.main_title)).setText(res.getString(R.string.splash_title));
+        ((TextView) findViewById(R.id.main_orientation)).setText(res.getString(R.string.mod_home__btn_orientation));
+        ((TextView) findViewById(R.id.btn_discover_txt)).setText(res.getString(R.string.mod_home__btn_discover));
+    }
+
+    private Resources getLocalizedResources(Context context, Locale desiredLocale) {
+        Configuration conf = context.getResources().getConfiguration();
+        conf = new Configuration(conf);
+        conf.setLocale(desiredLocale);
+        Context localizedContext = context.createConfigurationContext(conf);
+        return localizedContext.getResources();
+    }
+
 }

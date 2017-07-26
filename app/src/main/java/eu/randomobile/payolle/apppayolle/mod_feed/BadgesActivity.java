@@ -21,6 +21,7 @@ import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 
 public class BadgesActivity extends Activity {
@@ -50,6 +51,12 @@ public class BadgesActivity extends Activity {
     private void capturarControles() {
         btn_home = (ImageButton) findViewById(R.id.btn_home);
         btn_return = (ImageButton) findViewById(R.id.btn_return);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
     }
 
     private void escucharEventos() {

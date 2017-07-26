@@ -1,14 +1,18 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.util.Locale;
+
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 /**
  * Created by 44Screens on 2017-03-20.
@@ -21,7 +25,7 @@ public class FeedSettingsActivity extends Activity{
     Button btn_fr;
     Button btn_en;
     Button btn_es;
-    Button btn_cache;
+    //Button btn_cache;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,13 @@ public class FeedSettingsActivity extends Activity{
 
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
+
     private void capturarControles() {
 
         btn_home = (ImageButton) findViewById(R.id.btn_home);
@@ -43,7 +54,7 @@ public class FeedSettingsActivity extends Activity{
         btn_fr = (Button) findViewById(R.id.lang_fr);
         btn_en = (Button) findViewById(R.id.lang_en);
         btn_es = (Button) findViewById(R.id.lang_es);
-        btn_cache = (Button) findViewById(R.id.clear_cache);
+        //btn_cache = (Button) findViewById(R.id.clear_cache);
     }
 
     private void escucharEventos() {
@@ -66,29 +77,32 @@ public class FeedSettingsActivity extends Activity{
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO change language here
+                        MainApp.locale = new Locale("fr");
+                        onBackPressed();
                     }
                 });
         btn_en.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO change language here
+                        MainApp.locale = new Locale("en");
+                        onBackPressed();
                     }
                 });
         btn_es.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //TODO change language here
+                        MainApp.locale = new Locale("es");
+                        onBackPressed();
                     }
                 });
-        btn_cache.setOnClickListener(
+        /*btn_cache.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         //TODO clear the cache here (database)
                     }
-                });
+                });*/
     }
 }

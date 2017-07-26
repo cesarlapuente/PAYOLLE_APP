@@ -2,6 +2,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -49,6 +50,7 @@ import eu.randomobile.payolle.apppayolle.mod_global.Util;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
 
 public class FeedRouteDetails extends Activity {
@@ -179,6 +181,13 @@ public class FeedRouteDetails extends Activity {
         });
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
     private void setData() {
         //Get Parameters from ROutesListActivity
 

@@ -2,6 +2,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,7 +21,9 @@ import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 
+import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
 
 public class FeedRouteBalisePopUp extends Activity {
@@ -68,6 +71,13 @@ public class FeedRouteBalisePopUp extends Activity {
                     }
                 });
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     private void initMapView(Bundle savedInstanceState) {
 

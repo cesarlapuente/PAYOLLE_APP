@@ -48,6 +48,7 @@ import eu.randomobile.payolle.apppayolle.mod_global.WKTUtil;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
 
 public class FeedRouteDetailsDecouverte extends Activity {
@@ -175,6 +176,13 @@ public class FeedRouteDetailsDecouverte extends Activity {
         });
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
     private void setData() {
 
         //Get Parameters from ROutesListActivity
@@ -368,7 +376,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                     poi_text.setVisibility(View.INVISIBLE);
                                     poi_game.setVisibility(View.INVISIBLE);
                                 } else {
-                                    if (mapboxMap.getMyLocation().distanceTo(temp) <= 40.0  ) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
+                                    if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0 ) { //TODO : en prod, changer pour <= 40.0 or >= -1.0 in debug
                                         poi_more.setVisibility(View.VISIBLE);
                                         poi_text.setVisibility(View.INVISIBLE);
                                         poi_more.setOnClickListener(new View.OnClickListener() {

@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:id="@+id/route_title"
-                android:text="Lire"
+                android:text="@string/read"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:textColor="#FFFFFF"

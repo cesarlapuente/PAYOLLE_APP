@@ -23,6 +23,7 @@ import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class GameInfoActivity extends Activity {
 
@@ -57,14 +58,15 @@ public class GameInfoActivity extends Activity {
         btn_list = (ImageButton) findViewById(R.id.btn_footer_list);
         text = (TextView) findViewById(R.id.info_jeu);
 
-        text.setText("Dans le lac, dans la forêt ou dans les crêtes de montagnes se cachent des nombreux secrets que vous pouvez dévoiler sur chaque parcours.\n" +
-                "\n" +
-                "Dès que vous arrivez à chaque étape de votre parcours vous pouvez aller sur le jeu de pistes en cliquant sur le bouton de jeu qui est représenté par un dessin d’une manette de jeux.\n" +
-                "\n" +
-                "A chaque étape vous avez un indice ; trouvez la réponse dans le texte qui s’affiche\n" +
-                "\n" +
-                "N’oubliez pas de bien vous approchez avec votre point bleu du GPS de la balise !");
+        text.setText(getText(getResources().getIdentifier("game_info_text", "string", getPackageName())));
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     private void escucharEventos() {
         btn_info.setOnClickListener(new View.OnClickListener() {

@@ -37,7 +37,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
-                android:text="Options (non-fonct.)"
+                android:text="@string/options"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Langue"
+                android:text="@string/lang"
                 android:textAlignment="center"
                 android:gravity="center|bottom"
                 android:textColor="@color/color_blanco"
@@ -88,39 +88,39 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Français" />
+                    android:text="@string/french" />
 
                 <Button
                     android:id="@+id/lang_en"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="English" />
+                    android:text="@string/english" />
                 <Button
                     android:id="@+id/lang_es"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:text="Español" />
+                    android:text="@string/spanish" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Autre"
-                android:textAlignment="center"
-                android:gravity="center|bottom"
-                android:textColor="@color/color_blanco"
-                android:textSize="18sp"
-                android:layout_margin="20dp"
-                android:layout_weight="1"/>
-            <Button
-                android:id="@+id/clear_cache"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="10dp"
-                android:text="Vider le cache"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Autre"-->
+                <!--android:textAlignment="center"-->
+                <!--android:gravity="center|bottom"-->
+                <!--android:textColor="@color/color_blanco"-->
+                <!--android:textSize="18sp"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:layout_weight="1"/>-->
+            <!--<Button-->
+                <!--android:id="@+id/clear_cache"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:text="Vider le cache"/>-->
         </LinearLayout>
 
     </LinearLayout>

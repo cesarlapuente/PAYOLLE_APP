@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:id="@+id/route_title"
-                android:text="INFO"
+                android:text="@string/info"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:textColor="#FFFFFF"

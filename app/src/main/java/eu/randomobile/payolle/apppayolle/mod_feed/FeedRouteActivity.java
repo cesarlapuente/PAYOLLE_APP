@@ -2,6 +2,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,6 +36,7 @@ import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.PoiCategoryTerm;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
 
 public class FeedRouteActivity extends Activity  {
@@ -84,6 +86,13 @@ public class FeedRouteActivity extends Activity  {
         btn_badges = (ImageButton) findViewById(R.id.btn_footer_passport);
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
     private void escucharEventos(){
         btn_home.setOnClickListener(
                 new View.OnClickListener() {

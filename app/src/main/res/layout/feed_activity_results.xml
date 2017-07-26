@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:id="@+id/route_title"
-                android:text="Résultats"
+                android:text="@string/results"
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:textColor="#FFFFFF"
@@ -73,7 +73,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TEMPS"
+                    android:text="@string/time"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -155,7 +155,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
                                 <TextView
-                                    android:text="HEURES"
+                                    android:text="@string/hours"
                                     android:textColor="#88B012"
                                     android:textStyle="bold"
                                     android:gravity="center"
@@ -163,14 +163,14 @@
                                     android:textSize="10sp"/>
                                 <Space />
                                 <TextView
-                                    android:text="MINUTES"
+                                    android:text="@string/minutes"
                                     android:textColor="#88B012"
                                     android:textStyle="bold"
                                     android:gravity="center"
                                     android:textSize="10sp"/>
                                 <Space />
                                 <TextView
-                                    android:text="SECONDES"
+                                    android:text="@string/seconds"
                                     android:textColor="#88B012"
                                     android:textStyle="bold"
                                     android:gravity="center"
@@ -183,7 +183,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="DISTANCE"
+                    android:text="@string/distance"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:textSize="20sp"
@@ -238,7 +238,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="BALISES"
+                    android:text="@string/balises"
                     android:textColor="#FFF"
                     android:textStyle="bold"
                     android:textSize="20sp"

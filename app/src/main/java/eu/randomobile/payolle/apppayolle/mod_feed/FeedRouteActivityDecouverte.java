@@ -50,6 +50,7 @@ import eu.randomobile.payolle.apppayolle.mod_global.WKTUtil;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.mod_global.model.taxonomy.PoiCategoryTerm;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 import eu.randomobile.payolle.apppayolle.utils.PermissionsRequest;
 
 public class FeedRouteActivityDecouverte extends Activity  {
@@ -97,6 +98,13 @@ public class FeedRouteActivityDecouverte extends Activity  {
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
     private void escucharEventos(){
         btn_home.setOnClickListener(
                 new View.OnClickListener() {

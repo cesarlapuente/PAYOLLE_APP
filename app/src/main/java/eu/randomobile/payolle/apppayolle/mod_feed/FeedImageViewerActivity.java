@@ -1,6 +1,7 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Typeface;
@@ -13,10 +14,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourceFile;
 import eu.randomobile.payolle.apppayolle.mod_imgmapping.ImageMap;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 /**
  * Created by 44 screens on 28/09/2016.
@@ -148,4 +151,11 @@ public class FeedImageViewerActivity extends Activity {
                     }
                 });
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 }

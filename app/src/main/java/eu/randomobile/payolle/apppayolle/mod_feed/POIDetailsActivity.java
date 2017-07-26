@@ -1,6 +1,7 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -19,6 +20,7 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourceFile;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class POIDetailsActivity extends Activity {
     private MainApp app;
@@ -73,6 +75,13 @@ public class POIDetailsActivity extends Activity {
             escucharEventos();
         }
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
 
     public void initComponents(){

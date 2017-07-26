@@ -15,6 +15,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import eu.randomobile.payolle.apppayolle.mod_feed.FeedInfo;
 import eu.randomobile.payolle.apppayolle.mod_global.Util;
@@ -53,6 +54,9 @@ public class MainApp extends Application {
     public String COOKIE_KEY_RANKING_USUARIO_LOGUEADO = "rankingUsuarioLogueado";
     public String COOKIE_KEY_COMUNIDAD_AUTONOMA_USUARIO_LOGUEADO = "isoCCAAUsuarioLogueado";
     public String COOKIE_KEY_PAIS_USUARIO_LOGUEADO = "isoPaisUsuarioLogueado";
+
+    /*Language*/
+    public static Locale locale = Locale.getDefault();
 
 
     private ArrayList<Route> routesList;

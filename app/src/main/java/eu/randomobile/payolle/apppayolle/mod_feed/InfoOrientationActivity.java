@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class InfoOrientationActivity extends Activity {
 
@@ -62,6 +63,13 @@ public class InfoOrientationActivity extends Activity {
 
         escucharEventos();
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     private void capturarControles() {
         btn_home = (ImageButton) findViewById(R.id.btn_home);

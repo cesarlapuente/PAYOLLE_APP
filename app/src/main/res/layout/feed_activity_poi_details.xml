@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Galerie"
+                    android:text="@string/gallery"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:paddingStart="10dp"

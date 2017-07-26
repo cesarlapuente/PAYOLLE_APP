@@ -73,7 +73,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:text="Approchez-vous de la balise pour découvrir le contenu"
+                    android:text="@string/get_closer2"
                     android:textColor="#FFFFFF"
                     android:textSize="12sp"
                     android:visibility="gone" />

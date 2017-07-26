@@ -3,6 +3,7 @@ package eu.randomobile.payolle.apppayolle.mod_feed;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class GameActivity extends Activity {
     public static final String PARAM_KEY_POI_TITLE = "poi_title";
@@ -237,14 +239,21 @@ public class GameActivity extends Activity {
 
     private void check_answer(String ans) {
         if (ans.equals(good_answer)){
-            txt_game.setText("Bonne réponse !");
+            txt_game.setText(getText(getResources().getIdentifier("good_answer", "string", getPackageName())));
             route.setGameTrue(Integer.parseInt(poi.getTitle().substring(2,3))-1);
         } else {
-            txt_game.setText("Dommage, ce n'est pas la bonne réponse.");
+            txt_game.setText(getText(getResources().getIdentifier("bad_answer", "string", getPackageName())));
         }
         txt_game.setTextSize(16);
         list_answers.setVisibility(View.GONE);
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     public class AnswersAdapter extends BaseAdapter {
         private LayoutInflater mInflater;

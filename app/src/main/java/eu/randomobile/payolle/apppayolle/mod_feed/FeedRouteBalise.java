@@ -55,6 +55,7 @@ import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourcePoi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class FeedRouteBalise extends Activity implements  LocationListener {
 
@@ -229,6 +230,13 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
     }
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
+
     public void finishCourse(){
         isPlaying = false;
         Intent intent = new Intent(FeedRouteBalise.this, ResultsActivity.class);
@@ -327,7 +335,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
 
                             temp.setLatitude(marker.getPosition().getLatitude());
                             temp.setLongitude(marker.getPosition().getLongitude());
-                            if (mapboxMap.getMyLocation().distanceTo(temp) <=20.0) { //TODO on prod, change with <=20.0 or >= -1.0 in debug
+                            if (mapboxMap.getMyLocation().distanceTo(temp) >= -1.0) { //TODO on prod, change with <=20.0 or >= -1.0 in debug
                                 //Log.d("Debug", "marker lat / lon : " + marker.getPosition().getLatitude() + " / " + marker.getPosition().getLongitude());
                                 //Log.d("Debug", "MyLocation lat / lon : " + mapboxMap.getMyLocation().getLatitude() + " / " + mapboxMap.getMyLocation().getLongitude());
                                 //Log.d("Debug", "Difference : " + mapboxMap.getMyLocation().distanceTo(temp) + " m");
@@ -375,13 +383,121 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                                 k = 1;
                             //Log.d("Debug","i= " + i + " / j=" + j + " / k=" + k);
                             */
+                                switch(random.nextInt(3)){
+                                    case 1: code2.setText(marker.getSnippet());
+                                        code3.setText(false1);
+                                        code1.setText(false2);
+                                        check1.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        codeOK = false;
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check2.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = true;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check3.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = false;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_marron);
+                                                    }
+                                                });
+                                        break;
+                                    case 2: code3.setText(marker.getSnippet());
+                                        code1.setText(false1);
+                                        code2.setText(false2);
+                                        check1.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        codeOK = false;
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check2.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = false;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check3.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = true;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_marron);
+                                                    }
+                                                });
+                                        break;
+                                    default: code1.setText(marker.getSnippet());
+                                        code2.setText(false1);
+                                        code3.setText(false2);
+                                        check1.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        codeOK = true;
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check2.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = false;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_marron);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_codigo);
+                                                    }
+                                                });
+                                        check3.setOnClickListener(
+                                                new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        validation_ok.setVisibility(View.VISIBLE);
+                                                        codeOK = false;
+                                                        validation_code1.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
+                                                        validation_code3.setImageResource(R.drawable.fondo_generic_marron);
+                                                    }
+                                                });
+                                        break;
+                                }
 
-                                code1.setText(marker.getSnippet());
-                                code2.setText(false1);
-                                code3.setText(false2);
-
-
-                                check1.setOnClickListener(
+                                /*check1.setOnClickListener(
                                         new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
@@ -418,7 +534,7 @@ public class FeedRouteBalise extends Activity implements  LocationListener {
                                                 validation_code2.setImageResource(R.drawable.fondo_generic_codigo);
                                                 validation_code3.setImageResource(R.drawable.fondo_generic_marron);
                                             }
-                                        });
+                                        });*/
                                 validation_skip.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {

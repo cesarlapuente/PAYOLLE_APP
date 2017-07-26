@@ -24,6 +24,7 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class DecouverteRoutesListActivity extends Activity {
 
@@ -80,6 +81,13 @@ public class DecouverteRoutesListActivity extends Activity {
         btn_game = (ImageButton) findViewById(R.id.btn_footer_game);
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     private void escucharEventos() {
         btn_info.setOnClickListener(new View.OnClickListener() {

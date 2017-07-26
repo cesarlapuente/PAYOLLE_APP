@@ -32,11 +32,12 @@
                 android:textColor="#FFFFFF"
                 android:paddingTop="10dp"
                 android:textSize="18sp"
+                android:visibility="gone"
                 android:gravity="center"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Rapprochez-vous à moins de 20 m de la balise pour pouvoir la valider"
+                android:text="@string/get_closer"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:textAlignment="center"
@@ -58,7 +59,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:visibility="gone"
-            android:id="@+id/balise_distance_ok">
+            android:id="@+id/balise_distance_ok"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/balise_poi_name"
@@ -66,13 +68,13 @@
                 android:layout_height="wrap_content"
                 android:text="Poi title"
                 android:textColor="#FFFFFF"
-                android:paddingTop="10dp"
+                android:visibility="gone"
                 android:gravity="center"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pour valider cette balise, choisissez le code correct : "
+                android:text="@string/choose_correct"
                 android:textColor="#FFFFFF"
                 android:paddingTop="5dp"
                 android:paddingStart="10dp"

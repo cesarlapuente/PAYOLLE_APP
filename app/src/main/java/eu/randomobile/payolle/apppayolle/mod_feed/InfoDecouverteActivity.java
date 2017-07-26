@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class InfoDecouverteActivity extends Activity {
 
@@ -61,6 +62,13 @@ public class InfoDecouverteActivity extends Activity {
 
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     private void escucharEventos() {
         btn_home.setOnClickListener(

@@ -1,6 +1,7 @@
 package eu.randomobile.payolle.apppayolle.mod_feed;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 
 import java.util.regex.Pattern;
 
+import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class ResultsActivity extends Activity {
 
@@ -111,6 +114,13 @@ public class ResultsActivity extends Activity {
             }
         }
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        Context context = ContextWrapper.wrap(newBase, MainApp.locale);
+        super.attachBaseContext(context);
+    }
+
 
     public ImageView createBalise(boolean isValide){
         ImageView imgbalise = new ImageView(this);

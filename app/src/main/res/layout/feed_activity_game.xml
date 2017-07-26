@@ -99,7 +99,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:text="DECOUVERTE"
+        android:text="@string/discover"
         android:background="@drawable/barra_titulo"
         android:layout_marginTop="69dp"
         android:layout_marginLeft="85dp"
