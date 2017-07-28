@@ -434,6 +434,49 @@
     <string name="mod_discover__augmented_reality">Réalité augmentée</string>
 
 
+    <!--Game text-->
+    <string name="game1_1">Pour découvrir le \"secret des frontières\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nComment s\'écrivait le nom de l\'hôtelier qui a donné son nom à Payolle ?;Paillole;Pailhole;Paillole;Payole";</string>
+    <string name="game1_2">Exploitation forestière, tourisme, quelle est la troisième activité principale à Payolle ?;Le Pastoralisme;Le Pastoralisme;le commerce;L’industrie";</string>
+    <string name="game1_3">Qui a gagné l\'étape de la première arrivée à Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault";</string>
+    <string name="game1_4">Comment dit-on une crête en patois ?;Sarrat;Corde;Courtaou;Sarrat";</string>
+    <string name="game1_5">Dans la légende, comment s\'appelle le combattant de la vallée de Campan ?;Le Dogue;Le Dogue;Goliath;Fréchou";</string>
+    <string name="game1_6">Je domine Payolle.;L\'Arbizon;Le Pic du Midi;Col d’Aspin;L\'Arbizon";</string>
+    <string name="game1_7">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des frontières\" !\n\n""De tous temps les communautés se sont affrontées pour la propriété des meilleures estives et des plus belles forêts. Les différents pouvoirs se sont accaparés des territoires puis les ont rendus aux communautés. Cette histoire explique la présence des propriétés indivises et le partage parfois bizarre des territoires comme celui de Payolle réparti sur cinq communes.;Pour découvrir le \"secret des frontières\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game2_1">Pour découvrir le \"secret des rigoles\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nL\'Adour de Payolle, l\'Adour de Gripp, comment se nomme la troisième \"source\" du fleuve Adour ?;Lesponne;Lesponne;Bigorre;Campan";</string>
+    <string name="game2_2">Quelle est la hauteur maximale de la digue du lac ?;16 m;12 m;15 m;16 m";</string>
+    <string name="game2_3">Comment nomme-t-on la fabrication d\'électricité grâce à la force de l\'eau ?;Hydroélectricité;Solaire;Hydroélectricité;Turbine";</string>
+    <string name="game2_4">Je nage dans les rivières et le lac de Payolle.;Truite fario;Truite fario;L’ours;Desman";</string>
+    <string name="game2_5">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des rigoles\" !\n\nDes dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l\'eau partout dans la vallée. L\'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l\'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit.;Pour découvrir le \"secret des rigoles\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game3_1">Pour découvrir le \"secret de la soupe\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nJe suis un petit animal qui vivait dans les mers il y a environ 360 millions d\'années.;Goniatite;Fossiles;Goniatite;Goniate";</string>
+    <string name="game3_2">Les Romains ont envoyé ce marbre à Rome.;Vert tendre;Rouge;Griotte;Vert tendre";</string>
+    <string name="game3_3">Je protège la maison sur le chapeau des cheminées.;Cocut;Cocut;Pénaous;Chaume";</string>
+    <string name="game3_4">Je marche à la queue leu leu.;Loup;Loup;Fourvel;Renard";</string>
+    <string name="game3_5">Maurice Bénézech alias...;Capitaine Bernard;Capitaine Bernard;Fourvel;Soubielle";</string>
+    <string name="game3_6">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la soupe\" !\n\nLe courtaou du Sarroua pourrait s\'appeler les cabanes aux épinards.\nLe sarrou (chénopode bon-Henri) était utilisé par les bergers pour cuisiner la soupe. Cette plante a certainement été introduite en montagne dans la laine des brebis, elle affectionne les reposoirs à bétail riches en nitrates et les brebis en sont friandes à l\'automne.;Pour découvrir le \"secret de la soupe\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game4_1">Pour découvrir le \"secret de la cabane\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nComment appelle-t-on le déplacement du bétail de la plaine vers la montagne.;Transhumance;Migration;Voyage du bétail;Transhumance";</string>
+    <string name="game4_2">J’étais utilisé pour fabriquer le beurre.;Baratte;Baratte;Courtaou;Badino";</string>
+    <string name="game4_3">Je suis le nom donné à un village de vachers en montagne.;Courtaou;Village de bergers;Artigussy;Courtaou";</string>
+    <string name="game4_4">Mon nom était celui donné à l’assemblée composée par les chefs de maison.;Bésiau;Bésiau;Courtaou;Badino";</string>
+    <string name="game4_5">Le courtaou des Esclozes a été construit sur une...;Moraine glacière;Montagne;Moraine glacière;Glacier";</string>
+    <string name="game4_6">Vous êtes passés par ce courtaou avant d\'arriver aux Esclozes.;Artigussy;Le Sarroua;Artigussy;Bésiau";</string>
+    <string name="game4_7">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la cabane\" !\n\nPour se protéger des intempéries, des loups et des ours, les bergers possédaient une cabane. Comme ils suivaient toujours leurs troupeaux, ils faisaient suivre aussi une cabane mobile : le burguet. Il s\'agissait d\'une grande caisse de deux mètres de long, avec une petite porte, munie de deux brancards pour la déplacer.;Pour découvrir le \"secret de la cabane\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game5_1">Pour découvrir le \"secret des paysages\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nJe ne m\'enfonce pas dans la tourbière grâce à son plumet.;Linaigrette;Gentiane;Vinaigrette;Linaigrette";</string>
+    <string name="game5_2">Mes cônes poussent vers le bas.;Épicéa;Épicéa;Sapins;Œillet";</string>
+    <string name="game5_3">Fleur de la pelouse avec un O dans l\'E.;Œillet;Gœntiane;Œuf;Œillet";</string>
+    <string name="game5_4">Je nettoie par le feu.;Écobuage;Écobuage;Incendie;Faine";</string>
+    <string name="game5_5">Sangliers et palombes adorent ce fruit du hêtre.;Faine;Épicéa;Faine;Murs";</string>
+    <string name="game5_6">Roche qui s\'est formée au fond des mers.;Calcaire;Marbre;Calcaire;Granite";</string>
+    <string name="game5_7">Nappe cachée dans la montagne.;Phréatique;Phréatique;Calcaire;Textile";</string>
+    <string name="game5_8">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des paysages\" !\n\nLes jolis paysages de montagne sont dus à l\'exploitation séculaire des estives et des forêts. Sans cette exploitation, ni belles pelouses ni belles forêts. La chasse permet également de gérer ces paysages. Aujourd\'hui l\'objectif de cet équilibre est de pérenniser une faune sauvage riche et diversifiée, compatible avec la rentabilité des activités agricoles et sylvicoles.;Pour découvrir le \"secret des paysages\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game6_1">Pour découvrir le \"secret du gypaète\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nÀ Payolle, je suis le roi de l\'apnée.;Desman;Desman;Couvain;Lagopède alpin";</string>
+    <string name="game6_2">Fleur la plus toxique de France.;Aconit napel;Aconit tue-loup;Aconit napel;Végétarien";</string>
+    <string name="game6_3">Aquila chrysaetos en français.;Aigle royal;Couvain;Vautour fauve;Aigle royal";</string>
+    <string name="game6_4">Animal à raquettes.;Lagopède alpin;Isard;Campagnol;Lagopède alpin";</string>
+    <string name="game6_5">Indice de présence odorant.;Crotte;Crotte;Parfum;Poil";</string>
+    <string name="game6_6">Je ne mange pas de viande.;Végétarien;Endémique;Végétarien;Mammifère";</string>
+    <string name="game6_7">Maternité des fourmis.;Couvain;Couvain;Cave;Niche";</string>
+    <string name="game6_8">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret du gypaète\" !\n\nLe gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d\'Europe, il a la particularité de se nourrir presque exclusivement d\'os.;Pour découvrir le \"secret du gypaète\" vous devez obtenir toutes les bonnes réponses.";</string>
+
     <!--All missing text-->
     <string name="get_closer">Rapprochez-vous à moins de 20 m de la balise pour pouvoir la valider</string>
     <string name="choose_correct">Pour valider cette balise, choisissez le code correct :</string>
