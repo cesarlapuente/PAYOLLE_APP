@@ -20,11 +20,13 @@ import eu.randomobile.payolle.apppayolle.R;
 import eu.randomobile.payolle.apppayolle.mod_global.libraries.bitmap_manager.BitmapManager;
 import eu.randomobile.payolle.apppayolle.mod_global.model.Poi;
 import eu.randomobile.payolle.apppayolle.mod_global.model.ResourceFile;
+import eu.randomobile.payolle.apppayolle.mod_global.model.Route;
 import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 public class POIDetailsActivity extends Activity {
     private MainApp app;
     private Poi poi;
+    private Route route;
     public static final String PARAM_KEY_TITLE_POI = "poi_title";
     public static final String PARAM_KEY_TITLE_ROUTE = "route_title";
 
@@ -62,6 +64,16 @@ public class POIDetailsActivity extends Activity {
                     Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame()+ "     ID " + poi.getNid());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
 
+                }
+            }
+
+            String paramRoute = b.getString(PARAM_KEY_TITLE_ROUTE);
+            final ArrayList<Route> routes = app.getRoutesListDE();
+            for (Route route : routes) {
+                Log.d("PierreLog", route.getTitle() + "  ---  " + paramRoute);
+                if (route.getTitle().equals(paramRoute)) {
+                    this.route = route;
+                    break;
                 }
             }
 
@@ -149,7 +161,7 @@ public class POIDetailsActivity extends Activity {
                         public void onClick(View view) {
                             Intent intent = new Intent(POIDetailsActivity.this, GameActivity.class);
                             intent.putExtra(GameActivity.PARAM_KEY_POI_TITLE, poi.getTitle());
-                            intent.putExtra(GameActivity.PARAM_KEY_TITLE_ROUTE, PARAM_KEY_TITLE_ROUTE);
+                            intent.putExtra(GameActivity.PARAM_KEY_TITLE_ROUTE, route.getTitle());
                             startActivity(intent);
                         }
                     });

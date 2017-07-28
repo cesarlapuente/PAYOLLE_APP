@@ -76,13 +76,14 @@ public class GameActivity extends Activity {
             final ArrayList<Route> routes = app.getRoutesListDE();
 
             for (Route route : routes) {
+                Log.d("PierreLog", route.getTitle() + "  ---  " + paramRoute);
                 if (route.getTitle().equals(paramRoute)) {
                     this.route = route;
                     break;
                 }
             }
         }
-        if (poi == null) GameActivity.this.finish(); //In case of bug, not crashing
+        if (poi == null || route == null) GameActivity.this.finish(); //In case of bug, not crashing
         else {
             capturarControles();
             escucharEventos();
