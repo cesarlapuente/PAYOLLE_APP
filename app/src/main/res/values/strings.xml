@@ -174,7 +174,7 @@
     <string name="mod_discover__rutas">Rutas</string>
     <string name="mod_discover__mapa">Mapa</string>
     <string name="mod_discover__listado">Lista</string>
-    <string name="mod_discover__camara" translatable="false">RA</string>
+    <string name="mod_discover__camara">RA</string>
     <string name="mod_discover__checkin">Comentarios</string>
     <string name="mod_discover__valorar">Valorar</string>
     <string name="mod_discover__compartir">Compartir</string>
@@ -332,7 +332,7 @@
 
 
     <!-- MetaIO -->
-    <string name="metaioSDKSignature" translatable="false">
+    <string name="metaioSDKSignature">
         MgjtapKDZpccbtXm54ZMviNV910jjljkaHQgBdOUrec=
     </string>
     <string name="gps_network_not_enabled">El GPS no está habilitado</string>
