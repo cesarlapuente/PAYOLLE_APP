@@ -28,6 +28,7 @@ public class POIDetailsActivity extends Activity {
     private Poi poi;
     private Route route;
     public static final String PARAM_KEY_TITLE_POI = "poi_title";
+    public static final String PARAM_KEY_NID_POI = "poi_nid";
     public static final String PARAM_KEY_TITLE_ROUTE = "route_title";
 
     private TextView txt_poi_title;
@@ -52,18 +53,19 @@ public class POIDetailsActivity extends Activity {
         if (b != null) {
             // paramTitle = b.getString(PARAM_KEY_NID);
             paramTitle = b.getString(PARAM_KEY_TITLE_POI);
-
+            int param2 = b.getInt(PARAM_KEY_NID_POI);
             final ArrayList<Poi> alPoi = app.getPoisList();
 
             for (Poi poi : alPoi) {
                 String poiLog1 = Normalizer.normalize(poi.getTitle(), Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
                 String poiLog2 = Normalizer.normalize(paramTitle, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "").replaceAll(" ", "").toLowerCase();
                 Log.d("PierreDebug", "Poi source : " + poiLog2 + "      Poi cible : " + poiLog1);
+                Log.d("PierreDebug", "Poi source : " + param2 + "      Poi cible : " + poi.getNid());
                 if (poiLog1.equals(poiLog2)) {
                     this.poi = poi;
                     Log.d("VaninaLog", "Objet POI : title : " + poi.getTitle() + " images : " + poi.getImages() + " game: " + poi.getGame()+ "     ID " + poi.getNid());
                     //Log.d("JmLog", "Objet POI : " + poi.getTitle() + " " + poi.getImages() + " images item0 : " + poi.getImages().get(0).getFileUrl());
-
+                    break;
                 }
             }
 

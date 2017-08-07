@@ -382,8 +382,10 @@ public class FeedRouteDetailsDecouverte extends Activity {
                                         poi_more.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                Log.d("PierreDebug", "Poi name : " + poi.getTitle() + "      Poi nid : " + poi.getNid()+ "      Poi number : " + poi.getNumber());
                                                 Intent intent = new Intent(FeedRouteDetailsDecouverte.this, POIDetailsActivity.class);
                                                 intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_POI, poi_title.getText());
+                                                intent.putExtra(POIDetailsActivity.PARAM_KEY_NID_POI, poi.getNid());
                                                 intent.putExtra(POIDetailsActivity.PARAM_KEY_TITLE_ROUTE, route.getTitle());
                                                 startActivity(intent);
                                             }

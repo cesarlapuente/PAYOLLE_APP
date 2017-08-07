@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import eu.randomobile.payolle.apppayolle.MainApp;
 import eu.randomobile.payolle.apppayolle.R;
+import eu.randomobile.payolle.apppayolle.mod_home.SplashActivity;
 import eu.randomobile.payolle.apppayolle.utils.ContextWrapper;
 
 /**
@@ -78,7 +79,9 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("fr");
-                        onBackPressed();
+                        Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
+                        startActivity(intent);
+                        //onBackPressed();
                     }
                 });
         btn_en.setOnClickListener(
@@ -86,7 +89,9 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("en");
-                        onBackPressed();
+                        Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
+                        startActivity(intent);
+                        //onBackPressed();
                     }
                 });
         btn_es.setOnClickListener(
@@ -94,7 +99,9 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("es");
-                        onBackPressed();
+                        Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
+                        startActivity(intent);
+                        //onBackPressed();
                     }
                 });
         /*btn_cache.setOnClickListener(

@@ -133,7 +133,7 @@ public class Drupal7RESTClient {
 			final String time = timestamp.toString();
 			parametros.put("domain_time_stamp", time);
 			parametros.put("sessid", sessid);
-			parametros.put("lang","es");
+			parametros.put("lang", app.locale.getLanguage());
 
 			Log.d("LogParam", "lang : " + app.locale.getLanguage());
 
