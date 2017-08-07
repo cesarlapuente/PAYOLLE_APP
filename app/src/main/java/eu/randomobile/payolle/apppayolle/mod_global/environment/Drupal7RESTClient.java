@@ -110,6 +110,7 @@ public class Drupal7RESTClient {
 						final String time = timestamp.toString();
 						parametros.put("domain_time_stamp", time);
 						parametros.put("sessid", newSessid);
+						parametros.put("lang",app.locale.getLanguage());
 
 						client.post(uri, parametros, responseHandler);
 					
@@ -132,6 +133,9 @@ public class Drupal7RESTClient {
 			final String time = timestamp.toString();
 			parametros.put("domain_time_stamp", time);
 			parametros.put("sessid", sessid);
+			parametros.put("lang","es");
+
+			Log.d("LogParam", "lang : " + app.locale.getLanguage());
 
 			client.post(uri, parametros, responseHandler);
 			
