@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Payolle</string>
     <string name="action_settings">Ajustes</string>
-    <string name="accessibility_img">Il s\'agit d\'une image</string>
+    <string name="accessibility_img">ES una imagen</string>
     <string name="mod_global__sin_conexion_a_internet">Sin conexión a internet</string>
     <string name="mod_global__no_dispones_de_conexion_a_internet">No hay conexión a internet.
         Conectaté a internet e inténtalo de nuevo.
@@ -64,7 +64,7 @@
     <string name="mod_register__usuario">Usuario</string>
     <string name="mod_register__introduce_usuario">Introduce tu usuario</string>
     <string name="mod_register__email">Email</string>
-    <string name="mod_register__introduce_email">Introduice tu correo</string>
+    <string name="mod_register__introduce_email">Introduce tu correo</string>
     <string name="mod_register__contrasena">Contraseña</string>
     <string name="mod_register__introduce_contrasena">Introduce una contraseña</string>
     <string name="mod_register__repite_contrasena">Confirmar contraseña</string>
@@ -164,12 +164,12 @@
     </string>
 
     <string name="mod_discover__pois_cercanos">Puntos de interés cercanos</string>
-    <string name="mod_discover__courtaus_cercanos">Courtarous cercanos</string>
+    <string name="mod_discover__courtaus_cercanos">Courtaous cercanos</string>
     <string name="mod_discover__buscar_pois">Buscar pois...</string>
     <string name="mod_discover__buscar_rutas">Buscar rutas...</string>
     <string name="mod_discover__buscar">Buscar</string>
     <string name="mod_discover__todas_las_categorias">Todas</string>
-    <string name="mod_discover__courtaou">Courtarou</string>
+    <string name="mod_discover__courtaou">Courtaou</string>
     <string name="mod_discover__selecciona_categoria">Selecciona una categoría</string>
     <string name="mod_discover__rutas">Rutas</string>
     <string name="mod_discover__mapa">Mapa</string>
@@ -391,23 +391,22 @@
     <string name="alert_dialog_button_close">Cerrar</string>
 
     <!-- Offline Texts -->
-    <string name="txt_sin_conexion">Hors connexion</string>
-    <string name="txt_caracteristicas_no_disponibles">Il est possible que certaines fonctionnalités ne soient pas accessibles sans internet.
+    <string name="txt_sin_conexion">Sin conexion</string>
+    <string name="txt_caracteristicas_no_disponibles">Es posible que ciertas funcionalidades con sean accesibles sin conexion a internet.
     </string>
     <string name="txt_funcion_no_disponible">Esta funcion no esta disponible sin conexion a
         internet.
     </string>
 
     <!--Permissions-->
-    <string name="permission_message_explanation">Une permission est nécessaire pour le bon
-        fonctinnement de l\'application
+    <string name="permission_message_explanation">Es encesario un permiso para el buen funcionamiento de la aplicaci�n
     </string>
-    <string name="permission_message_continue">Continuer</string>
-    <string name="permission_message_cancel">Annuler</string>
-    <string name="permission_message_attention">Attention</string>
+    <string name="permission_message_continue">Continuar</string>
+    <string name="permission_message_cancel">Cancelar</string>
+    <string name="permission_message_attention">Atencion</string>
     <string name="title_activity_routes_list">RoutesListActivity</string>
-    <string name="cronoExit">Attention si vous retournez en arrière votre chrono ne va pas se sauvegarder. Voulez-vous continuer ?</string>
-    <string name="course_finish">Êtes-vous sur de vouloir arrêter la course ?</string>
+    <string name="cronoExit">Atencion, si vuelves atr�s el crono puede no guardarse. Quiere continuar?</string>
+    <string name="course_finish">Seguro que quiere para el crono ?</string>
 
 
     <!--Mapbox-->
@@ -415,37 +414,36 @@
 
 
     <!--New layout-->
-    <string name="mod_home__btn_orientation">Parcours\nd\'orientation</string>
-    <string name="mod_home__btn_discover">Parcours\nde découverte</string>
+    <string name="mod_home__btn_orientation">Itinerarios de orientacion</string>
+    <string name="mod_home__btn_discover">Itinerarios de visita</string>
 
-    <string name="mod_discover__txt_info">Texte du jeu</string>
+    <string name="mod_discover__txt_info">Texto del juego</string>
 
-    <string name="mod_discover__duration">Durée</string>
-    <string name="mod_discover__distance">Distance</string>
-    <string name="mod_discover__reviews">Avis</string>
-    <string name="mod_discover__start">Départ</string>
+    <string name="mod_discover__duration">Duracion</string>
+    <string name="mod_discover__distance">Distancia</string>
+    <string name="mod_discover__reviews">Nota</string>
+    <string name="mod_discover__start">Salida</string>
 
-    <string name="mod_discover__title_orientation">Course d\'orientation</string>
-    <string name="mod_discover__title_discover">Découverte</string>
-    <string name="mod_discover__gallery">Galerie</string>
+    <string name="mod_discover__title_orientation">Carrera de orientacion</string>
+    <string name="mod_discover__title_discover">Descubrir</string>
+    <string name="mod_discover__gallery">Galeria</string>
 
-    <string name="mod_discover__game">Jouer</string>
-    <string name="mod_discover__play">Lancer\nle jeu</string>
-    <string name="mod_discover__augmented_reality">Réalité augmentée</string>
-
+    <string name="mod_discover__game">Jugar</string>
+    <string name="mod_discover__play">Empezar el juego</string>
+    <string name="mod_discover__augmented_reality">Realidad aumentada</string>
 
     <!--Game text-->
-    <string name="game1_1">Pour découvrir le \"secret des frontières\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nComment s\'écrivait le nom de l\'hôtelier qui a donné son nom à Payolle ?;Paillole;Pailhole;Paillole;Payole";</string>
-    <string name="game1_2">Exploitation forestière, tourisme, quelle est la troisième activité principale à Payolle ?;Le Pastoralisme;Le Pastoralisme;le commerce;L’industrie";</string>
-    <string name="game1_3">Qui a gagné l\'étape de la première arrivée à Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault";</string>
-    <string name="game1_4">Comment dit-on une crête en patois ?;Sarrat;Corde;Courtaou;Sarrat";</string>
-    <string name="game1_5">Dans la légende, comment s\'appelle le combattant de la vallée de Campan ?;Le Dogue;Le Dogue;Goliath;Fréchou";</string>
-    <string name="game1_6">Je domine Payolle.;L\'Arbizon;Le Pic du Midi;Col d’Aspin;L\'Arbizon";</string>
-    <string name="game1_7">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des frontières\" !\n\n""De tous temps les communautés se sont affrontées pour la propriété des meilleures estives et des plus belles forêts. Les différents pouvoirs se sont accaparés des territoires puis les ont rendus aux communautés. Cette histoire explique la présence des propriétés indivises et le partage parfois bizarre des territoires comme celui de Payolle réparti sur cinq communes.;Pour découvrir le \"secret des frontières\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game1_1">Para descubrir el secreto de las fronteras" En la �ltima etapa, hay que encontrar la respuesta correcta en cada uno de las etapas del itinerario. �C�mo se escrib�a el nombre del taller que daba su nombre a Payolle? ;Paillole;Pailhole;Paillole;Payole";</string>
+    <string name="game1_2">Explotacion forestal, turismo, �cu�l es la tercera actividad principal en Payolle?;El pastoreo;El pastoreo;el comercio;la inductria";</string>
+    <string name="game1_3">�Quien gano la etapa de la primera etapa con llegada en Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault";</string>
+    <string name="game1_4">�Como se dice una cresta en el dialecto local?;Sarrat;Corde;Courtaou;Sarrat";</string>
+    <string name="game1_5">En la leyenda, como se llama el combatiente del valle de Campan?;Le Dogue;Le Dogue;Goliath;Fréchou";</string>
+    <string name="game1_6">Domino Payolle.;L\'Arbizon;Le Pic du Midi;Col d’Aspin;L\'Arbizon";</string>
+    <string name="game1_7">LASTPOI;�Bravo ! Has respondido bien a;�Enhorabuena! has descubierto el secreto de las fronteras" !\n\n""Todas las comunidades se han enfrentado por las propiedades de los mejores prados y los mejores bosques. Los diferentes poderes se han acaparado de los territorios y despu�s los han entregado a las comunidedes. Esta historia explica la presencia de propiedades indivisas y la manea de compartirlas a veces extra�a de los territorios como el de Payolle repartido en cinco municipios. ;Para descubrir el secreto de las fronteras hay que conseguir las respuestas correctas.";</string>
     <string name="game2_1">Pour découvrir le \"secret des rigoles\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nL\'Adour de Payolle, l\'Adour de Gripp, comment se nomme la troisième \"source\" du fleuve Adour ?;Lesponne;Lesponne;Bigorre;Campan";</string>
     <string name="game2_2">Quelle est la hauteur maximale de la digue du lac ?;16 m;12 m;15 m;16 m";</string>
     <string name="game2_3">Comment nomme-t-on la fabrication d\'électricité grâce à la force de l\'eau ?;Hydroélectricité;Solaire;Hydroélectricité;Turbine";</string>
-    <string name="game2_4">Je nage dans les rivières et le lac de Payolle.;Truite fario;Truite fario;L’ours;Desman";</string>
+    <string name="game2_4">Nado en los rios y en el lago de Payolle.;Trucha fario;Trucha fario;Oso;Desman";</string>
     <string name="game2_5">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des rigoles\" !\n\nDes dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l\'eau partout dans la vallée. L\'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l\'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit.;Pour découvrir le \"secret des rigoles\" vous devez obtenir toutes les bonnes réponses.";</string>
     <string name="game3_1">Pour découvrir le \"secret de la soupe\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nJe suis un petit animal qui vivait dans les mers il y a environ 360 millions d\'années.;Goniatite;Fossiles;Goniatite;Goniate";</string>
     <string name="game3_2">Les Romains ont envoyé ce marbre à Rome.;Vert tendre;Rouge;Griotte;Vert tendre";</string>
@@ -477,35 +475,36 @@
     <string name="game6_7">Maternité des fourmis.;Couvain;Couvain;Cave;Niche";</string>
     <string name="game6_8">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret du gypaète\" !\n\nLe gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d\'Europe, il a la particularité de se nourrir presque exclusivement d\'os.;Pour découvrir le \"secret du gypaète\" vous devez obtenir toutes les bonnes réponses.";</string>
 
+
     <!--All missing text-->
-    <string name="get_closer">Rapprochez-vous à moins de 20 m de la balise pour pouvoir la valider</string>
-    <string name="choose_correct">Pour valider cette balise, choisissez le code correct :</string>
-    <string name="get_closer2">Approchez-vous de la balise pour découvrir le contenu</string>
-    <string name="options">Options</string>
-    <string name="lang">Langue</string>
+    <string name="get_closer">Acercate a menos de 20 metros de la baliza para poder validarla</string>
+    <string name="choose_correct">Para validar esta baliza, elige el codigo correcto:</string>
+    <string name="get_closer2">Acercate de la baliza para descubrir el contenido</string>
+    <string name="options">Opciones</string>
+    <string name="lang">Idioma</string>
     <string name="french">Frances</string>
-    <string name="english">English</string>
-    <string name="spanish">Español</string>
-    <string name="splash_title">Payolle secretoooos</string>
-    <string name="trophy">MES BADGES</string>
-    <string name="Track">Parcours</string>
-    <string name="gallery">GALERIE</string>
-    <string name="no_img">Il n\'y a pas d\'image disponible</string>
-    <string name="discover">DECOUVERTE</string>
-    <string name="game_info">INFO jeu</string>
+    <string name="english">Ingles</string>
+    <string name="spanish">Espa�ol</string>
+    <string name="splash_title">Los secretos de payolle</string>
+    <string name="trophy">MIS BADGES</string>
+    <string name="Track">Itinerarios</string>
+    <string name="gallery">GALERIA</string>
+    <string name="no_img">No hay imagen disponible</string>
+    <string name="discover">DESCUBRIR</string>
+    <string name="game_info">INFO juego</string>
     <string name="info">INFO</string>
-    <string name="read">Lire</string>
-    <string name="results">Résultats</string>
-    <string name="time">TEMPS</string>
-    <string name="hours">HEURES</string>
-    <string name="minutes">MINUTES</string>
-    <string name="seconds">SECONDES</string>
-    <string name="distance">DISTANCE</string>
-    <string name="balises">BALISES</string>
-    <string name="duration">DUREE</string>
-    <string name="good_answer">Bonne réponse !</string>
-    <string name="bad_answer">Dommage, ce n\'est pas la bonne réponse.</string>
-    <string name="game_info_text">Dans le lac, dans la forêt ou dans les crêtes de montagnes se cachent des nombreux secrets que vous pouvez dévoiler sur chaque parcours.\n\nDès que vous arrivez à chaque étape de votre parcours vous pouvez aller sur le jeu de pistes en cliquant sur le bouton de jeu qui est représenté par un dessin d’une manette de jeux.\n\nA chaque étape vous avez un indice ; trouvez la réponse dans le texte qui s’affiche\n\nN’oubliez pas de bien vous approchez avec votre point bleu du GPS de la balise !</string>
+    <string name="read">Leer</string>
+    <string name="results">Resultados</string>
+    <string name="time">TIEMPO</string>
+    <string name="hours">HORAS</string>
+    <string name="minutes">MINUTOS</string>
+    <string name="seconds">SEGUNDOS</string>
+    <string name="distance">DISTANCIA</string>
+    <string name="balises">BALIZAS</string>
+    <string name="duration">DURACION</string>
+    <string name="good_answer">Buena respuesta !</string>
+    <string name="bad_answer">Lastima, no es la respuesta correcta.</string>
+    <string name="game_info_text">En el lago, en el bosque o en las crestas de las monta�as se esconden numerosos secretos que podeis desvelar sobre cada itinerario. Al llegar a cada etapa de vuestro itinerario podeis ir al juego de pistas pulsando sobre el boton de juego con el mando de juego.\n\nA cada etapa teneis un indicio; encontrad la respuesta correcta en el texto que se muestra y no olvideis de acercaros con el punto azul del GPS!</string>
 
 
 </resources>

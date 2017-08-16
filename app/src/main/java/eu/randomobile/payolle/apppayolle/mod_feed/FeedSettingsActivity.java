@@ -79,6 +79,7 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("fr");
+                        resetAppLists();
                         Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
                         startActivity(intent);
                         //onBackPressed();
@@ -89,6 +90,7 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("en");
+                        resetAppLists();
                         Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
                         startActivity(intent);
                         //onBackPressed();
@@ -99,6 +101,7 @@ public class FeedSettingsActivity extends Activity{
                     @Override
                     public void onClick(View view) {
                         MainApp.locale = new Locale("es");
+                        resetAppLists();
                         Intent intent = new Intent(FeedSettingsActivity.this, SplashActivity.class);
                         startActivity(intent);
                         //onBackPressed();
@@ -111,5 +114,12 @@ public class FeedSettingsActivity extends Activity{
                         //TODO clear the cache here (database)
                     }
                 });*/
+    }
+
+    void resetAppLists(){
+        app.getRoutesList().clear();
+        app.getRoutesListDE().clear();
+        app.getRoutesListCO().clear();
+        app.getPoisList().clear();
     }
 }

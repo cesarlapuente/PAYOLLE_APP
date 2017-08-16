@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
@@ -29,6 +30,7 @@ import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
 import com.mapbox.mapboxsdk.annotations.Marker;
+import com.mapbox.mapboxsdk.annotations.MarkerView;
 import com.mapbox.mapboxsdk.annotations.MarkerViewOptions;
 import com.mapbox.mapboxsdk.annotations.Polyline;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -172,6 +174,7 @@ public class FeedRouteDetailsDecouverte extends Activity {
                 } else {
                     findViewById(R.id.scrollView_decouverte).setVisibility(View.GONE);
                 }
+                fixPoiBug();
             }
         });
 
@@ -251,6 +254,22 @@ public class FeedRouteDetailsDecouverte extends Activity {
         } catch (Exception e) {
 
         }*/
+    }
+
+    private void fixPoiBug() {
+        mapView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override
+            public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
+                mapView.getMapAsync(new OnMapReadyCallback() {
+                    @Override
+                    public void onMapReady(final MapboxMap mapboxMap) {
+                        mapboxMap.getMarkerViewManager().update();
+                        mapboxMap.getMarkerViewManager().invalidateViewMarkersInVisibleRegion();
+                    }
+                });
+            }
+        });
+
     }
 
     private void initMapView (Bundle savedInstanceState) {
