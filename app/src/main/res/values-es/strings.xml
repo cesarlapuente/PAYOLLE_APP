@@ -155,7 +155,7 @@
     <string name="mod_recover_pass__por_favor_repite_la_contrasena">Repite la contraseña</string>
     <string name="mod_recover_pass__contrasenas">Contraseñas</string>
     <string name="mod_recover_pass__las_contrasenas_que_has_introducido_no_coinciden">Las
-        contraseñas cno coinciden.
+        contraseñas no coinciden.
     </string>
     <string name="mod_recover_pass__contrasena_cambiada_con_exito">Contraseña cambiada con éxito
     </string>
@@ -190,16 +190,16 @@
     <string name="mod_discover__telecargar_poi">Descargar punto de interés</string>
     <string name="mod_discover__telecarga_completada_titulo">Descarga completada</string>
     <string name="mod_discover__telecarga_completada_info">¡Se ha descargado con éxito!</string>
-    <string name="mod_media__noelementos">Ningún elemento</string>
+    <string name="mod_media__noelementos">Ningíºn elemento</string>
     <string name="mod_discover__todas_las_dificultades">Todas</string>
     <string name="mod_discover__selecciona_dificultad">Selecciona una dificultad</string>
     <string name="mod_discover__nombre">Nombre</string>
-    <string name="mod_discover__categoria">CATEGORÍA :</string>
+    <string name="mod_discover__categoria">CATEGORíA :</string>
     <string name="mod_discover__otra_info">Más información</string>
     <string name="mod_info__informacion">Información</string>
     <string name="mod_info__info_pastoral">La vía pastoral</string>
     <string name="mod_info__sin_descripcion">No hay descripción</string>
-    <string name="mod_events__ultimos_eventos">Últimos eventos</string>
+    <string name="mod_events__ultimos_eventos">últimos eventos</string>
     <string name="mod_events__eventos_en_poi">Eventos en este punto de interés</string>
     <string name="mod_events__fecha_inicio">Inicio:</string>
     <string name="mod_events__fecha_fin">Fin :</string>
@@ -320,7 +320,7 @@
     <string name="mod_puntuacion__descripcion">Descripción</string>
     <string name="mod_options__descargar_rutas">Descargar las rutas</string>
     <string name="mod_options__descargar">Descargar</string>
-    <string name="mod_options__descargar_exito">¡Éxito al descargar!</string>
+    <string name="mod_options__descargar_exito">¡í‰xito al descargar!</string>
     <string name="mod_options__descargar_error">Error de descarga</string>
     <string name="mod_options__identificacion">Identificación</string>
     <string name="mod_options__info">Info</string>
@@ -399,13 +399,13 @@
     </string>
 
     <!--Permissions-->
-    <string name="permission_message_explanation">Es encesario un permiso para el buen funcionamiento de la aplicaci�n
+    <string name="permission_message_explanation">Es encesario un permiso para el buen funcionamiento de la aplicación
     </string>
     <string name="permission_message_continue">Continuar</string>
     <string name="permission_message_cancel">Cancelar</string>
     <string name="permission_message_attention">Atencion</string>
     <string name="title_activity_routes_list">RoutesListActivity</string>
-    <string name="cronoExit">Atencion, si vuelves atr�s el crono puede no guardarse. Quiere continuar?</string>
+    <string name="cronoExit">Atencion, si vuelves atrás el crono puede no guardarse. Quiere continuar?</string>
     <string name="course_finish">Seguro que quiere para el crono ?</string>
 
 
@@ -433,47 +433,48 @@
     <string name="mod_discover__augmented_reality">Realidad aumentada</string>
 
     <!--Game text-->
-    <string name="game1_1">Para descubrir el secreto de las fronteras" En la �ltima etapa, hay que encontrar la respuesta correcta en cada uno de las etapas del itinerario. �C�mo se escrib�a el nombre del taller que daba su nombre a Payolle? ;Paillole;Pailhole;Paillole;Payole";</string>
-    <string name="game1_2">Explotacion forestal, turismo, �cu�l es la tercera actividad principal en Payolle?;El pastoreo;El pastoreo;el comercio;la inductria";</string>
-    <string name="game1_3">�Quien gano la etapa de la primera etapa con llegada en Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault";</string>
-    <string name="game1_4">�Como se dice una cresta en el dialecto local?;Sarrat;Corde;Courtaou;Sarrat";</string>
-    <string name="game1_5">En la leyenda, como se llama el combatiente del valle de Campan?;Le Dogue;Le Dogue;Goliath;Fréchou";</string>
-    <string name="game1_6">Domino Payolle.;L\'Arbizon;Le Pic du Midi;Col d’Aspin;L\'Arbizon";</string>
-    <string name="game1_7">LASTPOI;�Bravo ! Has respondido bien a;�Enhorabuena! has descubierto el secreto de las fronteras" !\n\n""Todas las comunidades se han enfrentado por las propiedades de los mejores prados y los mejores bosques. Los diferentes poderes se han acaparado de los territorios y despu�s los han entregado a las comunidedes. Esta historia explica la presencia de propiedades indivisas y la manea de compartirlas a veces extra�a de los territorios como el de Payolle repartido en cinco municipios. ;Para descubrir el secreto de las fronteras hay que conseguir las respuestas correctas.";</string>
-    <string name="game2_1">Pour découvrir le \"secret des rigoles\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nL\'Adour de Payolle, l\'Adour de Gripp, comment se nomme la troisième \"source\" du fleuve Adour ?;Lesponne;Lesponne;Bigorre;Campan";</string>
-    <string name="game2_2">Quelle est la hauteur maximale de la digue du lac ?;16 m;12 m;15 m;16 m";</string>
-    <string name="game2_3">Comment nomme-t-on la fabrication d\'électricité grâce à la force de l\'eau ?;Hydroélectricité;Solaire;Hydroélectricité;Turbine";</string>
-    <string name="game2_4">Nado en los rios y en el lago de Payolle.;Trucha fario;Trucha fario;Oso;Desman";</string>
-    <string name="game2_5">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des rigoles\" !\n\nDes dizaines de kilomètres de rigoles ont été creusées par les hommes pour distribuer l\'eau partout dans la vallée. L\'eau pour arroser, transporter, boire, laver... Ces rigoles alimentaient en permanence chaque lieu par un trou de quatre centimètres de diamètre maximum. Pour arroser les terrains, les bégades fixaient le tour de chacun pour prendre l\'eau dans les rigoles pendant une durée déterminée du jour ou de la nuit.;Pour découvrir le \"secret des rigoles\" vous devez obtenir toutes les bonnes réponses.";</string>
-    <string name="game3_1">Pour découvrir le \"secret de la soupe\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nJe suis un petit animal qui vivait dans les mers il y a environ 360 millions d\'années.;Goniatite;Fossiles;Goniatite;Goniate";</string>
-    <string name="game3_2">Les Romains ont envoyé ce marbre à Rome.;Vert tendre;Rouge;Griotte;Vert tendre";</string>
-    <string name="game3_3">Je protège la maison sur le chapeau des cheminées.;Cocut;Cocut;Pénaous;Chaume";</string>
-    <string name="game3_4">Je marche à la queue leu leu.;Loup;Loup;Fourvel;Renard";</string>
-    <string name="game3_5">Maurice Bénézech alias...;Capitaine Bernard;Capitaine Bernard;Fourvel;Soubielle";</string>
-    <string name="game3_6">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la soupe\" !\n\nLe courtaou du Sarroua pourrait s\'appeler les cabanes aux épinards.\nLe sarrou (chénopode bon-Henri) était utilisé par les bergers pour cuisiner la soupe. Cette plante a certainement été introduite en montagne dans la laine des brebis, elle affectionne les reposoirs à bétail riches en nitrates et les brebis en sont friandes à l\'automne.;Pour découvrir le \"secret de la soupe\" vous devez obtenir toutes les bonnes réponses.";</string>
-    <string name="game4_1">Pour découvrir le \"secret de la cabane\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nComment appelle-t-on le déplacement du bétail de la plaine vers la montagne.;Transhumance;Migration;Voyage du bétail;Transhumance";</string>
-    <string name="game4_2">J’étais utilisé pour fabriquer le beurre.;Baratte;Baratte;Courtaou;Badino";</string>
-    <string name="game4_3">Je suis le nom donné à un village de vachers en montagne.;Courtaou;Village de bergers;Artigussy;Courtaou";</string>
-    <string name="game4_4">Mon nom était celui donné à l’assemblée composée par les chefs de maison.;Bésiau;Bésiau;Courtaou;Badino";</string>
-    <string name="game4_5">Le courtaou des Esclozes a été construit sur une...;Moraine glacière;Montagne;Moraine glacière;Glacier";</string>
-    <string name="game4_6">Vous êtes passés par ce courtaou avant d\'arriver aux Esclozes.;Artigussy;Le Sarroua;Artigussy;Bésiau";</string>
-    <string name="game4_7">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret de la cabane\" !\n\nPour se protéger des intempéries, des loups et des ours, les bergers possédaient une cabane. Comme ils suivaient toujours leurs troupeaux, ils faisaient suivre aussi une cabane mobile : le burguet. Il s\'agissait d\'une grande caisse de deux mètres de long, avec une petite porte, munie de deux brancards pour la déplacer.;Pour découvrir le \"secret de la cabane\" vous devez obtenir toutes les bonnes réponses.";</string>
-    <string name="game5_1">Pour découvrir le \"secret des paysages\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nJe ne m\'enfonce pas dans la tourbière grâce à son plumet.;Linaigrette;Gentiane;Vinaigrette;Linaigrette";</string>
-    <string name="game5_2">Mes cônes poussent vers le bas.;Épicéa;Épicéa;Sapins;Œillet";</string>
-    <string name="game5_3">Fleur de la pelouse avec un O dans l\'E.;Œillet;Gœntiane;Œuf;Œillet";</string>
-    <string name="game5_4">Je nettoie par le feu.;Écobuage;Écobuage;Incendie;Faine";</string>
-    <string name="game5_5">Sangliers et palombes adorent ce fruit du hêtre.;Faine;Épicéa;Faine;Murs";</string>
-    <string name="game5_6">Roche qui s\'est formée au fond des mers.;Calcaire;Marbre;Calcaire;Granite";</string>
-    <string name="game5_7">Nappe cachée dans la montagne.;Phréatique;Phréatique;Calcaire;Textile";</string>
-    <string name="game5_8">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret des paysages\" !\n\nLes jolis paysages de montagne sont dus à l\'exploitation séculaire des estives et des forêts. Sans cette exploitation, ni belles pelouses ni belles forêts. La chasse permet également de gérer ces paysages. Aujourd\'hui l\'objectif de cet équilibre est de pérenniser une faune sauvage riche et diversifiée, compatible avec la rentabilité des activités agricoles et sylvicoles.;Pour découvrir le \"secret des paysages\" vous devez obtenir toutes les bonnes réponses.";</string>
-    <string name="game6_1">Pour découvrir le \"secret du gypaète\" à la dernière étape, vous allez devoir trouver la bonne réponse dans chacun des articles du parcours.\n\nÀ Payolle, je suis le roi de l\'apnée.;Desman;Desman;Couvain;Lagopède alpin";</string>
-    <string name="game6_2">Fleur la plus toxique de France.;Aconit napel;Aconit tue-loup;Aconit napel;Végétarien";</string>
-    <string name="game6_3">Aquila chrysaetos en français.;Aigle royal;Couvain;Vautour fauve;Aigle royal";</string>
-    <string name="game6_4">Animal à raquettes.;Lagopède alpin;Isard;Campagnol;Lagopède alpin";</string>
-    <string name="game6_5">Indice de présence odorant.;Crotte;Crotte;Parfum;Poil";</string>
-    <string name="game6_6">Je ne mange pas de viande.;Végétarien;Endémique;Végétarien;Mammifère";</string>
-    <string name="game6_7">Maternité des fourmis.;Couvain;Couvain;Cave;Niche";</string>
-    <string name="game6_8">LASTPOI;Bravo ! vous avez bien répondu à ;Félicitations, vous avez découvert le \"secret du gypaète\" !\n\nLe gypaète barbu est le seul oiseau à posséder une barbe. En fait ce sont des plumes qui ressemblent étrangement à des poils et qui forment une belle barbichette. Le gypaète est le plus grand rapace d\'Europe, il a la particularité de se nourrir presque exclusivement d\'os.;Pour découvrir le \"secret du gypaète\" vous devez obtenir toutes les bonnes réponses.";</string>
+    <string name="game1_1">Para descubrir el \"secreto de las fronteras\" En la última etapa, hay que encontrar la respuesta correcta en cada uno de las etapas del itinerario.\n\n¿Cómo se escribía el nombre del taller que daba su nombre a Payolle? ;Paillole;Pailhole;Paillole;Payole;</string>
+    <string name="game1_2">Explotacion forestal, turismo, ¿cuál es la tercera actividad principal en Payolle?;El pastoreo;El pastoreo;el comercio;la inductria;</string>
+    <string name="game1_3">¿Quien gano la etapa de la primera etapa con llegada en Payolle en 2016 ?;Stephen Cummings;Thibaut Pinot;Stephen Cummings;Bernard Hinault;</string>
+    <string name="game1_4">¿Como se dice una cresta en el dialecto local?;Sarrat;Corde;Courtaou;Sarrat;</string>
+    <string name="game1_5">En la leyenda, como se llama el combatiente del valle de Campan?;Le Dogue;Le Dogue;Goliath;Fréchou;</string>
+    <string name="game1_6">Domino Payolle.;L\'Arbizon;Le Pic du Midi;Col d\'Aspin;L\'Arbizon;</string>
+    <string name="game1_7">LASTPOI;¡Bravo ! Has respondido bien a;¡Enhorabuena! has descubierto el \"secreto de las fronteras\"!\n\nA lo largo de la historia todos los pueblos y comunidades se han enfrentado entre ellos por la posesión de los mejores pastos y bosques. Más tarde, los diferentes poderes acapararon los distintos territorios para repartirlos entre las distintas poblaciones. Esto explica la presencia de propiedades sin dividir y la repartición, a veces extraña, de territorios como el de Payolle, repartido entre cinco ayuntamientos. ;Para descubrir el \"secreto de las fronteras\" hay que conseguir las respuestas correctas.;</string>
+    <string name="game2_1">Para descubrir el \"secreto de los canales\", en la última etapa debéis encontrar un indicio en cada uno de los artículos del recorrido.\n\nAdour de Payolle, Adour de Gripp… ¿Cómo se llama el tercer nacimiento del Adour ?;Lesponne;Lesponne;Bigorre;Campan;</string>
+    <string name="game2_2">¿Cuál es la altura máxima de la presa del lago? ;16 m;12 m;15 m;16 m;</string>
+    <string name="game2_3">¿Cómo se llama la producción de electricidad gracias a la fuerza del agua?;Hidroelectricidad;Solar;Turbina;Hidroelectricidad;</string>
+    <string name="game2_4">Nado en los rios y en el lago de Payolle.;Trucha;Trucha;Oso;Lucio;</string>
+    <string name="game2_5">LASTPOI;¡Bravo! Has respondido bien a;¡Enhorabuena, Has descubierto el \"secreto de los canales\"!\n\nDecenas de kilómetros de canales  han sido  excavados por los habitantes de estos valles a lo largo de la historia para llevar el agua a todos los rincones del valle. Agua para regar, transportar, beber, lavar… Estos canales abastecían permanentemente cada lugar a través de un agujero de un máximo de 4 centímetros de diámetro. Para regar los campos y prados se establecían turnos entre las familias para poder desviar el agua de los canales por un tiempo determinado a la semana de día o de noche.;Para descubrir el \"secreto de los canales\" hay que conseguir las respuestas correctas.;</string>
+    <string name="game3_1">Para descubrir el \"secreto de la sopa\", en la última etapa debéis encontrar un indicio en cada uno de los artículos del recorrido.\n\nSoy un animal pequeño que vivía en el mar hace unos 360 millones de años.;Goniatites;Fósiles;Goniatites;Desmán;</string>
+    <string name="game3_2">Los romanos enviaron este mármol a Roma.;Verde claro;Rojo;Griotte;Verde claro;</string>
+    <string name="game3_3">Protejo la casa y estoy en el sombrero  de la chimenea.;Cocut;Cocut;Pénaous;Paja;</string>
+    <string name="game3_4">Ando en fila india.;Lobo;Lobo;Comadreja;Zorro;</string>
+    <string name="game3_5">Maurice Bénézech alias...;Capitaine Bernard;Capitaine Bernard;Fourvel;Soubielle;</string>
+    <string name="game3_6">LASTPOI;¡Bravo! Has respondido bien a;¡Enhorabuena, Has descubierto \"secreto de la sopa\"!\n\nEl courtaou (pueblo de pastores) de Sarroua podría llamarse la \"cabaña de las espinacas\". El \"sarrou\" (espinaca silvestre) lo utilizaban los pastores para preparar la sopa. Esta planta llegó a la montaña seguramente enganchada a la lana de las ovejas. Crece en los lugares donde hay ganado, donde los suelos son ricos en nitratos; a las ovejas les encanta comer esta planta en otoño.;Para descubrir el \"secreto de la sopa\" hay que conseguir las respuestas correctas.;</string>
+    <string name="game4_1">Para descubrir el \"secreto de la cabaña\" en la última etapa, debéis encontrar un indicio en cada uno de los artículos del recorrido.\n\n¿Como se llama el desplazamiento de los rebaños de la llanura a la montaña?.;Trashumancia;Migración;Viaje;Trashumancia;</string>
+    <string name="game4_2">Me utilizaban para preparar la mantequilla.;Baratte;Baratte;Leyté;Badino;</string>
+    <string name="game4_3">Soy el nombre que se da a los pueblos de pastores en la montaña.;Courtaou;Casa-granja;Artigussy;Courtaou;</string>
+    <string name="game4_4">Mi nombre es el de la asamblea compuesta por los jefes de cada casa.;Bésiau;Bésiau;Cónsul;Comunidad;</string>
+    <string name="game4_5">El \"courtaou des Esclozes\" está situado encima de... ;Morrena;Campo;Morrena;Glaciar;</string>
+    <string name="game4_6">Habéis pasado por este courtaou antes de llegar al de Esclozes.;Artigussy;Le Sarroua;Artigussy;Bésiau;</string>
+    <string name="game4_7">LASTPOI;¡Bravo! Has respondido bien a;¡Enhorabuena, Has descubierto el \"secreto de la cabaña\"!\n\nPara protegerse de la intemperie, los lobos y los osos, los pastores tenían una cabaña. Como seguían siempre a los rebaños a la montaña, llevaban también una cabaña móvil: el “burguet”. Se trataba de una gran caja de madera de dos metros de largo, con una portezuela para entrar y salir, y unas asas para poder desplazarla.;Pora descubrir el \"secreto de la cabaña\" hay que conseguir las respuestas correctas.;</string>
+    <string name="game5_1">Para descubrir el \"secreto de los paisajes\", en la última etapa debéis encontrar un indicio en cada uno de los artículos del recorrido.\n\nGracias a mi pluma, no me hundo en la turbera.;Algodón de pantano;Genciana;Vinagreta;Algodón de pantano;</string>
+    <string name="game5_2">Mis piñas crecen hacia abajo.;Picea;Abeto;Haya;Picea;</string>
+    <string name="game5_3">Flor rosa de los prados.;Clavel silvestre;Genciana;Cardo;Clavel silvestre;</string>
+    <string name="game5_4">Hago limpieza mediante el fuego.;Quema;Quema;Incendio;Triturado;</string>
+    <string name="game5_5">A los jabalíes y las palomas les encanta este fruto.;Hayuco;Cotiledón;Hayuco;Piña;</string>
+    <string name="game5_6">Roca que se formó en el fondo del mar.;Caliza;Mármol;Caliza;Granito;</string>
+    <string name="game5_7">Capa escondida en las profundidades de la montaña.;Freática;Freática;Torrente;Frenética;</string>
+    <string name="game5_8">LASTPOI;¡Bravo! Has respondido bien a;¡Enhorabuena, Has descubierto \"secreto de los paisajes\"!\n\nNuestros bonitos paisajes de montaña son la consecuencia de la explotación a lo largo de los siglos de pastos y bosques. Sin esta explotación no habría ni bonitos prados ni bonitos bosques. La caza permite igualmente la gestión de estos paisajes. Actualmente, la finalidad de este equilibrio es la conservación de una fauna salvaje rica y variada, compatible con la rentabilidad de las actividades ganaderas y silvícolas.;Para descubrir el \"secreto de los paisajes\" hay que conseguir las respuestas correctas.;</string>
+    <string name="game6_1">Para descubrir el \"secreto del quebrantahuesos\", en la última etapa debéis encontrar un indicio en cada uno de los artículos del recorrido.\n\nEn Payolle, soy el mejor conteniendo la respiración.;Desmán;Desmán;Larva;Perdiz nival;</string>
+    <string name="game6_2">La flor más tóxica de Francia.;Acónito;Acónito amarillo;Acónito;Grasilla;</string>
+    <string name="game6_3">Aquila chrysaetos en español.;Aguila real;Quebratahuesos;Buitre leonado;Aguila real;</string>
+    <string name="game6_4">Animal con raquetas de nieve.;Perdiz nival;Rebeco;Ratón;Perdiz nival;</string>
+    <string name="game6_5">Indicio oloroso de presencia.;Excremento;Excremento;Perfume;Pelo;</string>
+    <string name="game6_6">No como carne.;Vegetariano;Endémico;Vegetariano;Mamífero;</string>
+    <string name="game6_7">Maternidad de las hormigas.;Larva;Larva;Cueva;Nicho;</string>
+    <string name="game6_8">El rebeco y el Lis del Pirineo son especies...;Endémicas;Locales;españolas;Endémicas;</string>
+    <string name="game6_9">LASTPOI;¡Bravo! Has respondido bien a;¡Enhorabuena, Has descubierto el \"secreto del quebrantahuesos\"!\n\nEl quebrantahuesos es la única de las aves que lleva una barba. En realidad son plumas que se parecen mucho a pelos y que forman una bonita barba. El quebrantahuesos es la rapaz más grande de Europa, y tiene la particularidad de alimentarse únicamente de huesos.;Para descubrir el \"secreto del quebrantahuesos\" hay que conseguir las respuestas correctas.;</string>
 
 
     <!--All missing text-->
@@ -484,7 +485,7 @@
     <string name="lang">Idioma</string>
     <string name="french">Frances</string>
     <string name="english">Ingles</string>
-    <string name="spanish">Espa�ol</string>
+    <string name="spanish">Español</string>
     <string name="splash_title">Los secretos de payolle</string>
     <string name="trophy">MIS BADGES</string>
     <string name="Track">Itinerarios</string>
@@ -504,7 +505,7 @@
     <string name="duration">DURACION</string>
     <string name="good_answer">Buena respuesta !</string>
     <string name="bad_answer">Lastima, no es la respuesta correcta.</string>
-    <string name="game_info_text">En el lago, en el bosque o en las crestas de las monta�as se esconden numerosos secretos que podeis desvelar sobre cada itinerario. Al llegar a cada etapa de vuestro itinerario podeis ir al juego de pistas pulsando sobre el boton de juego con el mando de juego.\n\nA cada etapa teneis un indicio; encontrad la respuesta correcta en el texto que se muestra y no olvideis de acercaros con el punto azul del GPS!</string>
+    <string name="game_info_text">Alrededor del lago, en el bosque, o en las crestas de las montañas se esconden numerosos secretos que deberán desvelar en cada uno de los recorridos.Al llegar a una etapa del recorrido, pulsar el botón “juego” representado por el icono de un mando de juego.A cada etapa le corresponde un indicio que permite descubrir una palabra contenida en el texto del artículo.Para mas informaciones, pulsar  sobre el icono “i” y luego sobre el modo de empleo.¡Buen paseo!</string>
 
 
 </resources>
